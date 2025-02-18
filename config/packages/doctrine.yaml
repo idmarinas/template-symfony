@@ -1,10 +1,24 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
-
+        host: '%env(DATABASE_HOST)%'
+        port: '%env(int:DATABASE_PORT)%'
+        dbname: '%env(DATABASE_NAME)%'
+        user: '%env(DATABASE_USER)%'
+        password: '%env(DATABASE_PASSWORD)%'
+        charset: utf8
+        driver: pdo_mysql
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
-        #server_version: '16'
+        server_version: '%env(resolve:DATABASE_VERSION)%'
+
+        default_table_options:
+            # Affects schema-tool. If absent, DBAL chooses defaults
+            # based on the platform. Examples here are for MySQL.
+            charset: utf8
+            collate: utf8_unicode_ci
+            engine: InnoDB
+        mapping_types:
+            enum: string
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
