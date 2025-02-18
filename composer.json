@@ -2,7 +2,6 @@
   "name": "idmarinas/template-symfony",
   "description": "Template for create a custom Symfony v7.2 Web App",
   "type": "template",
-  "license": "BSD-3-Clause",
   "keywords": [
     "template",
     "symfony-template"
