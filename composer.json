@@ -2,7 +2,22 @@
   "name": "idmarinas/template-symfony",
   "description": "Template for create a custom Symfony v7.2 Web App",
   "type": "template",
-  "license": "proprietary",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "template",
+    "symfony-template"
+  ],
+  "homepage": "https://github.com/idmarinas/template-symfony",
+  "authors": [
+    {
+      "name": "Iván Diaz Marinas (IDMarinas)",
+      "email": "35842929+idmarinas@users.noreply.github.com",
+      "role": "Author, Developer, Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/idmarinas/template-symfony/issues"
+  },
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
@@ -47,24 +62,18 @@
     "twig/extra-bundle": "^2.12|^3.0",
     "twig/twig": "^2.12|^3.0"
   },
-  "config": {
-    "allow-plugins": {
-      "php-http/discovery": true,
-      "symfony/flex": true,
-      "symfony/runtime": true
-    },
-    "bump-after-update": true,
-    "sort-packages": true
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "symfony/browser-kit": "7.2.*",
+    "symfony/css-selector": "7.2.*",
+    "symfony/debug-bundle": "7.2.*",
+    "symfony/maker-bundle": "^1.0",
+    "symfony/phpunit-bridge": "^7.2",
+    "symfony/stopwatch": "7.2.*",
+    "symfony/web-profiler-bundle": "7.2.*"
   },
-  "autoload": {
-    "psr-4": {
-      "App\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "App\\Tests\\": "tests/"
-    }
+  "conflict": {
+    "symfony/symfony": "*"
   },
   "replace": {
     "symfony/polyfill-ctype": "*",
@@ -75,6 +84,16 @@
     "symfony/polyfill-php80": "*",
     "symfony/polyfill-php81": "*",
     "symfony/polyfill-php82": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
   },
   "scripts": {
     "auto-scripts": {
@@ -87,10 +106,26 @@
     ],
     "post-update-cmd": [
       "@auto-scripts"
+    ],
+    "test:fixtures:load": [
+      "php bin/console doctrine:schema:drop --env=test --force --ansi",
+      "php bin/console doctrine:schema:update --env=test --force --ansi",
+      "php bin/console doctrine:fixtures:load --env=test -n --ansi"
+    ],
+    "dev:fixtures:load": [
+      "php bin/console doctrine:schema:drop --env=dev --force --ansi",
+      "php bin/console doctrine:schema:update --env=dev --force --ansi",
+      "php bin/console doctrine:fixtures:load --env=dev -n --ansi"
     ]
   },
-  "conflict": {
-    "symfony/symfony": "*"
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true,
+      "symfony/flex": true,
+      "symfony/runtime": true
+    },
+    "bump-after-update": true,
+    "sort-packages": true
   },
   "extra": {
     "symfony": {
@@ -98,14 +133,14 @@
       "require": "7.2.*"
     }
   },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5",
-    "symfony/browser-kit": "7.2.*",
-    "symfony/css-selector": "7.2.*",
-    "symfony/debug-bundle": "7.2.*",
-    "symfony/maker-bundle": "^1.0",
-    "symfony/phpunit-bridge": "^7.2",
-    "symfony/stopwatch": "7.2.*",
-    "symfony/web-profiler-bundle": "7.2.*"
-  }
+  "funding": [
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.me/idmarinas"
+    },
+    {
+      "type": "github-sponsors",
+      "url": "https://github.com/sponsors/idmarinas"
+    }
+  ]
 }
