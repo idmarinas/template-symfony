@@ -1,6 +1,6 @@
 {
   "name": "idmarinas/template-symfony",
-  "type": "project",
+  "type": "template",
   "license": "proprietary",
   "minimum-stability": "stable",
   "prefer-stable": true,
