@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7b5ed82f217539798d37ce71f58403b",
+    "content-hash": "81dd1c485d72ab2ec7c7cc79d1d2f545",
     "packages": [
         {
             "name": "composer/semver",
@@ -7562,6 +7562,152 @@
     ],
     "packages-dev": [
         {
+            "name": "idmarinas/composer-plugin",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/idmarinas/composer-plugin.git",
+                "reference": "b15fb3a4019d5aabce70f9f120d90bd7e0ddd62b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/idmarinas/composer-plugin/zipball/b15fb3a4019d5aabce70f9f120d90bd7e0ddd62b",
+                "reference": "b15fb3a4019d5aabce70f9f120d90bd7e0ddd62b",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.1",
+                "php": "^8.2",
+                "symfony/filesystem": "^6.4 | ^7.0",
+                "symfony/finder": "^6.4 | ^7.0",
+                "symfony/lock": "^6.4 | ^7.0",
+                "symfony/string": "^6.4 | ^7.0",
+                "symfony/validator": "^6.4 | ^7.0"
+            },
+            "require-dev": {
+                "composer/composer": "^2.1",
+                "phpunit/phpunit": "^9.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Idm\\Composer\\Plugin\\Plugin",
+                "plugin-optional": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "Idm\\Composer\\Plugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Iván Diaz Marinas (IDMarinas)",
+                    "email": "35842929+idmarinas@users.noreply.github.com",
+                    "role": "Creator, Developer"
+                }
+            ],
+            "description": "Composer plugin",
+            "homepage": "https://github.com/idmarinas/composer-plugin",
+            "keywords": [
+                "composer-plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/idmarinas/composer-plugin/issues",
+                "source": "https://github.com/idmarinas/composer-plugin/tree/1.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/idmarinas",
+                    "type": "github-sponsors"
+                },
+                {
+                    "url": "https://www.paypal.me/idmarinas",
+                    "type": "paypal"
+                }
+            ],
+            "time": "2025-02-18T15:09:54+00:00"
+        },
+        {
+            "name": "idmarinas/maker-bundle",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/idmarinas/maker-bundle.git",
+                "reference": "7ab73ed12e7e7a0e79679a47a72a40da02f7cf26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/idmarinas/maker-bundle/zipball/7ab73ed12e7e7a0e79679a47a72a40da02f7cf26",
+                "reference": "7ab73ed12e7e7a0e79679a47a72a40da02f7cf26",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "symfony/dependency-injection": "^6.4 | ^7.1",
+                "symfony/framework-bundle": "^6.4 | ^7.1",
+                "symfony/string": "^6.4 | ^7.1"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^2.13",
+                "easycorp/easyadmin-bundle": "^4.24",
+                "idmarinas/common-bundle": "^3.4",
+                "idmarinas/composer-plugin": "^1.0.0",
+                "idmarinas/user-bundle": "^2.0",
+                "phpunit/phpunit": "^9.6",
+                "rector/rector": "^1.2",
+                "symfony/browser-kit": "^6.4 | ^7.1",
+                "symfony/console": "^6.4 | ^7.1",
+                "symfony/css-selector": "^6.4 | ^7.1",
+                "symfony/maker-bundle": "^1.61",
+                "symfony/runtime": "^6.4 | ^7.1",
+                "symfony/twig-bundle": "^6.4 | ^7.1",
+                "zenstruck/foundry": "^2.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Idm\\Bundle\\Maker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Iván Diaz Marinas (IDMarinas)",
+                    "email": "35842929+idmarinas@users.noreply.github.com",
+                    "role": "Creator, Developer"
+                }
+            ],
+            "description": "A simple way to create the files for my bundles and some other things",
+            "homepage": "https://github.com/idmarinas/maker-bundle",
+            "keywords": [
+                "idmarinas-bundles",
+                "maker",
+                "maker-bundle",
+                "symfony-bundle"
+            ],
+            "support": {
+                "issues": "https://github.com/idmarinas/maker-bundle/issues",
+                "source": "https://github.com/idmarinas/maker-bundle/tree/2.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/idmarinas",
+                    "type": "github-sponsors"
+                },
+                {
+                    "url": "https://www.paypal.me/idmarinas",
+                    "type": "paypal"
+                }
+            ],
+            "time": "2025-02-18T18:11:39+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.9.0",
             "source": {
@@ -7863,6 +8009,64 @@
                 "source": "https://github.com/phar-io/version/tree/3.2.1"
             },
             "time": "2022-02-21T01:04:05+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "2.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "451b17f9665481ee502adc39be987cb71067ece2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/451b17f9665481ee502adc39be987cb71067ece2",
+                "reference": "451b17f9665481ee502adc39be987cb71067ece2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-13T12:49:56+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8285,6 +8489,65 @@
                 }
             ],
             "time": "2024-12-05T13:48:26+00:00"
+        },
+        {
+            "name": "rector/rector",
+            "version": "2.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rectorphp/rector.git",
+                "reference": "4393230e478c0006795770fe74c223b5c64ed68c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/4393230e478c0006795770fe74c223b5c64ed68c",
+                "reference": "4393230e478c0006795770fe74c223b5c64ed68c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0",
+                "phpstan/phpstan": "^2.1.3"
+            },
+            "conflict": {
+                "rector/rector-doctrine": "*",
+                "rector/rector-downgrade-php": "*",
+                "rector/rector-phpunit": "*",
+                "rector/rector-symfony": "*"
+            },
+            "suggest": {
+                "ext-dom": "To manipulate phpunit.xml via the custom-rule command"
+            },
+            "bin": [
+                "bin/rector"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+            "keywords": [
+                "automation",
+                "dev",
+                "migration",
+                "refactoring"
+            ],
+            "support": {
+                "issues": "https://github.com/rectorphp/rector/issues",
+                "source": "https://github.com/rectorphp/rector/tree/2.0.9"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-10T08:14:01+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9524,6 +9787,84 @@
             "time": "2025-01-27T11:08:17+00:00"
         },
         {
+            "name": "symfony/lock",
+            "version": "v7.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/lock.git",
+                "reference": "4f6e8b0e03e4a76095f7d058d72e72d30d5f59e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/lock/zipball/4f6e8b0e03e4a76095f7d058d72e72d30d5f59e5",
+                "reference": "4f6e8b0e03e4a76095f7d058d72e72d30d5f59e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "psr/log": "^1|^2|^3"
+            },
+            "conflict": {
+                "doctrine/dbal": "<3.6",
+                "symfony/cache": "<6.4"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.6|^4",
+                "predis/predis": "^1.1|^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Lock\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jérémy Derussé",
+                    "email": "jeremy@derusse.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Creates and manages locks, a mechanism to provide exclusive access to a shared resource",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "cas",
+                "flock",
+                "locking",
+                "mutex",
+                "redlock",
+                "semaphore"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/lock/tree/v7.2.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-01-17T06:59:03+00:00"
+        },
+        {
             "name": "symfony/maker-bundle",
             "version": "v1.62.1",
             "source": {
@@ -9836,7 +10177,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.2",
+        "php": "^8.4",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
