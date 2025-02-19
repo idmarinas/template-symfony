@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afb8f71b7b8f6e8a4cb817b40bbd239a",
+    "content-hash": "1156dabedf0c7be18098dc43961c0481",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1809,16 +1809,16 @@
         },
         {
             "name": "idmarinas/user-bundle",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idmarinas/user-bundle.git",
-                "reference": "2933124aa615d1d741d983b2b84ac901b0a6d3dd"
+                "reference": "253313cbad7280b7e34e09d4bc3dd1791cf99877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idmarinas/user-bundle/zipball/2933124aa615d1d741d983b2b84ac901b0a6d3dd",
-                "reference": "2933124aa615d1d741d983b2b84ac901b0a6d3dd",
+                "url": "https://api.github.com/repos/idmarinas/user-bundle/zipball/253313cbad7280b7e34e09d4bc3dd1791cf99877",
+                "reference": "253313cbad7280b7e34e09d4bc3dd1791cf99877",
                 "shasum": ""
             },
             "require": {
@@ -1891,7 +1891,7 @@
             ],
             "support": {
                 "issues": "https://github.com/idmarinas/user-bundle/issues",
-                "source": "https://github.com/idmarinas/user-bundle/tree/2.0.0"
+                "source": "https://github.com/idmarinas/user-bundle/tree/2.0.1"
             },
             "funding": [
                 {
@@ -1903,7 +1903,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2025-02-18T15:00:10+00:00"
+            "time": "2025-02-19T15:13:58+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2259,16 +2259,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "2.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "51087f87dcce2663e1fed4dfd4e56eccd580297e"
+                "reference": "9b30d6fd026b2c132b3985ce6b23bec09ab3aa68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/51087f87dcce2663e1fed4dfd4e56eccd580297e",
-                "reference": "51087f87dcce2663e1fed4dfd4e56eccd580297e",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/9b30d6fd026b2c132b3985ce6b23bec09ab3aa68",
+                "reference": "9b30d6fd026b2c132b3985ce6b23bec09ab3aa68",
                 "shasum": ""
             },
             "require": {
@@ -2300,9 +2300,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/2.0.2"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/2.1.0"
             },
-            "time": "2025-02-17T20:25:51+00:00"
+            "time": "2025-02-19T13:28:12+00:00"
         },
         {
             "name": "psr/cache",
@@ -9151,16 +9151,16 @@
         },
         {
             "name": "idmarinas/maker-bundle",
-            "version": "2.0.1",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idmarinas/maker-bundle.git",
-                "reference": "7ab73ed12e7e7a0e79679a47a72a40da02f7cf26"
+                "reference": "09b533d52396c58ba45742916763d7775a62efdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idmarinas/maker-bundle/zipball/7ab73ed12e7e7a0e79679a47a72a40da02f7cf26",
-                "reference": "7ab73ed12e7e7a0e79679a47a72a40da02f7cf26",
+                "url": "https://api.github.com/repos/idmarinas/maker-bundle/zipball/09b533d52396c58ba45742916763d7775a62efdb",
+                "reference": "09b533d52396c58ba45742916763d7775a62efdb",
                 "shasum": ""
             },
             "require": {
@@ -9212,7 +9212,7 @@
             ],
             "support": {
                 "issues": "https://github.com/idmarinas/maker-bundle/issues",
-                "source": "https://github.com/idmarinas/maker-bundle/tree/2.0.1"
+                "source": "https://github.com/idmarinas/maker-bundle/tree/2.0.3"
             },
             "funding": [
                 {
@@ -9224,7 +9224,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2025-02-18T18:11:39+00:00"
+            "time": "2025-02-19T15:37:34+00:00"
         },
         {
             "name": "masterminds/html5",
