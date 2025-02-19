@@ -2,14 +2,14 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/02/2025, 22:43
+ * Last modified by "IDMarinas" on 19/02/2025, 13:51
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
  * @file    bundles.php
  * @date    19/02/2025
- * @time    12:26
+ * @time    13:55
  *
  * @author  Iván Diaz Marinas (IDMarinas)
  * @license BSD 3-Clause License
@@ -40,4 +40,5 @@ return [
 	Idm\Bundle\User\IdmUserBundle::class                                     => ['all' => true],
 	Symfony\UX\TwigComponent\TwigComponentBundle::class                      => ['all' => true],
 	EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class                   => ['all' => true],
+	Nelmio\SecurityBundle\NelmioSecurityBundle::class                        => ['all' => true],
 ];
