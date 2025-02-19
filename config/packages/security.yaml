@@ -16,8 +16,8 @@ security:
             provider: idm_user_provider
             user_checker: Idm\Bundle\User\Security\Checker\UserAdminChecker
             form_login:
-                login_path: idm_user_login
-                check_path: idm_user_login
+                login_path: idm_user_login_web
+                check_path: idm_user_login_web
                 enable_csrf: true
                 form_only: true
                 default_target_path: idm_user_profile_index
@@ -28,8 +28,8 @@ security:
             provider: idm_user_provider
             user_checker: Idm\Bundle\User\Security\Checker\UserChecker
             form_login:
-                login_path: idm_user_login
-                check_path: idm_user_login
+                login_path: idm_user_login_web
+                check_path: idm_user_login_web
                 enable_csrf: true
                 form_only: true
                 default_target_path: idm_user_profile_index
