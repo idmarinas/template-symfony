@@ -3,8 +3,8 @@ admin_controllers:
         path: ../src/Controller/Admin
         namespace: App\Controller\Admin
     type: easyadmin.routes
-    prefix: '%app.route_prefix.admin%'
-    name_prefix: app_admin_
+    prefix: /panel
+    name_prefix: app_panel_
 
 user_controllers:
     resource:
