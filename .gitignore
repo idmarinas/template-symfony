@@ -1,3 +1,7 @@
+###> idmarinas/template-symfony ###
+**/*.dist
+/build/
+###< idmarinas/template-symfony ###
 
 ###> symfony/framework-bundle ###
 /.env.local
