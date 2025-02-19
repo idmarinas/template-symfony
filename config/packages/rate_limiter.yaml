@@ -28,12 +28,6 @@ services:
             $localFactory: '@limiter.idm_user.login.username_ip.main'
             $secret: '%kernel.secret%'
 
-
-
-
-
-
-
     idm_user.rate_limiter.login.admin:
         class: Symfony\Component\Security\Http\RateLimiter\DefaultLoginRateLimiter
         arguments:
