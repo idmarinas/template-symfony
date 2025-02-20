@@ -3,10 +3,17 @@ framework:
     secret: '%env(APP_SECRET)%'
 
     # Note that the session will be started ONLY if you read or write from it.
-    session: true
+    session:
+        cookie_samesite: lax
 
-    #esi: true
-    #fragments: true
+    # esi: true
+    # fragments: true
+    serializer:
+        name_converter: 'serializer.name_converter.camel_case_to_snake_case'
+
+when@dev:
+    framework:
+        ide: phpstorm
 
 when@test:
     framework:
