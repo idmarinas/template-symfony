@@ -5,7 +5,9 @@ framework:
         auto_mapping:
             App\Entity\: [ ]
 
-when@test:
+when@test: &test
     framework:
         validation:
             not_compromised_password: false
+
+when@dev: *test
