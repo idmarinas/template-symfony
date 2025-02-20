@@ -11,6 +11,9 @@
     <option name="transferred" value="true" />
   </component>
   <component name="PhpIncludePathManager">
+    <exclude_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83/Resources/stubs" />
+    </exclude_path>
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
