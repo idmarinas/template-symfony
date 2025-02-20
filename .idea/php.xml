@@ -15,6 +15,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83/Resources/stubs" />
     </exclude_path>
     <include_path>
+      <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
