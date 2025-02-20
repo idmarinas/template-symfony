@@ -2,12 +2,14 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         idm_user_provider:
             entity:
                 class: App\Entity\User\User
                 property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -23,6 +25,7 @@ security:
                 default_target_path: idm_user_profile_index
             login_throttling:
                 limiter: idm_user.rate_limiter.login.admin
+            switch_user: false
         main:
             lazy: true
             provider: idm_user_provider
