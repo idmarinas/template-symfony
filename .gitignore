@@ -1,6 +1,7 @@
 ###> idmarinas/template-symfony ###
 **/*.dist
 /build/
+.env.docker
 ###< idmarinas/template-symfony ###
 
 ###> symfony/framework-bundle ###
