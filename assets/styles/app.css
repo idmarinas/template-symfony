@@ -1,3 +1,21 @@
-body {
-    background-color: skyblue;
-}
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 20/02/2025, 22:51
+ *
+ * @project IDMarinas Template Symfony
+ * @see https://github.com/idmarinas/template-symfony
+ *
+ * @file app.css
+ * @date 21/02/2025
+ * @time 24:11
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license BSD 3-Clause License
+ *
+ * @since 1.0.0
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
