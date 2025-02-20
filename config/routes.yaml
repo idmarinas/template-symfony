@@ -21,13 +21,10 @@ app_default_home:
         #     site_name: 'ACME'
         #     theme: 'dark'
 
-admin_controllers:
-    resource:
-        path: ../src/Controller/Admin
-        namespace: App\Controller\Admin
+easyadmin:
+    resource: .
     type: easyadmin.routes
     prefix: /panel
-    name_prefix: app_panel_
 
 user_controllers:
     resource:
