@@ -4,4 +4,4 @@ framework:
         envelope:
             sender: '%env(APP_MAILER_ADDRESS_FROM)%'
         headers:
-            From: '%env(APP_MAILER_ADDRESS_FROM_NAME)% <%env(MAILER_ADDRESS_FROM)%>'
+            From: '%env(APP_MAILER_ADDRESS_FROM_NAME)% <%env(APP_MAILER_ADDRESS_FROM)%>'
