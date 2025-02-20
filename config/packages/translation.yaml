@@ -1,4 +1,5 @@
 framework:
+    set_content_language_from_locale: true
     default_locale: '%env(APP_LOCALE_DEFAULT)%'
     enabled_locales: [ es, en ]
     translator:
