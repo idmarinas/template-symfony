@@ -38,6 +38,10 @@ doctrine:
                 alias: App
         controller_resolver:
             auto_mapping: false
+        resolve_target_entities:
+            Idm\Bundle\User\Model\Entity\AbstractUser: App\Entity\User\User
+            Idm\Bundle\User\Model\Entity\AbstractPremium: App\Entity\User\Premium
+            Idm\Bundle\User\Model\Entity\AbstractConnections: App\Entity\User\Connections
 
 when@test:
     doctrine:
