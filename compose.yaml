@@ -2,6 +2,8 @@ services:
   ###> doctrine/doctrine-bundle ###
   database:
     image: mariadb:11.4.4
+    ports:
+      - "3316:3306"
     environment:
       # P^robar usando - y no _
       MARIADB_AUTO_UPGRADE: true

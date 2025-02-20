@@ -10,6 +10,7 @@ services:
     extends:
       file: compose.yaml
       service: database
+    ports: !reset [ ]
     environment:
       MARIADB_DATABASE: ${DATABASE_NAME}_test
     volumes:
