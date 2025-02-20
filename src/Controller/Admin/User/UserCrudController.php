@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 20/02/2025, 15:51
+ *
+ * @project IDMarinas Template Symfony
+ * @see     https://github.com/idmarinas/template-symfony
+ *
+ * @file    UserCrudController.php
+ * @date    20/02/2025
+ * @time    15:51
+ *
+ * @author  Iván Diaz Marinas (IDMarinas)
+ * @license BSD 3-Clause License
+ *
+ * @since   1.0.0
+ */
+
+namespace App\Controller\Admin\User;
+
+use App\Entity\User\User;
+use Idm\Bundle\User\Model\Controller\Admin\AbstractUserCrudController;
+
+final class UserCrudController extends AbstractUserCrudController
+{
+	public static function getEntityFqcn (): string
+	{
+		return User::class;
+	}
+}
