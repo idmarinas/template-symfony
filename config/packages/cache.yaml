@@ -32,7 +32,7 @@ services:
     marshaller.sodium.marshaller:
         class: Symfony\Component\Cache\Marshaller\SodiumMarshaller
         arguments:
-            - [ '%env(base64:CACHE_DECRYPTION_KEY)%' ]
+            - [ '%env(base64:APP_CACHE_DECRYPTION_KEY)%' ]
             # use multiple keys in order to rotate them
             #- ['%env(base64:CACHE_DECRYPTION_KEY)%', '%env(base64:OLD_CACHE_DECRYPTION_KEY)%']
             - '@cache.default_marshaller'
