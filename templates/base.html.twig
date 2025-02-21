@@ -14,7 +14,7 @@
 		{% block importmap %}{{ importmap('app', { 'nonce': csp_nonce('script') }) }}{% endblock %}
 	{% endblock %}
 </head>
-<body class="h-dvh flex items-center content-center bg-blue-200 text-blue-900">
+<body class="h-dvh flex items-center justify-center bg-blue-100 text-blue-900">
 	{% block body %}{% endblock %}
 </body>
 </html>
