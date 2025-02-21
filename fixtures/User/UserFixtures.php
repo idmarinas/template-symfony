@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2025, 24:09
+ * Last modified by "IDMarinas" on 22/02/2025, 24:15
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,12 +17,12 @@
  * @since   1.0.0
  */
 
-namespace DataFixtures;
+namespace DataFixtures\User;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use Factory\UserFactory;
+use Factory\User\UserFactory;
 use ReflectionException;
 
 final class UserFixtures extends Fixture implements FixtureGroupInterface
