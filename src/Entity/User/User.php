@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2025, 15:55
+ * Last modified by "IDMarinas" on 21/02/2025, 17:46
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -22,19 +22,22 @@ namespace App\Entity\User;
 use App\Repository\User\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Idm\Bundle\User\Model\Entity\AbstractUser;
 use Idm\Bundle\User\Traits\Entity\UserPremiumTrait;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'idm_user_user')]
 #[Gedmo\Loggable(logEntryClass: UserLog::class)]
+#[Gedmo\SoftDeleteable()]
 class User extends AbstractUser
 {
 	use UserPremiumTrait;
+	use SoftDeleteableEntity;
 
 	public function __construct ()
 	{
-		$this->premium = (new Premium())
+		$this->premium = new Premium()
 			->setUser($this)
 		;
 	}
