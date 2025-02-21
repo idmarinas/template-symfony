@@ -3,6 +3,7 @@
 /build/
 /node_modules/
 /.env.docker
+/composer.lock
 /package*.json
 ###< idmarinas/template-symfony ###
 
