@@ -5,13 +5,19 @@
 
 	<meta name="csp-nonce" content="{{ csp_nonce('script') }}" data-turbo-track="reload" />
 	<meta name="turbo-visit-control" content="reload" />
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="theme-color" content="#ffffff">
 
 	<title>{% block title %}Welcome!{% endblock %}</title>
 
+	{# Favicons #}
 	<link rel="icon" type="image/x-icon" href="{{ asset('images/favicons/favicon.ico') }}" />
 
-	{% block stylesheets %}
-	{% endblock %}
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicons/touch-icon-iphone.webp') }}">
+	<link rel="icon" type="image/webp" sizes="32x32" href="{{ asset('images/favicons/icon32.webp') }}">
+	<link rel="icon" type="image/webp" sizes="16x16" href="{{ asset('images/favicons/icon16.webp') }}">
+
+	{% block stylesheets %}{% endblock %}
 
 	{% block javascripts %}
 		{% block importmap %}{{ importmap('app', { 'nonce': csp_nonce('script') }) }}{% endblock %}
