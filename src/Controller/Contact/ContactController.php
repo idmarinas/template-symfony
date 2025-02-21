@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2025, 18:08
+ * Last modified by "IDMarinas" on 21/02/2025, 17:31
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -24,7 +24,7 @@ use Idm\Bundle\Common\Model\Controller\AbstractContactController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/contact', name: 'contact')]
+#[Route('/contact', name: 'contact_')]
 class ContactController extends AbstractContactController
 {
 	protected function getContactForm (): FormInterface
