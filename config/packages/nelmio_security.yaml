@@ -71,16 +71,6 @@ nelmio_security:
                 - self
                 - strict-dynamic
 
-        # This configuration only reports but doesn't enforce the policy that JavaScript may only
-        # be executed when it comes from the same server.
-        report:
-            level1_fallback: true
-            browser_adaptive:
-                enabled: true
-            report-uri: '%router.request_context.base_url%/nelmio/csp/report'
-            default-src:
-                - self
-
         report_endpoint:
             log_level: "notice" # Use the appropriate log_level
             filters:
@@ -92,3 +82,16 @@ nelmio_security:
                 browser_bugs: true
                 # Filter false positive reports given known injected scripts
                 injected_scripts: false
+
+when@prod:
+    nelmio_security:
+        csp:
+            # This configuration only reports but doesn't enforce the policy that JavaScript may only
+            # be executed when it comes from the same server.
+            report:
+                level1_fallback: true
+                browser_adaptive:
+                    enabled: true
+                report-uri: '%router.request_context.base_url%/nelmio/csp/report'
+                default-src:
+                    - self
