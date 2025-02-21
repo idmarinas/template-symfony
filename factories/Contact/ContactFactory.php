@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 23:58
+ * Last modified by "IDMarinas" on 22/02/2025, 24:14
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   3.4.0
  */
 
-namespace Factory;
+namespace Factory\Contact;
 
 use App\Entity\Contact\Contact;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
