@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 17:01
+ * Last modified by "IDMarinas" on 21/02/2025, 21:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -39,9 +39,7 @@ final class CspSubscriber implements EventSubscriberInterface
 	{
 		$attributes = $event->getRequest()->attributes;
 
-		if (!$event->isMainRequest()
-		    || ($attributes->has('routeCreatedByEasyAdmin') && !$attributes->get('routeCreatedByEasyAdmin'))
-		    || $attributes->get('_route') != 'admin_login') {
+		if (!$event->isMainRequest() || !str_starts_with($attributes->get('_route'), 'admin')) {
 			return;
 		}
 
