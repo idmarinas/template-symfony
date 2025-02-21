@@ -20,8 +20,8 @@ security:
             provider: idm_user_provider
             user_checker: Idm\Bundle\User\Security\Checker\UserAdminChecker
             form_login:
-                login_path: idm_user_login_web
-                check_path: idm_user_login_web
+                login_path: admin_login
+                check_path: admin_login
                 enable_csrf: true
                 form_only: true
                 default_target_path: admin
@@ -29,7 +29,7 @@ security:
                 limiter: idm_user.rate_limiter.login.admin
             logout:
                 path: _security_logout
-                target: app_admin_login
+                target: admin_login
             switch_user: false
         main:
             lazy: true
