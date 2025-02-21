@@ -17,6 +17,10 @@
   </component>
   <component name="PhpIncludePathManager">
     <exclude_path>
+      <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer/vendor/symfony" />
+      <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer/deployer.phar" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan/phpstan.phar" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle/src/Resources/bin/php-cs-fixer-v3.49.0.phar" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83/Resources/stubs" />
     </exclude_path>
     <include_path>
@@ -177,6 +181,7 @@
       <path value="$PROJECT_DIR$/vendor/ua-parser/uap-php" />
       <path value="$PROJECT_DIR$/vendor/nelmio/security-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/tailwind-bundle" />
+      <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
