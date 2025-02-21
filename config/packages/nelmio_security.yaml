@@ -10,12 +10,27 @@ nelmio_security:
 
     # prevents redirections outside the website's domain
     external_redirects:
-        abort: true
         log: true
+        override: /external-redirect
+        forward_as: redirUrl
         allow_list: [ ]
+
+    # Send a full URL in the `Referer` header when performing a same-origin request,
+    # only send the origin of the document to secure destination (HTTPS->HTTPS),
+    # and send no header to a less secure destination (HTTPS->HTTP).
+    # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
+    # no referrer information is sent along with requests.
+    referrer_policy:
+        enabled: true
+        policies:
+            - no-referrer
+            - same-origin
+            - strict-origin
+            - strict-origin-when-cross-origin
 
     # prevents inline scripts, unsafe eval, external scripts/images/styles/frames, etc
     csp:
+        report_logger_service: monolog.logger.csp
         enabled: true
         hosts: [ ]
         content_types: [ ]
@@ -25,6 +40,7 @@ nelmio_security:
             # this is a port of https://github.com/twitter/secureheaders/blob/83a564a235c8be1a8a3901373dbc769da32f6ed7/lib/secure_headers/headers/policy_management.rb#L97
             browser_adaptive:
                 enabled: false
+            report-uri: '%router.request_context.base_url%/nelmio/csp/report'
             # report-uri: '%router.request_context.base_url%/nelmio/csp/report'
             block-all-mixed-content: true # defaults to false, blocks HTTP content over HTTPS transport
             upgrade-insecure-requests: true # defaults to false, upgrades HTTP requests to HTTPS transport
@@ -50,15 +66,25 @@ nelmio_security:
             script-src:
                 - self
                 - strict-dynamic
-    # Send a full URL in the `Referer` header when performing a same-origin request,
-    # only send the origin of the document to secure destination (HTTPS->HTTPS),
-    # and send no header to a less secure destination (HTTPS->HTTP).
-    # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
-    # no referrer information is sent along with requests.
-    referrer_policy:
-        enabled: true
-        policies:
-            - no-referrer
-            - same-origin
-            - strict-origin
-            - strict-origin-when-cross-origin
+
+        # This configuration only reports but doesn't enforce the policy that JavaScript may only
+        # be executed when it comes from the same server.
+        report:
+            level1_fallback: true
+            browser_adaptive:
+                enabled: true
+            report-uri: '%router.request_context.base_url%/nelmio/csp/report'
+            default-sr:
+                - self
+
+        report_endpoint:
+            log_level: "notice" # Use the appropriate log_level
+            filters:
+                # Filter false positive reports given a domain list
+                domains: true
+                # Filter false positive reports given a scheme list
+                schemes: true
+                # Filter false positive reports given known browser bugs
+                browser_bugs: true
+                # Filter false positive reports given known injected scripts
+                injected_scripts: false
