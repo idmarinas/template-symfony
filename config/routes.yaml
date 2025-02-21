@@ -1,3 +1,8 @@
+nelmio_security:
+    path: /nelmio/csp/report
+    defaults: { _controller: nelmio_security.csp_reporter_controller::indexAction }
+    methods: [ POST ]
+
 # Home page of APP (Template)
 app_default_home:
     path: /
