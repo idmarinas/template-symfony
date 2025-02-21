@@ -8,7 +8,7 @@
 
 </div>
 
-> Short description for Bundle
+> Short description for Symfony App
 
 <br />
 
