@@ -31,6 +31,14 @@ easyadmin:
     type: easyadmin.routes
     prefix: /panel
 
+controllers_admin:
+    resource:
+        path: ../src/Controller/Admin
+        namespace: App\Controller\Admin
+    type: attribute
+    prefix: '/panel/%app.route_prefix.admin%'
+    name_prefix: admin_
+
 user_controllers:
     resource:
         path: ../src/Controller/User
