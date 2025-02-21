@@ -3,11 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 
+	{# Meta Tags Custom #}
+	{% block header_meta %}{% endblock %}
 	<meta name="csp-nonce" content="{{ csp_nonce('script') }}" data-turbo-track="reload" />
 	<meta name="turbo-visit-control" content="reload" />
 	<meta name="msapplication-TileColor" content="#00aba9">
 	<meta name="theme-color" content="#ffffff">
-
+	
 	<title>{% block title %}Welcome!{% endblock %}</title>
 
 	{# Favicons #}
