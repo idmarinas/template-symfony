@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /assets/
+Disallow: /build/
+Disallow: /bundles/
+Disallow: /images/
