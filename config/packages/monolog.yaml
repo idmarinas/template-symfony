@@ -1,11 +1,16 @@
 monolog:
     channels:
         - deprecation # Deprecations are logged in the dedicated "deprecation" channel when it exists
+        - csp
     handlers:
         deprecation:
             type: stream
             channels: [ deprecation ]
             path: '%kernel.logs_dir%/%kernel.environment%.deprecations.log'
+        csp:
+            type: stream
+            channels: [ csp ]
+            path: '%kernel.logs_dir%/%kernel.environment%.csp.log'
         security:
             type: stream
             channels: [ security ]
@@ -27,7 +32,7 @@ when@dev:
                 type: stream
                 path: "%kernel.logs_dir%/%kernel.environment%.log"
                 level: debug
-                channels: [ "!event", "!deprecation", "!security", "!doctrine", "!console" ]
+                channels: [ "!event", "!deprecation", "!security", "!doctrine", "!console", "!csp" ]
 
 when@test:
     monolog:
@@ -52,7 +57,6 @@ when@prod:
                 handler: nested
                 excluded_http_codes: [ 404, 405 ]
                 buffer_size: 50 # How many messages should be saved? Prevent memory leaks
-                channels: [ "!deprecation", "!security", "!doctrine", "!console" ]
             nested:
                 type: stream
                 path: '%kernel.logs_dir%/%kernel.environment%.log'
