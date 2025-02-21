@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 16:42
+ * Last modified by "IDMarinas" on 21/02/2025, 21:24
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -35,13 +35,13 @@ final class AdminLoginController extends AbstractController
 
 		$error = $authenticationUtils->getLastAuthenticationError();
 
-		// -- último nombre de usuario introducido por el usuario
+		// Last username entered by the user
 		$lastUsername = $authenticationUtils->getLastUsername();
 
 		return $this->render('@EasyAdmin/page/login.html.twig', [
 			'error'                => $error,
 			'last_username'        => $lastUsername,
-			'page_title'           => 'IDMarinas Template Symfony Admin',
+			'favicon_path'         => 'images/favicons/favicon.ico',
 			'csrf_token_intention' => 'authenticate',
 			'target_path'          => $this->generateUrl('admin'),
 			'remember_me_enabled'  => true,
