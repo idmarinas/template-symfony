@@ -53,7 +53,7 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
-when@test:
+when@dev: &dev
     security:
         password_hashers:
             # By default, password hashers are resource intensive and take time. This is
@@ -65,3 +65,5 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+
+when@test: *dev
