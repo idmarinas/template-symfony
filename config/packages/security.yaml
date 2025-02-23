@@ -28,7 +28,7 @@ security:
             login_throttling:
                 limiter: idm_user.rate_limiter.login.admin
             logout:
-                path: _security_logout
+                path: app_logout_admin
                 target: admin_login
             switch_user: false
         main:
@@ -44,7 +44,7 @@ security:
             login_throttling:
                 limiter: idm_user.rate_limiter.login.main
             logout:
-                path: _security_logout
+                path: app_logout_user
                 target: app_default_home
 
             # activate different ways to authenticate
