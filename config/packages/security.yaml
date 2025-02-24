@@ -30,6 +30,12 @@ security:
             logout:
                 path: app_logout_admin
                 target: admin_login
+                enable_csrf: true
+                clear_site_data:
+                    - cache
+                    - cookies
+                    - executionContexts
+                    - storage
             switch_user: false
         main:
             lazy: true
@@ -46,6 +52,10 @@ security:
             logout:
                 path: app_logout_user
                 target: app_default_home
+                enable_csrf: true
+                clear_site_data:
+                    - cookies
+                    - storage
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -65,5 +75,9 @@ when@dev: &dev
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+        firewalls:
+            main:
+                http_basic: ~
+                entry_point: form_login
 
 when@test: *dev
