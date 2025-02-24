@@ -5,6 +5,9 @@ security:
         # Main route is public always
         - { path: ^/(|nelmio/csp/report)$, roles: PUBLIC_ACCESS }
 
+        # Public pages
+        - { path: '^/%app.route_prefix.public%(|/.)$', roles: PUBLIC_ACCESS }
+
         # Routes to Panels
         # Admin
         - { path: '^/panel/%app.route_prefix.admin%/(login|logout)$', roles: PUBLIC_ACCESS }
