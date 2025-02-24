@@ -39,12 +39,13 @@ admin_controllers:
     prefix: '/panel/%app.route_prefix.admin%'
     name_prefix: admin_
 
-web_controller:
+public_controller:
     resource:
-        path: ../src/Controller/Web
-        namespace: App\Controller\Web
+        path: ../src/Controller/Public
+        namespace: App\Controller\Public
     type: attribute
-    name_prefix: app_web_
+    prefix: '/%app.route_prefix.public%'
+    name_prefix: app_public_
 
 user_controllers:
     resource:

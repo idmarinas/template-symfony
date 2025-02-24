@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2025, 17:38
+ * Last modified by "IDMarinas" on 24/02/2025, 17:46
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\Web;
+namespace App\Controller\Public;
 
 use App\Form\Contact\ContactFormType;
 use Idm\Bundle\Common\Model\Controller\AbstractContactController;
