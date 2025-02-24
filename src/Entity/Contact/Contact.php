@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 17:51
+ * Last modified by "IDMarinas" on 24/02/2025, 18:12
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -20,6 +20,7 @@
 namespace App\Entity\Contact;
 
 use App\Repository\Contact\ContactRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -33,4 +34,10 @@ use Idm\Bundle\Common\Model\Entity\AbstractContact;
 class Contact extends AbstractContact
 {
 	use SoftDeleteableEntity;
+
+	public function __construct ()
+	{
+		$this->createdAt = new DateTime();
+		$this->updatedAt = new DateTime();
+	}
 }
