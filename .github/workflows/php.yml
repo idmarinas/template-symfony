@@ -38,7 +38,7 @@ jobs:
         env:
           MARIADB_DATABASE: database_db_test
           MARIADB_USER: database_user_test
-          MARIADB_PASSWORD: !ChangeMe!
+          MARIADB_PASSWORD: '!ChangeMe!'
         ports:
           - 3306:3306
         options: >-
