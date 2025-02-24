@@ -20,7 +20,7 @@ security:
         - { path: '^/%app.route_prefix.user%/registration/(register|verify/email)$', roles: PUBLIC_ACCESS }
         - { path: '^/%app.route_prefix.user%/reset-password/reset(|/[^\/.]++)$', roles: PUBLIC_ACCESS }
         - { path: '^/%app.route_prefix.user%/reset-password(|/check-email)$', roles: PUBLIC_ACCESS }
-        - { path: '^/%app.route_prefix.user%', roles: ROLE_USER }
+        - { path: '^/%app.route_prefix.user%/.*$', roles: ROLE_USER }
 
         # By default, all routes that do not meet the above requirements are marked as private to avoid problems.
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
