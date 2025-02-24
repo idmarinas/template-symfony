@@ -36,6 +36,7 @@ jobs:
       database_test:
         image: mariadb:11.4.4
         env:
+          DATABASE_HOST: 127.0.0.1
           MARIADB_AUTO_UPGRADE: true
           MARIADB_DATABASE: database_db_test
           MARIADB_USER: database_user_test
@@ -73,12 +74,12 @@ jobs:
       - name: Create Database
         run: 'php bin/console doctrine:schema:create --env=test && php bin/console doctrine:fixtures:load --env=test -n'
         env:
-          DATABASE_HOST: localhost
+          DATABASE_HOST: 127.0.0.1
 
       - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
         run: ./vendor/bin/phpunit --exclude ignore
         env:
-          DATABASE_HOST: localhost
+          DATABASE_HOST: 127.0.0.1
 
       # # Uncomment to activate SonarCloud Scan
       # - name: SonarCloud Scan
