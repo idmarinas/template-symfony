@@ -65,12 +65,10 @@ jobs:
         env:
           SYMFONY_REQUIRE: ${{ matrix.symfony }}
         uses: ramsey/composer-install@v3
-      #
-      # - name: Shutdown default MySQL
-      #   run: sudo service mysql stop
-      #   shell: bash
 
-      # Uncomment if you need create a Database
+      - name: Built Tailwind CSS files
+        run: 'php bin/console tailwind:build'
+
       - name: Create Database
         run: 'php bin/console doctrine:schema:create --env=test && php bin/console doctrine:fixtures:load --env=test -n'
         env:
