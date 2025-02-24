@@ -5,6 +5,7 @@
 /.env.docker
 /composer.lock
 /package*.json
+!/phpunit.xml.dist
 ###< idmarinas/template-symfony ###
 
 ###> symfony/framework-bundle ###
