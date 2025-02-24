@@ -1,0 +1,83 @@
+name: IDMarinas Template Symfony Test Suite
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    tags-ignore: [ dependencies, documentation, meta, 'docker configuration', 'deployer configuration' ]
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '.deployer/**'
+      - '.docker/**'
+      - '.idea/**'
+      - 'migrations/**'
+      - '**/docs/**'
+      - '**/Writerside/**'
+      - '**/README.md'
+      - '**/COMMANDS.md'
+      - '**/TIPS.md'
+      - '**/TODO.md'
+      - '**/LICENSE'
+      - rector.php
+      - .editorconfig
+      - .gitignore
+      - compose.yaml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
+    strategy:
+      matrix:
+        php: [ '8.4' ]
+        symfony: [ '7.2.*' ]
+
+    services:
+      database_test:
+        image: mariadb:11.4.4
+        env:
+          MARIADB_DATABASE: database_db_test
+          MARIADB_USER: database_user_test
+          MARIADB_PASSWORD: !ChangeMe!
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ (matrix.php == '8.4' && matrix.symfony == '7.2.*') && '0' || '1' }}
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: flex
+
+      - name: Download dependencies
+        env:
+          SYMFONY_REQUIRE: ${{ matrix.symfony }}
+        uses: ramsey/composer-install@v3
+      #
+      # - name: Shutdown default MySQL
+      #   run: sudo service mysql stop
+      #   shell: bash
+
+      # Uncomment if you need create a Database
+      - name: Create Database
+        run: 'php bin/console doctrine:schema:create --env=test && php bin/console doctrine:fixtures:load --env=test -n'
+
+      - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
+        run: ./vendor/bin/phpunit --exclude ignore
+
+      # # Uncomment to activate SonarCloud Scan
+      # - name: SonarCloud Scan
+      #   if: matrix.php == '8.4' && matrix.symfony == '7.2.*'
+      #   uses: SonarSource/sonarqube-scan-action@v4
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
