@@ -5,7 +5,6 @@ services:
     ports:
       - "3316:3306"
     environment:
-      # P^robar usando - y no _
       MARIADB_AUTO_UPGRADE: true
       MARIADB_DATABASE: ${DATABASE_NAME}
       MARIADB_USER: ${DATABASE_USER}
