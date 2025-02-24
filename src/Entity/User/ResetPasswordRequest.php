@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2025, 15:51
+ * Last modified by "IDMarinas" on 24/02/2025, 13:10
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -37,11 +37,7 @@ class ResetPasswordRequest implements ResetPasswordRequestInterface
 
 	#[ORM\ManyToOne]
 	#[ORM\JoinColumn(nullable: false)]
-	private(set) ?User $user {
-		get {
-			return $this->user;
-		}
-	}
+	public ?User $user;
 
 	public function __construct (
 		User              $user,
@@ -51,5 +47,10 @@ class ResetPasswordRequest implements ResetPasswordRequestInterface
 	) {
 		$this->user = $user;
 		$this->initialize($expiresAt, $selector, $hashedToken);
+	}
+
+	public function getUser (): User
+	{
+		return $this->user;
 	}
 }
