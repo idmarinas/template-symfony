@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/02/2025, 19:52
+ * Last modified by "IDMarinas" on 24/02/2025, 17:06
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -59,5 +59,24 @@ class AdminLoginControllerTest extends WebTestCase
 		$client->followRedirect();
 
 		$this->assertResponseIsSuccessful();
+	}
+
+	public function testAdminRedirectToPanel (): void
+	{
+		$client = static::createClient();
+		$client->request(Request::METHOD_GET, '/panel/admin/login');
+
+		$client->submitForm('Sign in', [
+			'_username' => UserFixtures::USER_ADMIN_EMAIL,
+			'_password' => UserFixtures::USER_PASS,
+		]);
+
+		$client->followRedirect();
+
+		// test if when is authenticated redirect to admin panel
+		$client->request(Request::METHOD_GET, '/panel/admin/login');
+
+		$this->assertResponseRedirects('/panel/admin');
+		$client->followRedirect();
 	}
 }
