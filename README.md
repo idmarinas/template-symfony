@@ -8,7 +8,7 @@
 
 </div>
 
-> Short description for Symfony App
+> Short description for your Symfony App
 
 <br />
 
