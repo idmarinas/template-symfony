@@ -28,7 +28,7 @@ security:
             login_throttling:
                 limiter: idm_user.rate_limiter.login.admin
             logout:
-                path: app_logout_admin
+                path: /panel/%app.route_prefix.admin%/logout
                 target: admin_login
                 enable_csrf: true
                 clear_site_data:
@@ -50,7 +50,7 @@ security:
             login_throttling:
                 limiter: idm_user.rate_limiter.login.main
             logout:
-                path: app_logout_user
+                path: /panel/%app.route_prefix.user%/logout
                 target: app_default_home
                 enable_csrf: true
                 clear_site_data:
