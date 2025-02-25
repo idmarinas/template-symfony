@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 22:02
+ * Last modified by "IDMarinas" on 25/02/2025, 20:17
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -21,6 +21,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -63,5 +66,12 @@ final class DashboardController extends AbstractDashboardController
 
 		yield MenuItem::section('dashboard.menu.section.users', 'fa fa-users');
 		yield MenuItem::linkToCrud('dashboard.menu.user', 'fa fa-user', User::class);
+	}
+
+	public function configureActions (): Actions
+	{
+		return parent::configureActions()
+			->add(Crud::PAGE_INDEX, Action::DETAIL)
+		;
 	}
 }
