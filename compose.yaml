@@ -1,7 +1,7 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    image: mariadb:11.4.4
+    image: mariadb:11.4.5-ubi
     ports:
       - "3316:3306"
     environment:
