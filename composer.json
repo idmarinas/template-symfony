@@ -84,6 +84,7 @@
 		"zenstruck/foundry": "^2.3"
 	},
 	"conflict": {
+		"doctrine/dbal": ">=4.0",
 		"symfony/symfony": "*"
 	},
 	"replace": {
