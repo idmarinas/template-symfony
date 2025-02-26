@@ -23,6 +23,19 @@ services:
       - db_password
   ###< doctrine/doctrine-bundle ###
 
+  apache:
+    image: idmarinas/apache:2.4
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost || exit 1
+    depends_on:
+      - php
+      - database
+
+  php:
+    image: idmarinas/php:8.4
+    healthcheck:
+      test: php -v || exit 1
+
 volumes:
   ###> doctrine/doctrine-bundle ###
   database_data:
