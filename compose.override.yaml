@@ -22,45 +22,33 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   apache:
-    build:
-      context: .docker/dev/apache
-      target: dev
-      args:
-        VERSION: 2.4
     ports:
       - "8080:80"
       - "8083:443"
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost || exit 1
     volumes:
       - ./:/var/www/html
-      ## Conf
-      - ./.docker/dev/apache/conf/directory.conf:/usr/local/apache2/conf/d/directory.conf
-      - ./.docker/dev/apache/conf/httpd-ssl.conf:/usr/local/apache2/conf/d/httpd-ssl.conf
-      - ./.docker/dev/apache/sites/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf
-      - ./.docker/dev/apache/sites/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf
+      ## Certs
+      - ./.docker/dev/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
+      - ./.docker/dev/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
+      ## Sites
+      - ./.docker/dev/apache/sites/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
+      - ./.docker/dev/apache/sites/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
     depends_on:
       - php
       - database
       - database_test
 
   php:
-    build:
-      context: .docker/dev/php
-      target: dev
-      args:
-        VERSION: '8.4'
-    healthcheck:
-      test: php -v || exit 1
+    image: idmarinas/php:8.4-xdebug
     volumes:
       - ./:/var/www/html
       ## SSH
       - .docker/dev/php/key_ssh/id_rsa:/root/.ssh/id_rsa:ro
       ## PHP Conf
-      - ./.docker/dev/php/conf.d/common.ini:/usr/local/etc/php/conf.d/common.ini
-      - ./.docker/dev/php/conf.d/disable_functions.ini:/usr/local/etc/php/conf.d/disable_functions.ini
-      - ./.docker/dev/php/conf.d/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./.docker/dev/php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
+      - ./.docker/dev/php/conf.d/common.ini:/usr/local/etc/php/conf.d/common.ini:ro
+      - ./.docker/dev/php/conf.d/disable_functions.ini:/usr/local/etc/php/conf.d/disable_functions.ini:ro
+      - ./.docker/dev/php/conf.d/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+      - ./.docker/dev/php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
 
   ###> symfony/mailer ###
   mailer:
