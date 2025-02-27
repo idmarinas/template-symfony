@@ -28,11 +28,11 @@ services:
     volumes:
       - ./:/var/www/html
       ## Certs
-      - ./.docker/dev/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
-      - ./.docker/dev/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
+      - ./.docker/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
+      - ./.docker/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
       ## Sites
-      - ./.docker/dev/apache/sites/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
-      - ./.docker/dev/apache/sites/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
+      - ./.docker/apache/sites/dev/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
+      - ./.docker/apache/sites/dev/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
     depends_on:
       - php
       - database
