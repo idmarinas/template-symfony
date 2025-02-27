@@ -35,6 +35,9 @@ services:
     image: idmarinas/php:8.4
     healthcheck:
       test: php -v || exit 1
+    volumes:
+      ## PHP Conf
+      - ./.docker/php/conf.d/date_timezone.ini:/usr/local/etc/php/conf.d/date_timezone.ini:ro
 
 volumes:
   ###> doctrine/doctrine-bundle ###
