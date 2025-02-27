@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 17:45
+ * Last modified by "IDMarinas" on 27/02/2025, 17:58
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -156,7 +156,6 @@ class RegistrationControllerTest extends WebTestCase
 		$this->assertResponseIsSuccessful();
 		$this->assertPageTitleContains('Welcome!');
 
-		dump($client->getResponse()->getContent());
 		$this->assertSelectorTextContains('body', 'The link to verify your email is invalid. Please request a new link.');
 	}
 
