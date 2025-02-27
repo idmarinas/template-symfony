@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 13:52
+ * Last modified by "IDMarinas" on 27/02/2025, 16:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -33,7 +33,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 #[Gedmo\Loggable(logEntryClass: UserLog::class)]
 #[Gedmo\SoftDeleteable()]
 #[UniqueEntity('email', message: 'idm_user_bundle.email.not_unique')]
-#[UniqueEntity('username', message: 'idm_user_bundle.username.not_unique')]
+#[UniqueEntity('displayName', message: 'idm_user_bundle.username.not_unique')]
 class User extends AbstractUser
 {
 	use UserPremiumTrait;
