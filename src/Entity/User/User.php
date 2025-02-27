@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2025, 21:24
+ * Last modified by "IDMarinas" on 27/02/2025, 13:52
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -26,11 +26,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Idm\Bundle\User\Model\Entity\AbstractUser;
 use Idm\Bundle\User\Traits\Entity\UserPremiumTrait;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'idm_user_user')]
 #[Gedmo\Loggable(logEntryClass: UserLog::class)]
 #[Gedmo\SoftDeleteable()]
+#[UniqueEntity('email', message: 'idm_user_bundle.email.not_unique')]
+#[UniqueEntity('username', message: 'idm_user_bundle.username.not_unique')]
 class User extends AbstractUser
 {
 	use UserPremiumTrait;
