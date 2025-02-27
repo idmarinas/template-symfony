@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2025, 11:59
+ * Last modified by "IDMarinas" on 27/02/2025, 15:40
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -29,13 +29,24 @@ class UserTest extends KernelTestCase
 
 	public function testEntity (): void
 	{
-		$entity = UserFactory::new()->create();
+		$entity = UserFactory::new()->create(['deletedAt' => null]);
 
-		UserFactory::assert()->exists($entity);
+		UserFactory::assert()->exists(['email' => $entity->_real()->getEmail()]);
+		UserFactory::assert()->count(103);
+
+		$entity->_delete();
+
+		UserFactory::assert()->count(102);
+
+		$em = self::getContainer()->get('doctrine.orm.entity_manager');
+		$em->getFilters()->disable('softdeleteable');
+
 		UserFactory::assert()->count(203);
 
 		$entity->_delete();
 
 		UserFactory::assert()->count(202);
+
+		$em->getFilters()->enable('softdeleteable');
 	}
 }
