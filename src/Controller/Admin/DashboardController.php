@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/02/2025, 20:17
+ * Last modified by "IDMarinas" on 27/02/2025, 18:44
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -27,6 +27,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use Override;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -68,10 +69,19 @@ final class DashboardController extends AbstractDashboardController
 		yield MenuItem::linkToCrud('dashboard.menu.user', 'fa fa-user', User::class);
 	}
 
+	#[Override]
 	public function configureActions (): Actions
 	{
 		return parent::configureActions()
 			->add(Crud::PAGE_INDEX, Action::DETAIL)
+			->update(Crud::PAGE_INDEX, Action::NEW, fn(Action $action) => $action->setIcon('fas fa-square-plus me-1'))
+			->update(Crud::PAGE_INDEX, Action::EDIT, fn(Action $action) => $action->setIcon('fas fa-pen-to-square me-1'))
+			->update(Crud::PAGE_INDEX, Action::DETAIL, fn(Action $action) => $action->setIcon('fas fa-eye me-1'))
+			->update(
+				Crud::PAGE_INDEX,
+				Action::DELETE,
+				fn(Action $action) => $action->setIcon('fas fa-trash-can text-danger me-1')
+			)
 		;
 	}
 }
