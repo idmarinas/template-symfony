@@ -43,12 +43,7 @@ services:
     volumes:
       - ./:/var/www/html
       ## SSH
-      - .docker/dev/php/key_ssh/id_rsa:/root/.ssh/id_rsa:ro
-      ## PHP Conf
-      - ./.docker/dev/php/conf.d/common.ini:/usr/local/etc/php/conf.d/common.ini:ro
-      - ./.docker/dev/php/conf.d/disable_functions.ini:/usr/local/etc/php/conf.d/disable_functions.ini:ro
-      - ./.docker/dev/php/conf.d/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
-      - ./.docker/dev/php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
+      - .docker/php/key_ssh/id_rsa:/root/.ssh/id_rsa:ro
 
   ###> symfony/mailer ###
   mailer:
