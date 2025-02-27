@@ -2,12 +2,12 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 21:36
+ * Last modified by "IDMarinas" on 27/02/2025, 13:33
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
- * @file    CspSubscriber.php
+ * @file    EasyAdminSubscriber.php
  * @date    20/02/2025
  * @time    22:40
  *
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\EventSubscriber;
+namespace App\EventSubscriber\Panel;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
@@ -26,7 +26,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Temporary “fix” to resolve EasyAdminBundle incompatibility with CSP
  */
-final class CspSubscriber implements EventSubscriberInterface
+final readonly class EasyAdminSubscriber implements EventSubscriberInterface
 {
 	public static function getSubscribedEvents (): array
 	{
@@ -39,7 +39,7 @@ final class CspSubscriber implements EventSubscriberInterface
 	{
 		$attributes = $event->getRequest()->attributes;
 
-		if (!$event->isMainRequest() || !str_starts_with($attributes->get('_route'), 'admin')) {
+		if (!$event->isMainRequest() || !str_starts_with($attributes->get('_route'), 'admin_')) {
 			return;
 		}
 
