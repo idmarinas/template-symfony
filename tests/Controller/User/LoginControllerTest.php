@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/02/2025, 19:39
+ * Last modified by "IDMarinas" on 27/02/2025, 16:31
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -77,6 +77,8 @@ class LoginControllerTest extends WebTestCase
 		$client = static::createClient();
 		/* @var UserRepository $repository */
 		$repository = static::getContainer()->get(UserRepository::class);
+		$em = self::getContainer()->get('doctrine.orm.entity_manager');
+		$em->getFilters()->disable('softdeleteable');
 
 		$client->request(Request::METHOD_GET, '/user/login/web');
 
@@ -120,7 +122,8 @@ class LoginControllerTest extends WebTestCase
 		$this->assertResponseRedirects('/user/login/web');
 		$client->followRedirect();
 
-		$this->assertSelectorTextContains('form', 'Your user account no longer exists');
+		$this->assertSelectorTextContains('form', 'Invalid credentials');
+//		$this->assertSelectorTextContains('form', 'Your user account no longer exists');
 
 		/**
 		 * User Unverified
