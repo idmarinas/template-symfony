@@ -4,7 +4,7 @@ nelmio_security:
     methods: [ POST ]
 
 # Home page of APP (Template)
-app_default_home:
+app_home:
     path: /
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
     defaults:

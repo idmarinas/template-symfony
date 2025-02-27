@@ -51,7 +51,7 @@ security:
                 limiter: idm_user.rate_limiter.login.main
             logout:
                 path: /%app.route_prefix.user%/logout
-                target: app_default_home
+                target: app_home
                 enable_csrf: true
                 clear_site_data:
                     - cookies
