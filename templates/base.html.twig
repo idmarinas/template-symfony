@@ -9,7 +9,7 @@
 	<meta name="turbo-visit-control" content="reload" />
 	<meta name="msapplication-TileColor" content="#00aba9">
 	<meta name="theme-color" content="#ffffff">
-	
+
 	<title>{% block title %}Welcome!{% endblock %}</title>
 
 	{# Favicons #}
@@ -26,6 +26,19 @@
 	{% endblock %}
 </head>
 <body class="h-dvh flex items-center justify-center bg-blue-100 text-blue-900">
-	{% block body %}{% endblock %}
+	{% block body %}
+		{# read and display all flash messages #}
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}">
+					{{ message|trans }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		{% block container %}
+			{% block content %}{% endblock %}
+		{% endblock %}
+	{% endblock %}
 </body>
 </html>
