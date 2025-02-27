@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2025, 15:51
+ * Last modified by "IDMarinas" on 27/02/2025, 18:01
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -23,7 +23,7 @@ use App\Entity\User\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Idm\Bundle\User\Model\Repository\AbstractUserRepository;
 
-final class UserRepository extends AbstractUserRepository
+class UserRepository extends AbstractUserRepository
 {
 	public function __construct (ManagerRegistry $registry)
 	{
