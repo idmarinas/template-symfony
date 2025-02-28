@@ -2,12 +2,12 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2025, 11:35
+ * Last modified by "IDMarinas" on 28/02/2025, 11:37
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
- * @file    RestoreCrudActionTrait.php
+ * @file    CrudActionRestoreTrait.php
  * @date    27/02/2025
  * @time    20:02
  *
@@ -32,7 +32,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Security\Permission;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-trait RestoreCrudActionTrait
+trait CrudActionRestoreTrait
 {
 	use RedirectToCrudIndexTrait;
 
