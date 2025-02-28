@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2025, 11:37
+ * Last modified by "IDMarinas" on 28/02/2025, 12:17
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -73,9 +73,9 @@ trait CrudActionRestoreTrait
 	protected function restoreAction (Actions $actions): Actions
 	{
 		// restore action, it will be displayed in light blue with a FontAwesome restore icon
-		$restore = Action::new('restore', 'action.restore', 'fas fa-trash-restore-alt me-1 text-warning')
+		$restore = Action::new('restore', 'action.restore', 'fas fa-trash-restore-alt me-1 text-info')
 			->linkToCrudAction('restore')
-			->addCssClass('text-warning')
+			->addCssClass('text-info')
 			->displayIf(static function (object $object) {
 				return (method_exists($object, 'isDeleted')) ? $object->isDeleted() : false;
 			})
