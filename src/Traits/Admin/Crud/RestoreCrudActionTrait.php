@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 20:20
+ * Last modified by "IDMarinas" on 28/02/2025, 11:35
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -34,6 +34,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 trait RestoreCrudActionTrait
 {
+	use RedirectToCrudIndexTrait;
+
 	/**
 	 * Restore a deleted object
 	 */
