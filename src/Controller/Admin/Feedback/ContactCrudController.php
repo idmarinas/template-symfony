@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2025, 11:37
+ * Last modified by "IDMarinas" on 28/02/2025, 12:21
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\Admin\Contact;
+namespace App\Controller\Admin\Feedback;
 
 use App\Entity\Contact\Contact;
 use App\Traits\Admin\Crud\CrudActionRestoreTrait;
