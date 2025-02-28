@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2025, 24:15
+ * Last modified by "IDMarinas" on 28/02/2025, 12:52
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -29,7 +29,8 @@ final class UserFixtures extends Fixture implements FixtureGroupInterface
 {
 	public const string USER_TEST_EMAIL = 'jonny.doe@example.com';
 
-	public const string USER_ADMIN_EMAIL = 'john.doe@example.com';
+	public const string USER_SUPER_ADMIN_EMAIL = 'john.doe@example.com';
+	public const string USER_ADMIN_EMAIL       = 'cody.doe@example.com';
 
 	public const string USER_EMAIL = 'jane.doe@example.com';
 
@@ -81,10 +82,18 @@ final class UserFixtures extends Fixture implements FixtureGroupInterface
 		];
 
 		// Add SuperAdmin user
-		$admin = UserFactory::createOne([
+		$superAdmin = UserFactory::createOne([
 			'display_name' => 'John',
-			'email'        => self::USER_ADMIN_EMAIL,
+			'email'        => self::USER_SUPER_ADMIN_EMAIL,
 			'roles'        => ['ROLE_SUPER_ADMIN'],
+			...$opts,
+		]);
+
+		// Add admin user
+		$admin = UserFactory::createOne([
+			'display_name' => 'Cody',
+			'email'        => self::USER_ADMIN_EMAIL,
+			'roles'        => ['ROLE_ADMIN'],
 			...$opts,
 		]);
 
@@ -97,5 +106,6 @@ final class UserFixtures extends Fixture implements FixtureGroupInterface
 
 		$this->addReference('user', $user->_real());
 		$this->addReference('user_admin', $admin->_real());
+		$this->addReference('user_super_admin', $superAdmin->_real());
 	}
 }
