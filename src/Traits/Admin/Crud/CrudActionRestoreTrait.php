@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2025, 12:17
+ * Last modified by "IDMarinas" on 28/02/2025, 12:19
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -84,7 +84,6 @@ trait CrudActionRestoreTrait
 		return $actions
 			->add(Crud::PAGE_INDEX, $restore)
 			->reorder(Crud::PAGE_INDEX, [Action::DETAIL, Action::EDIT, 'restore', Action::DELETE])
-			->setPermission('restore', 'ROLE_SUPER_ADMIN')
 		;
 	}
 }
