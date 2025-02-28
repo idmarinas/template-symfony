@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 18:44
+ * Last modified by "IDMarinas" on 28/02/2025, 12:19
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,6 +19,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact\Contact;
 use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -67,6 +68,9 @@ final class DashboardController extends AbstractDashboardController
 
 		yield MenuItem::section('dashboard.menu.section.users', 'fa fa-users');
 		yield MenuItem::linkToCrud('dashboard.menu.user', 'fa fa-user', User::class);
+
+		yield MenuItem::section('dashboard.menu.section.feedback', 'fa fa-comments');
+		yield MenuItem::linkToCrud('dashboard.menu.contact', 'fa fa-message', Contact::class);
 	}
 
 	#[Override]
@@ -74,6 +78,7 @@ final class DashboardController extends AbstractDashboardController
 	{
 		return parent::configureActions()
 			->add(Crud::PAGE_INDEX, Action::DETAIL)
+			->add(Crud::PAGE_NEW, Action::INDEX)
 			->update(Crud::PAGE_INDEX, Action::NEW, fn(Action $action) => $action->setIcon('fas fa-square-plus me-1'))
 			->update(Crud::PAGE_INDEX, Action::EDIT, fn(Action $action) => $action->setIcon('fas fa-pen-to-square me-1'))
 			->update(Crud::PAGE_INDEX, Action::DETAIL, fn(Action $action) => $action->setIcon('fas fa-eye me-1'))
@@ -82,6 +87,7 @@ final class DashboardController extends AbstractDashboardController
 				Action::DELETE,
 				fn(Action $action) => $action->setIcon('fas fa-trash-can text-danger me-1')
 			)
+			->setPermission('restore', 'ROLE_SUPER_ADMIN')
 		;
 	}
 }
