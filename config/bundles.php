@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 17:39
+ * Last modified by "IDMarinas" on 02/03/2025, 20:06
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -30,7 +30,7 @@ return [
 	Symfony\Bundle\SecurityBundle\SecurityBundle::class                      => ['all' => true],
 	Symfony\Bundle\MonologBundle\MonologBundle::class                        => ['all' => true],
 	Symfony\Bundle\MakerBundle\MakerBundle::class                            => ['dev' => true],
-	Idm\Bundle\Maker\IdmMakerBundle::class                                   => ['dev' => true, 'test' => true],
+	Idm\Bundle\Maker\IdmMakerBundle::class                                   => ['dev' => true],
 	DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class                    => ['test' => true],
 	Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class             => ['dev' => true, 'test' => true],
 	Zenstruck\Foundry\ZenstruckFoundryBundle::class                          => ['dev' => true, 'test' => true],
@@ -39,7 +39,6 @@ return [
 	SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
 	Idm\Bundle\User\IdmUserBundle::class                                     => ['all' => true],
 	Symfony\UX\TwigComponent\TwigComponentBundle::class                      => ['all' => true],
-	EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class                   => ['all' => true],
 	Nelmio\SecurityBundle\NelmioSecurityBundle::class                        => ['all' => true],
 	Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class            => ['dev' => true, 'test' => true],
 	Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class        => ['all' => true],
