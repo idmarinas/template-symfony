@@ -17,8 +17,14 @@
 	</php>
 
 	<testsuites>
-		<testsuite name="IDMarinas Template Symfony Test Suite">
+		<testsuite name="IDMarinas Template Symfony Shared Test Suite">
 			<directory>tests</directory>
+		</testsuite>
+		<testsuite name="IDMarinas Template Symfony Admin Test Suite">
+			<directory>apps/admin/tests</directory>
+		</testsuite>
+		<testsuite name="IDMarinas Template Symfony Web Test Suite">
+			<directory>apps/web/tests</directory>
 		</testsuite>
 	</testsuites>
 
