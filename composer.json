@@ -1,6 +1,6 @@
 {
 	"name": "idmarinas/template-symfony",
-	"description": "Template for create a custom Symfony v7.2 Web App",
+	"description": "Template for create a custom Symfony v7.2 Web Multi App or Single App",
 	"type": "template",
 	"keywords": [
 		"template",
