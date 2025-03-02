@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 18:01
+ * Last modified by "IDMarinas" on 02/03/2025, 18:39
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,11 +17,11 @@
  * @since   1.0.0
  */
 
-namespace App\Repository\User;
+namespace Shared\Repository\User;
 
-use App\Entity\User\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Idm\Bundle\User\Model\Repository\AbstractUserRepository;
+use Shared\Entity\User\User;
 
 class UserRepository extends AbstractUserRepository
 {
