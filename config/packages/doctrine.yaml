@@ -30,11 +30,11 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
+            Shared:
                 type: attribute
                 is_bundle: false
                 dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
+                prefix: 'Shared\Entity'
                 alias: App
         filters:
             softdeleteable:
@@ -43,9 +43,9 @@ doctrine:
         controller_resolver:
             auto_mapping: false
         resolve_target_entities:
-            Idm\Bundle\User\Model\Entity\AbstractUser: App\Entity\User\User
-            Idm\Bundle\User\Model\Entity\AbstractPremium: App\Entity\User\Premium
-            Idm\Bundle\User\Model\Entity\AbstractConnections: App\Entity\User\Connections
+            Idm\Bundle\User\Model\Entity\AbstractUser: Shared\Entity\User\User
+            Idm\Bundle\User\Model\Entity\AbstractPremium: Shared\Entity\User\Premium
+            Idm\Bundle\User\Model\Entity\AbstractConnections: Shared\Entity\User\Connections
 
 # when@test:
 #     doctrine:
