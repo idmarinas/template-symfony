@@ -14,7 +14,7 @@
 
 <div align="center">
 
-[![Test Suite](https://img.shields.io/github/actions/workflow/status/idmarinas/REPOSITORY_NAME_CHANGE_ME/php.yml?branch=BRANCH_MASTER&style=for-the-badge&logo=github&logoColor=white&label=Lotgd%20Test%20Suite)][test-suit]
+[![Test Suite](https://img.shields.io/github/actions/workflow/status/idmarinas/template-symfony/php.yml?branch=master&style=for-the-badge&logo=github&logoColor=white&label=Lotgd%20Test%20Suite)][test-suit]
 [![Quality Gate Status](https://img.shields.io/sonar/quality_gate/SONAR_PROJECT_NAME_CHANGE_ME/BRANCH_MASTER?server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge&logo=sonarcloud&logoColor=white)][sonarcloud]
 [![Coverage](https://img.shields.io/sonar/coverage/SONAR_PROJECT_NAME_CHANGE_ME/BRANCH_MASTER?server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge&logo=sonarcloud&logoColor=white)][sonarcloud]
 [![Technical Debt](https://img.shields.io/sonar/tech_debt/SONAR_PROJECT_NAME_CHANGE_ME/BRANCH_MASTER?server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge&logo=sonarcloud&logoColor=white)][sonarcloud]
