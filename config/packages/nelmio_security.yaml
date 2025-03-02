@@ -41,7 +41,6 @@ nelmio_security:
             browser_adaptive:
                 enabled: false
             report-uri: '%router.request_context.base_url%/nelmio/csp/report'
-            # report-uri: '%router.request_context.base_url%/nelmio/csp/report'
             block-all-mixed-content: true # defaults to false, blocks HTTP content over HTTPS transport
             upgrade-insecure-requests: true # defaults to false, upgrades HTTP requests to HTTPS transport
             base-uri:
@@ -63,9 +62,6 @@ nelmio_security:
                 - 'data:'
             font-src:
                 - self
-            script-src:
-                - self
-                - strict-dynamic
 
         report_endpoint:
             log_level: "notice" # Use the appropriate log_level
