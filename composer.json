@@ -99,20 +99,26 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"App\\": "src/"
+			"Shared\\": "src/",
+			"Admin\\": "apps/admin/src",
+			"Web\\": "apps/web/src"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"App\\Tests\\": "tests/",
+			"Shared\\Tests\\": "tests/",
+			"Admin\\Tests\\": "apps/admin/tests/",
+			"Web\\Tests\\": "apps/web/tests/",
 			"DataFixtures\\": "fixtures/",
 			"Factory\\": "factories/"
 		}
 	},
 	"scripts": {
 		"auto-scripts": {
-			"cache:clear": "symfony-cmd",
-			"assets:install %PUBLIC_DIR%": "symfony-cmd",
+			"cache:clear -iadmin": "symfony-cmd",
+			"cache:clear -iweb": "symfony-cmd",
+			"assets:install %PUBLIC_DIR% -iadmin --no-cleanup": "symfony-cmd",
+			"assets:install %PUBLIC_DIR% -iweb --no-cleanup": "symfony-cmd",
 			"importmap:install": "symfony-cmd"
 		},
 		"post-install-cmd": [
