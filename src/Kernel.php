@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 18:19
+ * Last modified by "IDMarinas" on 02/03/2025, 20:17
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -100,11 +100,11 @@ class Kernel extends BaseKernel
 	private function doConfigureContainer (ContainerConfigurator $container, string $configDir): void
 	{
 		$container->import($configDir . '/{packages}/*.{php,yaml}');
-		$container->import($configDir . '/{packages}/' . $this->environment . '/*.{php,yaml}');
+//		$container->import($configDir . '/{packages}/' . $this->environment . '/*.{php,yaml}');
 
 		if (is_file($configDir . '/services.yaml')) {
 			$container->import($configDir . '/services.yaml');
-			$container->import($configDir . '/{services}_' . $this->environment . '.yaml');
+//			$container->import($configDir . '/{services}_' . $this->environment . '.yaml');
 		} else {
 			$container->import($configDir . '/{services}.php');
 		}
@@ -112,7 +112,7 @@ class Kernel extends BaseKernel
 
 	private function doConfigureRoutes (RoutingConfigurator $routes, string $configDir): void
 	{
-		$routes->import($configDir . '/{routes}/' . $this->environment . '/*.{php,yaml}');
+//		$routes->import($configDir . '/{routes}/' . $this->environment . '/*.{php,yaml}');
 		$routes->import($configDir . '/{routes}/*.{php,yaml}');
 
 		if (is_file($configDir . '/routes.yaml')) {
