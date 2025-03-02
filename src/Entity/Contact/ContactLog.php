@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2025, 18:09
+ * Last modified by "IDMarinas" on 02/03/2025, 18:39
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Entity\Contact;
+namespace Shared\Entity\Contact;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry;

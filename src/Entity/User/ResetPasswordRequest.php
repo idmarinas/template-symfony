@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2025, 13:10
+ * Last modified by "IDMarinas" on 02/03/2025, 18:39
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,13 +17,13 @@
  * @since   1.0.0
  */
 
-namespace App\Entity\User;
+namespace Shared\Entity\User;
 
-use App\Repository\User\ResetPasswordRequestRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Shared\Repository\User\ResetPasswordRequestRepository;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestInterface;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestTrait;
 
