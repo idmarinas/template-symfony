@@ -3,42 +3,6 @@ nelmio_security:
     defaults: { _controller: nelmio_security.csp_reporter_controller::indexAction }
     methods: [ POST ]
 
-# Home page of APP (Template)
-app_home:
-    path: /
-    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
-    defaults:
-        # the path of the template to render
-        template: 'home.html.twig'
-
-        # the response status code (default: 200)
-        statusCode: 200
-
-        # special options defined by Symfony to set the page cache
-        maxAge: 86400
-        sharedAge: 86400
-
-        # whether or not caching should apply for client caches only
-        # private: true
-
-        # optionally you can define some arguments passed to the template
-        # context:
-        #     site_name: 'ACME'
-        #     theme: 'dark'
-
-easyadmin:
-    resource: .
-    type: easyadmin.routes
-    prefix: /panel
-
-admin_controllers:
-    resource:
-        path: ../src/Controller/Admin
-        namespace: App\Controller\Admin
-    type: attribute
-    prefix: '/panel/%app.route_prefix.admin%'
-    name_prefix: admin_
-
 public_controller:
     resource:
         path: ../src/Controller/Public
