@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2025, 12:19
+ * Last modified by "IDMarinas" on 03/03/2025, 20:34
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,10 +17,8 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\Admin;
+namespace Admin\Controller;
 
-use App\Entity\Contact\Contact;
-use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -29,6 +27,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Override;
+use Shared\Entity\Contact\Contact;
+use Shared\Entity\User\User;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -39,7 +39,7 @@ final class DashboardController extends AbstractDashboardController
 
 	public function index (): Response
 	{
-		return $this->render('admin/dashboard.html.twig');
+		return $this->render('@Admin/dashboard.html.twig');
 	}
 
 	public function configureDashboard (): Dashboard

@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2025, 21:24
+ * Last modified by "IDMarinas" on 02/03/2025, 21:51
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\Admin;
+namespace Admin\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
