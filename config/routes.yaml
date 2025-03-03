@@ -2,19 +2,3 @@ nelmio_security:
     path: /nelmio/csp/report
     defaults: { _controller: nelmio_security.csp_reporter_controller::indexAction }
     methods: [ POST ]
-
-public_controller:
-    resource:
-        path: ../src/Controller/Public
-        namespace: App\Controller\Public
-    type: attribute
-    prefix: '/%app.route_prefix.public%'
-    name_prefix: app_public_
-
-user_controllers:
-    resource:
-        path: ../src/Controller/User
-        namespace: App\Controller\User
-    type: attribute
-    prefix: '%app.route_prefix.user%'
-    name_prefix: idm_user_
