@@ -30,6 +30,9 @@ services:
     depends_on:
       - php
       - database
+    volumes:
+      ## Config
+      - ./.docker/apache/sites/common.conf:/usr/local/apache2/conf/sites/common.conf:ro
 
   php:
     image: idmarinas/php:8.4
