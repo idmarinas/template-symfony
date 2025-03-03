@@ -30,6 +30,9 @@ services:
       ## Certs
       - ./.docker/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
       - ./.docker/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
+      ## Conf
+      - ./.docker/apache/conf/default.conf:/usr/local/apache2/conf/d/default.conf:ro
+      - ./.docker/apache/sites/dev/certs.conf:/usr/local/apache2/conf/sites/dev-certs.conf:ro
       ## Sites
       - ./.docker/apache/sites/dev/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
       - ./.docker/apache/sites/dev/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
