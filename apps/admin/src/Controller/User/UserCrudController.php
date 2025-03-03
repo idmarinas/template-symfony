@@ -2,14 +2,14 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2025, 12:21
+ * Last modified by "IDMarinas" on 03/03/2025, 20:23
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
- * @file    ContactCrudController.php
+ * @file    UserCrudController.php
  * @date    20/02/2025
- * @time    18:13
+ * @time    15:51
  *
  * @author  Iván Diaz Marinas (IDMarinas)
  * @license BSD 3-Clause License
@@ -17,18 +17,16 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\Admin\Feedback;
+namespace Admin\Controller\User;
 
-use App\Entity\Contact\Contact;
-use App\Traits\Admin\Crud\CrudActionRestoreTrait;
+use Admin\Traits\Admin\Crud\CrudActionRestoreTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-use Idm\Bundle\Common\Model\Controller\Admin\AbstractContactCrudController;
+use Idm\Bundle\User\Model\Controller\Admin\AbstractUserCrudController;
 use Override;
-use function Symfony\Component\Translation\t;
+use Shared\Entity\User\User;
 
-class ContactCrudController extends AbstractContactCrudController
+final class UserCrudController extends AbstractUserCrudController
 {
 	use CrudActionRestoreTrait;
 
@@ -36,19 +34,7 @@ class ContactCrudController extends AbstractContactCrudController
 
 	public static function getEntityFqcn (): string
 	{
-		return Contact::class;
-	}
-
-	public function configureFields (string $pageName): iterable
-	{
-		$t = fn($message) => t($message, [], 'IdmUserBundle');
-		yield from parent::configureFields($pageName);
-
-		yield BooleanField::new('isDeleted', $t('crud.common.is_deleted'))
-			->hideOnForm()
-			->renderAsSwitch(false)
-			->setVirtual(true)
-		;
+		return User::class;
 	}
 
 	#[Override]
