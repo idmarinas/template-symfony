@@ -42,7 +42,7 @@ services:
     image: idmarinas/php:8.4-xdebug
     volumes:
       ## SSH
-      - .docker/php/key_ssh/id_rsa:/root/.ssh/id_rsa:ro
+      - ssh_key:/root/.ssh:ro
 
   ###> symfony/mailer ###
   mailer:
@@ -58,3 +58,5 @@ services:
 volumes:
   database_data_dev:
   database_data_test:
+  ssh_key:
+    external: true
