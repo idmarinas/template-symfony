@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2025, 20:46
+ * Last modified by "IDMarinas" on 03/03/2025, 20:23
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\User;
+namespace Web\Controller\User;
 
 use Idm\Bundle\User\Form\ChangePasswordFormType;
 use Idm\Bundle\User\Model\Controller\AbstractProfileController;
