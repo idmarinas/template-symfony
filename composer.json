@@ -80,7 +80,7 @@
 		"symfony/phpunit-bridge": "^7.2",
 		"symfony/stopwatch": "7.2.*",
 		"symfony/web-profiler-bundle": "7.2.*",
-		"symfonycasts/tailwind-bundle": "^0.7.1",
+		"symfonycasts/tailwind-bundle": "^0.8",
 		"zenstruck/foundry": "^2.3"
 	},
 	"conflict": {
