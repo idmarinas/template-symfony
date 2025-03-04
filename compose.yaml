@@ -31,6 +31,7 @@ services:
       - php
       - database
     volumes:
+      - ./:/var/www/html
       ## Config
       - ./.docker/apache/sites/common.conf:/usr/local/apache2/conf/sites/common.conf:ro
 
@@ -39,6 +40,7 @@ services:
     healthcheck:
       test: php -v || exit 1
     volumes:
+      - ./:/var/www/html
       ## PHP Conf
       - ./.docker/php/conf.d/date_timezone.ini:/usr/local/etc/php/conf.d/date_timezone.ini:ro
 
