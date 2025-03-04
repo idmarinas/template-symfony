@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2025, 22:51
+ * Last modified by "IDMarinas" on 04/03/2025, 23:31
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -16,6 +16,54 @@
  * @since 1.0.0
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+@source '../../vendor/symfony/twig-bridge/Resources/views/Form/*.html.twig';
+
+@theme {
+	--animate-swinging: swinging 2s ease infinite;
+	--animate-progress-waiting: progressBarAnimation 1s linear infinite;
+
+	@keyframes progressBarAnimation {
+		0% {
+			opacity: 0.3;
+			transform: scale(0.1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(1);
+		}
+	}
+	@keyframes swinging {
+		0% {
+			transform: translateX(-100%);
+		}
+		50% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
+}
