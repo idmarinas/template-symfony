@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2025, 17:54
+ * Last modified by "IDMarinas" on 03/03/2025, 20:23
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,15 +17,15 @@
  * @since   1.0.0
  */
 
-namespace App\Controller\Public;
+namespace Web\Controller\Public;
 
-use App\Form\Contact\ContactFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Idm\Bundle\Common\Model\Controller\AbstractContactController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Web\Form\Contact\ContactFormType;
 
 #[Route('/contact', name: 'contact_')]
 class ContactController extends AbstractContactController
