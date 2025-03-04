@@ -1,7 +1,6 @@
 name: template_symfony
 
 services:
-  ###> doctrine/doctrine-bundle ###
   database:
     environment:
       MARIADB_DATABASE: ${DATABASE_NAME}_dev
@@ -19,14 +18,12 @@ services:
       MARIADB_USER: ${DATABASE_USER}_test
     volumes:
       - database_data_test:/var/lib/mysql
-  ###< doctrine/doctrine-bundle ###
 
   apache:
     ports:
       - "8080:80"
       - "8443:443"
     volumes:
-      - ./:/var/www/html
       ## Certs
       - ./.docker/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
       - ./.docker/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
@@ -36,7 +33,7 @@ services:
       ## Sites
       - ./.docker/apache/sites/dev/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
       - ./.docker/apache/sites/dev/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
-    depends_on:
+    depends_on: !override
       - php
       - database
       - database_test
@@ -44,7 +41,6 @@ services:
   php:
     image: idmarinas/php:8.4-xdebug
     volumes:
-      - ./:/var/www/html
       ## SSH
       - .docker/php/key_ssh/id_rsa:/root/.ssh/id_rsa:ro
 
