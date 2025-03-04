@@ -2,18 +2,18 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # Routes to Panels
+        # Admin
+        - { path: '^/%app.route_prefix.admin%/(login|logout)$', host: ^admin.localhost$, roles: PUBLIC_ACCESS }
+        - { path: '^/%app.route_prefix.admin%(|/.*)$', host: ^admin.localhost$, roles: ROLE_ADMIN }
+        # Others
+        - { path: '^/panel(|/.)$', host: ^admin.localhost$, roles: ROLE_ADMIN }
+
         # Main route is public always
         - { path: ^/(|nelmio/csp/report)$, roles: PUBLIC_ACCESS }
 
         # Public pages
         - { path: '^/%app.route_prefix.public%(|/.*)$', roles: PUBLIC_ACCESS }
-
-        # Routes to Panels
-        # Admin
-        - { path: '^/panel/%app.route_prefix.admin%/(login|logout)$', roles: PUBLIC_ACCESS }
-        - { path: '^/panel/%app.route_prefix.admin%(|/.*)$', roles: ROLE_ADMIN }
-        # Others
-        - { path: '^/panel(|/.)$', roles: ROLE_ADMIN }
 
         # Routes for User
         - { path: '^/%app.route_prefix.user%/(token|login/web|connect)$', roles: PUBLIC_ACCESS }
