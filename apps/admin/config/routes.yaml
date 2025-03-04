@@ -1,0 +1,11 @@
+easyadmin:
+    resource: .
+    type: easyadmin.routes
+
+admin_controllers:
+    resource:
+        path: ../src/Controller
+        namespace: Admin\Controller
+    type: attribute
+    prefix: '/%app.route_prefix.admin%'
+    name_prefix: admin_
