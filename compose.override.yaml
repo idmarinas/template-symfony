@@ -24,14 +24,14 @@ services:
   apache:
     ports:
       - "8080:80"
-      - "8083:443"
+      - "8443:443"
     volumes:
       - ./:/var/www/html
       ## Certs
       - ./.docker/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
       - ./.docker/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
       ## Conf
-      - ./.docker/apache/conf/default.conf:/usr/local/apache2/conf/d/default.conf:ro
+      - ./.docker/apache/conf/dev/server_name.conf:/usr/local/apache2/conf/d/server-name.conf:ro
       - ./.docker/apache/sites/dev/certs.conf:/usr/local/apache2/conf/sites/dev-certs.conf:ro
       ## Sites
       - ./.docker/apache/sites/dev/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
