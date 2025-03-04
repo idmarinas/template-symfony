@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2025, 23:51
+ * Last modified by "IDMarinas" on 04/03/2025, 23:55
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -23,7 +23,10 @@ namespace Deployer;
 
 import('recipe/common.php');
 
+// List of paths to remove from local
 set('local_clear_paths', ['.env.local.php']);
+
+// Use sudo for local:dev:clear_paths task?
 set('local_clear_use_sudo', false);
 
 desc('Cleaning local files and/or directories (PROD files/dirs)');
