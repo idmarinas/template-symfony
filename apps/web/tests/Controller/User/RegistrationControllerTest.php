@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 17:58
+ * Last modified by "IDMarinas" on 03/03/2025, 22:02
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Tests\Controller\User;
+namespace Web\Tests\Controller\User;
 
 use DataFixtures\User\UserFixtures;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;

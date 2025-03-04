@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 16:31
+ * Last modified by "IDMarinas" on 03/03/2025, 22:02
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,11 +17,11 @@
  * @since   1.0.0
  */
 
-namespace App\Tests\Controller\User;
+namespace Web\Tests\Controller\User;
 
-use App\Repository\User\UserRepository;
 use DataFixtures\User\UserFixtures;
 use Doctrine\Common\Collections\Criteria;
+use Shared\Repository\User\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 

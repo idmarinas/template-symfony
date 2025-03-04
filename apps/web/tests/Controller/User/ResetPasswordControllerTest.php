@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2025, 18:03
+ * Last modified by "IDMarinas" on 03/03/2025, 22:02
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,16 +17,15 @@
  * @since   1.0.0
  */
 
-namespace App\Tests\Controller\User;
+namespace Web\Tests\Controller\User;
 
-use App\Controller\User\ResetPasswordController;
-use App\Repository\User\UserRepository;
 use DataFixtures\User\UserFixtures;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Factory\User\UserFactory;
 use ReflectionException;
 use ReflectionMethod;
+use Shared\Repository\User\UserRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\Container;
@@ -37,6 +36,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordToken;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
+use Web\Controller\User\ResetPasswordController;
 use Zenstruck\Foundry\Test\Factories;
 use function Zenstruck\Foundry\faker;
 
