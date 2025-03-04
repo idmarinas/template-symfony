@@ -3,3 +3,5 @@ twig_component:
     defaults:
         # Namespace & directory for components
         Shared\Twig\Components\: 'components/'
+        Admin\Twig\Components\: 'apps/admin/templates/components/'
+        Web\Twig\Components\: 'apps/web/templates/components/'
