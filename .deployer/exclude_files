@@ -20,13 +20,12 @@
 
 /.editorconfig
 /.env*
-/.whitesource
 
 /deploy.php
 /package.json
 /package-lock.json
 /rector.php
-/tailwind.config.js
+/sonar-project.properties
 
 /*.yaml
 /*.yml
