@@ -2,14 +2,14 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2025, 23:55
+ * Last modified by "IDMarinas" on 05/03/2025, 11:46
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
  * @file    local_dev_clear_paths.php
- * @date    04/03/2025
- * @time    23:47
+ * @date    05/03/2025
+ * @time    11:48
  *
  * @author  Iván Diaz Marinas (IDMarinas)
  * @license BSD 3-Clause License
