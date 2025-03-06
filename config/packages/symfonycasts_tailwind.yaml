@@ -1,2 +1,7 @@
 symfonycasts_tailwind:
-    binary_version: 'v4.0.9'
+    binary: '%kernel.project_dir%/var/tailwind/cli/tailwindcss-linux-x64-musl'
+    input_css:
+        # Default:
+        - '%kernel.project_dir%/assets/styles/app.css'
+        # Others
+        - '%kernel.project_dir%/assets/entries/error_exception/error_exception.css'
