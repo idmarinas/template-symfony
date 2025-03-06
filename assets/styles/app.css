@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2025, 23:31
+ * Last modified by "IDMarinas" on 06/03/2025, 24:04
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -22,6 +22,8 @@
 @plugin '@tailwindcss/forms';
 
 @source '../../vendor/symfony/twig-bridge/Resources/views/Form/*.html.twig';
+@source '../../vendor/idmarinas/ui-bundle/templates/**/*.html.twig';
+@source '../../vendor/idmarinas/ui-bundle/src/Twig/Component/**/*.php';
 
 @theme {
 	--animate-swinging: swinging 2s ease infinite;
