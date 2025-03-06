@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Symfony2PluginSettings">
+    <option name="pathToTranslation" value="var/cache/web/dev/translations" />
     <option name="pluginEnabled" value="true" />
+    <option name="twigBundleNamespaceSupport" value="true" />
     <option name="profilerLocalEnabled" value="true" />
     <option name="profilerCsvPath" value="var/cache/dev/profiler/index.csv" />
+    <option name="containerFiles">
+      <list>
+        <container_file path="var/cache/web/dev/Shared_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/admin/dev/Shared_KernelDevDebugContainer.xml" />
+      </list>
+    </option>
     <option name="routingFiles">
       <list>
         <routing_file path="app/cache/dev/appDevUrlGenerator.php" />
