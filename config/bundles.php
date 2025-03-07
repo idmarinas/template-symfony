@@ -2,14 +2,14 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 20:06
+ * Last modified by "IDMarinas" on 05/03/2025, 23:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
  * @file    bundles.php
- * @date    21/02/2025
- * @time    17:39
+ * @date    07/03/2025
+ * @time    15:32
  *
  * @author  Iván Diaz Marinas (IDMarinas)
  * @license BSD 3-Clause License
@@ -42,4 +42,6 @@ return [
 	Nelmio\SecurityBundle\NelmioSecurityBundle::class                        => ['all' => true],
 	Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class            => ['dev' => true, 'test' => true],
 	Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class        => ['all' => true],
+	Symfony\UX\Icons\UXIconsBundle::class                                    => ['all' => true],
+	Idm\Bundle\Ui\IdmUiBundle::class                                         => ['all' => true],
 ];
