@@ -3,6 +3,8 @@ twig:
     paths:
         '%kernel.project_dir%/apps/admin/templates': Admin
         '%kernel.project_dir%/apps/web/templates': Web
+        'apps/admin/templates': Admin
+        'apps/web/templates': Web
     form_themes:
         - 'forms/tailwind_3_layout.html.twig'
     globals:
