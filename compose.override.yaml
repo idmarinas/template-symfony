@@ -40,7 +40,10 @@ services:
 
   php:
     image: idmarinas/php:8.4-xdebug
+    expose:
+      - 9000
     volumes:
+      - ./.docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       ## SSH
       - ssh_key:/root/.ssh:ro
 
