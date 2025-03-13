@@ -101,6 +101,7 @@
 		"psr-4": {
 			"Shared\\": "src/",
 			"Admin\\": "apps/admin/src",
+			"Api\\": "apps/api/src",
 			"Web\\": "apps/web/src"
 		}
 	},
@@ -108,6 +109,7 @@
 		"psr-4": {
 			"Shared\\Tests\\": "tests/",
 			"Admin\\Tests\\": "apps/admin/tests/",
+			"Api\\Tests\\": "apps/api/tests/",
 			"Web\\Tests\\": "apps/web/tests/",
 			"DataFixtures\\": "fixtures/",
 			"Factory\\": "factories/"
