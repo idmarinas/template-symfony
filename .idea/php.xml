@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MessDetector">
+    <phpmd_settings>
+      <phpmd_by_interpreter asDefaultInterpreter="true" interpreter_id="b54c4389-7fb7-4079-976b-d8f3d720b11b" timeout="30000" />
+    </phpmd_settings>
+  </component>
   <component name="MessDetectorOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
@@ -24,6 +29,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83/Resources/stubs" />
     </exclude_path>
     <include_path>
+      <path value="$PROJECT_DIR$/var/cache/web/dev/Symfony/Config" />
       <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
@@ -173,17 +179,18 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
       <path value="$PROJECT_DIR$/vendor/symfony/rate-limiter" />
       <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
-      <path value="$PROJECT_DIR$/vendor/idmarinas/user-bundle" />
       <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
       <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
       <path value="$PROJECT_DIR$/vendor/twig/html-extra" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-twig-component" />
       <path value="$PROJECT_DIR$/vendor/ua-parser/uap-php" />
-      <path value="$PROJECT_DIR$/vendor/nelmio/security-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/tailwind-bundle" />
       <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-icons" />
+      <path value="$PROJECT_DIR$/vendor/idmarinas/user-bundle" />
       <path value="$PROJECT_DIR$/vendor/idmarinas/ui-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/idmarinas/advertising-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
@@ -204,7 +211,7 @@
     <phpInfoCache>
       <interpreter name="php-docker">
         <phpinfo binary_type="PHP" php_cli="/usr/local/bin/php" path_separator=":" version="8.4.4">
-          <additional_php_ini>/usr/local/etc/php/conf.d/common.ini, /usr/local/etc/php/conf.d/disable_functions.ini, /usr/local/etc/php/conf.d/docker-fpm.ini, /usr/local/etc/php/conf.d/docker-php-ext-bcmath.ini, /usr/local/etc/php/conf.d/docker-php-ext-exif.ini, /usr/local/etc/php/conf.d/docker-php-ext-gd.ini, /usr/local/etc/php/conf.d/docker-php-ext-intl.ini, /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini, /usr/local/etc/php/conf.d/docker-php-ext-pcntl.ini, /usr/local/etc/php/conf.d/docker-php-ext-pdo_mysql.ini, /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini, /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini, /usr/local/etc/php/conf.d/docker-php-ext-xsl.ini, /usr/local/etc/php/conf.d/docker-php-ext-zip.ini, /usr/local/etc/php/conf.d/opcache.ini, /usr/local/etc/php/conf.d/php.ini</additional_php_ini>
+          <additional_php_ini>/usr/local/etc/php/conf.d/00_disable_functions.ini, /usr/local/etc/php/conf.d/00_opcache.ini, /usr/local/etc/php/conf.d/01_opcache.ini, /usr/local/etc/php/conf.d/01_php.ini, /usr/local/etc/php/conf.d/date_timezone.ini, /usr/local/etc/php/conf.d/docker-fpm.ini, /usr/local/etc/php/conf.d/docker-php-ext-bcmath.ini, /usr/local/etc/php/conf.d/docker-php-ext-exif.ini, /usr/local/etc/php/conf.d/docker-php-ext-gd.ini, /usr/local/etc/php/conf.d/docker-php-ext-intl.ini, /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini, /usr/local/etc/php/conf.d/docker-php-ext-pcntl.ini, /usr/local/etc/php/conf.d/docker-php-ext-pdo_mysql.ini, /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini, /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini, /usr/local/etc/php/conf.d/docker-php-ext-xsl.ini, /usr/local/etc/php/conf.d/docker-php-ext-zip.ini</additional_php_ini>
           <configuration_file>/usr/local/etc/php/php.ini</configuration_file>
           <configuration_options>
             <configuration_option name="include_path" value=".:/usr/local/lib/php" />
