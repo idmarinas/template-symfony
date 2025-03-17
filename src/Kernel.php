@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 20:17
+ * Last modified by "IDMarinas" on 17/03/2025, 23:57
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -68,11 +68,9 @@ class Kernel extends BaseKernel
 	public function getCacheDir (): string
 	{
 		// divide cache for each application
-		return ($_SERVER['APP_CACHE_DIR'] ?? $this->getProjectDir() . '/var/cache')
-		       . '/'
-		       . $this->id
-		       . '/'
-		       . $this->environment;
+		$dir = ($_SERVER['APP_CACHE_DIR'] ?? $this->getProjectDir() . '/var/cache');
+
+		return $dir . '/' . $this->id . '/' . $this->environment;
 	}
 
 	public function getLogDir (): string
@@ -100,11 +98,9 @@ class Kernel extends BaseKernel
 	private function doConfigureContainer (ContainerConfigurator $container, string $configDir): void
 	{
 		$container->import($configDir . '/{packages}/*.{php,yaml}');
-//		$container->import($configDir . '/{packages}/' . $this->environment . '/*.{php,yaml}');
 
 		if (is_file($configDir . '/services.yaml')) {
 			$container->import($configDir . '/services.yaml');
-//			$container->import($configDir . '/{services}_' . $this->environment . '.yaml');
 		} else {
 			$container->import($configDir . '/{services}.php');
 		}
@@ -112,7 +108,6 @@ class Kernel extends BaseKernel
 
 	private function doConfigureRoutes (RoutingConfigurator $routes, string $configDir): void
 	{
-//		$routes->import($configDir . '/{routes}/' . $this->environment . '/*.{php,yaml}');
 		$routes->import($configDir . '/{routes}/*.{php,yaml}');
 
 		if (is_file($configDir . '/routes.yaml')) {
