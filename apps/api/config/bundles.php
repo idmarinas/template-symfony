@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 13/03/2025, 22:50
+ * Last modified by "IDMarinas" on 18/03/2025, 14:35
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,4 +17,13 @@
  * @since   1.0.0
  */
 
-return [];
+return [
+	Symfony\Bundle\TwigBundle\TwigBundle::class               => ['all' => false],
+	Twig\Extra\TwigExtraBundle\TwigExtraBundle::class         => ['all' => false],
+	Symfony\UX\StimulusBundle\StimulusBundle::class           => ['all' => false],
+	Symfony\UX\Turbo\TurboBundle::class                       => ['all' => false],
+	Symfony\UX\TwigComponent\TwigComponentBundle::class       => ['all' => false],
+	Symfony\UX\Icons\UXIconsBundle::class                     => ['all' => false],
+	Idm\Bundle\Ui\IdmUiBundle::class                          => ['all' => false],
+	Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['all' => false],
+];
