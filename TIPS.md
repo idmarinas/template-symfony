@@ -11,6 +11,7 @@
 ## Interesting packages/bundles
 
 * Include AdSense or other ads networks in your Project. [IDMarinas Advertising Bundle]
+* Collection of reusable Twig components styled with TailwindCSS [IDMarinas UI Bundle]
 * Cron integration for symfony [Cron Bundle]
 * Object-Oriented menus for your Symfony project. [KnpMenuBundle]
 * SEO friendly Symfony paginator to sort and paginate.[KnpPaginatorBundle]
@@ -22,6 +23,7 @@
 
 [//]: # (@formatter:off)
 [IDMarinas Advertising Bundle]: https://www.github.com/idmarinas/advertising-bundle
+[IDMarians UI Bundle]: https://github.com/idmarinas/ui-bundle 
 [Cron Bundle]: https://github.com/Cron/Symfony-Bundle
 [KnpMenuBundle]: https://github.com/KnpLabs/KnpMenuBundle
 [KnpPaginatorBundle]: https://github.com/KnpLabs/KnpPaginatorBundle
