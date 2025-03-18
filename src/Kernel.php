@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/03/2025, 23:57
+ * Last modified by "IDMarinas" on 18/03/2025, 16:22
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -108,7 +108,12 @@ class Kernel extends BaseKernel
 
 	private function doConfigureRoutes (RoutingConfigurator $routes, string $configDir): void
 	{
-		$routes->import($configDir . '/{routes}/*.{php,yaml}');
+		$exclude = match ($this->id) {
+			'api'   => $configDir . '/{routes}/{web_profiler}.{php,yaml}',
+			default => null,
+		};
+
+		$routes->import($configDir . '/{routes}/*.{php,yaml}', exclude: $exclude);
 
 		if (is_file($configDir . '/routes.yaml')) {
 			$routes->import($configDir . '/routes.yaml');
