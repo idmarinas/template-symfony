@@ -119,8 +119,10 @@
 	"scripts": {
 		"auto-scripts": {
 			"cache:clear -iadmin": "symfony-cmd",
+			"cache:clear -iapi": "symfony-cmd",
 			"cache:clear -iweb": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iadmin --no-cleanup": "symfony-cmd",
+			"assets:install %PUBLIC_DIR% -iapi --no-cleanup": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iweb --no-cleanup": "symfony-cmd",
 			"importmap:install": "symfony-cmd"
 		},
