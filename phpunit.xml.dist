@@ -23,6 +23,9 @@
 		<testsuite name="IDMarinas Template Symfony Admin Test Suite">
 			<directory>apps/admin/tests</directory>
 		</testsuite>
+		<testsuite name="IDMarinas Template Symfony API Test Suite">
+			<directory>apps/api/tests</directory>
+		</testsuite>
 		<testsuite name="IDMarinas Template Symfony Web Test Suite">
 			<directory>apps/web/tests</directory>
 		</testsuite>
@@ -31,6 +34,9 @@
 	<coverage processUncoveredFiles="true">
 		<include>
 			<directory suffix=".php">src</directory>
+			<directory suffix=".php">apps/admin/src</directory>
+			<directory suffix=".php">apps/api/src</directory>
+			<directory suffix=".php">apps/web/src</directory>
 		</include>
 
 		<report>
