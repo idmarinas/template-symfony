@@ -29,6 +29,7 @@
 		"doctrine/orm": "^3.3",
 		"easycorp/easyadmin-bundle": "^4.24",
 		"idmarinas/common-bundle": "^3.4",
+		"idmarinas/ui-bundle": "1.x-dev",
 		"idmarinas/user-bundle": "^2.0",
 		"nelmio/security-bundle": "^3.4",
 		"phpdocumentor/reflection-docblock": "^5.6",
