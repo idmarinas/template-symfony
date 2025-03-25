@@ -46,6 +46,10 @@ services:
       - ./.docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       ## SSH
       - ssh_key:/root/.ssh:ro
+      # ## Bundles
+      # - type: bind
+      #   source: 'H:\'
+      #   target: '/var/www/Bundles'
 
   ###> symfony/mailer ###
   mailer:
