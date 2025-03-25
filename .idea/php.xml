@@ -190,10 +190,10 @@
       <path value="$PROJECT_DIR$/vendor/idmarinas/user-bundle" />
       <path value="$PROJECT_DIR$/vendor/idmarinas/ui-bundle" />
       <path value="$PROJECT_DIR$/vendor/nelmio/security-bundle" />
-      <path value="$PROJECT_DIR$/vendor/idmarinas/advertising-bundle" />
       <path value="$PROJECT_DIR$/vendor/php-mock/php-mock-integration" />
       <path value="$PROJECT_DIR$/vendor/php-mock/php-mock-phpunit" />
       <path value="$PROJECT_DIR$/vendor/php-mock/php-mock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset-mapper_compare" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
