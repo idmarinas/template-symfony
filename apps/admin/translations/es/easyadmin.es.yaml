@@ -1,0 +1,57 @@
+dashboard:
+  menu:
+    dashboard: Panel
+    user: Usuario
+    setting: Ajuste
+    setting_domain: Dominio del ajuste
+    contact: Contacto
+    section:
+      users: Usuarios
+      settings: Ajustes
+      feedback: Comentarios
+
+action:
+  restore: Restaurar
+
+crud:
+  common:
+    uuid: Identificador
+    email: Correo electrónico
+    roles: Roles
+    premium: Premium
+    settings: Ajustes
+    name: Nombre
+    description: Descripción
+    type: Tipo
+    deleted_at: Fecha borrado
+    created_at: Fecha creación
+    is_deleted: Borrado
+    value: Valor
+    user: Usuario
+  social:
+    idmarinas:
+      id: Identificador en IDMarinas
+      profile_url: URL del perfil en IDMarinas
+      token: Token IDMarinas
+  user:
+    display_name: Nombre a mostrar
+  premium:
+    can_change_display_name: Puede cambiar el nombre a mostrar
+    max_avatars: Avatar/es puede tener como máximo
+  setting:
+    domain: Dominio
+
+form:
+  tab:
+    info: Información
+    roles: Roles del usuario
+    premium: Premium
+    social: Redes sociales
+    settings: Ajustes
+    common: Común
+  fieldset:
+    common: Común
+    idmarinas: Comunidad IDMarinas
+    domain_type: Dominio y tipo
+    value: Valor
+    details: Detalles

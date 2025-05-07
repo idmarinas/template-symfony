@@ -1,0 +1,36 @@
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 05/03/2025, 14:40
+ *
+ * @project IDMarinas Template Symfony
+ * @see https://github.com/idmarinas/template-symfony
+ *
+ * @file error_exception.css
+ * @date 05/03/2025
+ * @time 12:26
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license BSD 3-Clause License
+ *
+ * @since 1.0.0
+ */
+
+@reference "tailwindcss";
+
+.dialog-content h1 {
+	@apply relative text-8xl font-sans text-red-600 font-bold;
+}
+
+.dialog-content a {
+	@apply py-3 px-6 duration-500 ease-in-out bg-transparent text-white font-bold uppercase tracking-wide;
+	@apply border-2 border-gray-200 ring-white rounded-lg hover:ring-4 inline-block;
+}
+
+.tracking-tighter-less {
+	letter-spacing: -0.75rem;
+}
+
+.text-shadow {
+	text-shadow: -8px 0 0 rgb(254, 202, 202);
+}

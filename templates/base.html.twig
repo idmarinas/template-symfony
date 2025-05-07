@@ -25,20 +25,21 @@
 		{% block importmap %}{{ importmap('app', { 'nonce': csp_nonce('script') }) }}{% endblock %}
 	{% endblock %}
 </head>
-<body class="min-h-dvh flex items-center justify-center bg-blue-100 text-blue-900">
+<body class="min-h-dvh bg-blue-100 text-blue-900">
 	{% block body %}
-		{# read and display all flash messages #}
-		{% for label, messages in app.flashes %}
-			{% for message in messages %}
-				<div class="flash-{{ label }}">
-					{{ message|trans }}
-				</div>
-			{% endfor %}
-		{% endfor %}
+		<twig:Turbo:Frame id="container-flash-messages">
+			<twig:IdmUi:Container:FlashMessages :messages="app.flashes" />
+		</twig:Turbo:Frame>
 
 		{% block container %}
-			{% block content %}{% endblock %}
+			<main class="flex items-center justify-center">
+				{% block content %}{% endblock %}
+			</main>
 		{% endblock %}
+
+		<twig:Turbo:Frame id="container-notifications-messages">
+			<twig:IdmUi:Container:NotificationMessages :messages="app.flashes" />
+		</twig:Turbo:Frame>
 	{% endblock %}
 </body>
 </html>
