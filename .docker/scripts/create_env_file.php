@@ -3,7 +3,7 @@
 /**
  * Copyright 2024-2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2025, 11:49
+ * Last modified by "idmarinas" on 08/04/2025, 13:05
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -21,6 +21,7 @@
 // Incluye el archivo de configuración
 $dir = dirname(__DIR__, 2);
 $config = include "$dir/.env.local.php";
+ksort($config, SORT_NATURAL);
 
 // Abre (o crea) el archivo .env para escribir
 $envFile = fopen("$dir/.env.docker", 'w');

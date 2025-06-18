@@ -3,8 +3,46 @@ param(
   [Boolean]$Windows
 )
 
-[String]$VersionDefault = "4.0.14"
-[Boolean]$WindowsDefault = $false
+[String]$ProjectDir = (Get-Item $PSScriptRoot).Parent.Parent.FullName
+[String]$CliPath = Join-Path -Path $ProjectDir -ChildPath "var\tailwind\cli"
+[String]$LinuxFile = "tailwindcss-linux-x64-musl"
+[String]$WindowsFile = "tailwindcss-windows-x64.exe"
+[String]$LinuxPath = Join-Path -Path $CliPath -ChildPath $LinuxFile
+[String]$WindowsPath = Join-Path -Path $CliPath -ChildPath $WindowsFile
+[String]$InstalledVersion = ""
+
+if (Test-Path -Path $WindowsPath)
+{
+  $startInfo = New-Object System.Diagnostics.ProcessStartInfo
+  $startInfo.FileName = $WindowsPath
+  $startInfo.Arguments = "--help"
+  $startInfo.RedirectStandardOutput = $true
+  $startInfo.UseShellExecute = $false
+
+
+  $process = New-Object System.Diagnostics.Process
+  $process.StartInfo = $startInfo
+  $process.Start() | Out-Null
+  $process.WaitForExit()
+
+  $InstalledVersion = $process.StandardOutput.ReadLine() -replace "\e\[[0-9;]*m", ""
+  $InstalledVersion = $InstalledVersion.Split(" ")[-1].Trim().TrimStart("v")
+}
+
+# Get last version tag of TailwindCSS
+$url = "https://github.com/tailwindlabs/tailwindcss/releases/latest"
+$response = Invoke-WebRequest -Uri $url -MaximumRedirection 0 -ErrorAction SilentlyContinue
+$finalUrl = $response.Headers["Location"]
+
+[String]$VersionDefault = $finalUrl.Split("/")[-1].TrimStart("v").ToString()
+[Boolean]$WindowsDefault = $true
+
+if ($InstalledVersion -eq $VersionDefault)
+{
+  Write-Host "The latest version is already installed" -ForegroundColor Blue
+
+  exit
+}
 
 if (-not $Version)
 {
@@ -26,8 +64,8 @@ if (-not $Windows)
   }
   else
   {
-    $yes = @("y", "ye", "yes")
-    $no = @("n", "no", "not")
+    $yes = @("t", "y", "ye", "yes")
+    $no = @("f", "n", "no", "not")
     if ($yes -contains $WindowsInput)
     {
       $Windows = $true
@@ -52,28 +90,23 @@ if (-not $Windows)
   }
 }
 
-[String]$FolderPath = "F:\Projects\template-symfony\var\tailwind\cli"
-[String]$LinuxFile = "tailwindcss-linux-x64-musl"
-[String]$WindowsFile = "tailwindcss-windows-x64.exe"
 [String]$Url = "https://github.com/tailwindlabs/tailwindcss/releases/download"
 [String]$LinuxUrl = "$Url/v$Version/$LinuxFile".Trim()
 [String]$WindowsUrl = "$Url/v$Version/$WindowsFile".Trim()
-[String]$LinuxPath = Join-Path -Path $FolderPath -ChildPath $LinuxFile
-[String]$WindowsPath = Join-Path -Path $FolderPath -ChildPath $WindowsFile
 
 Write-Host "Downloading v$Version version of TailwindCSS" -ForegroundColor Blue
 
 # Create the folder if it does not exist
-if (-not (Test-Path -Path $FolderPath))
+if (-not (Test-Path -Path $CliPath))
 {
   try
   {
-    New-Item -ItemType Directory -Path $FolderPath
-    Write-Host "Directory created at $FolderPath" -ForegroundColor Green
+    New-Item -ItemType Directory -Path $CliPath
+    Write-Host "Directory created at $CliPath" -ForegroundColor Green
   }
   catch
   {
-    Write-Host "Failed to create directory at $FolderPath. Please check permissions." -ForegroundColor Red
+    Write-Host "Failed to create directory at $CliPath. Please check permissions." -ForegroundColor Red
     exit
   }
 }
