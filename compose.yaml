@@ -4,6 +4,7 @@ services:
   ###> doctrine/doctrine-bundle ###
   database:
     image: mariadb:11.7.2
+    restart: always
     ports:
       - "13306:3306"
     environment:
@@ -12,7 +13,6 @@ services:
       MARIADB_USER: ${DATABASE_USER}
       MARIADB_PASSWORD_FILE: /run/secrets/db_password
       MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_password
-      # MARIADB_RANDOM_ROOT_PASSWORD: 0
     healthcheck:
       test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
       start_period: 10s
@@ -27,18 +27,21 @@ services:
 
   apache:
     image: idmarinas/apache:2.4
+    restart: always
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost || exit 1
-    depends_on:
-      - php
-      - database
     volumes:
       - ./:/var/www/html
       ## Config
-      - ./.docker/apache/sites/common.conf:/usr/local/apache2/conf/sites/common.conf:ro
+      - ./.docker/apache/conf/headers.conf:/usr/local/apache2/conf/x/headers.conf:ro
+      - ./.docker/apache/sites/common.conf:/usr/local/apache2/conf/x/common.conf:ro
+    depends_on:
+      - php
+      - database
 
   php:
     image: idmarinas/php:8.4
+    restart: always
     healthcheck:
       test: php -v || exit 1
     volumes:
