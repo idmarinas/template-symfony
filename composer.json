@@ -1,6 +1,6 @@
 {
 	"name": "idmarinas/template-symfony",
-	"description": "Template for create a custom Symfony v7.2 Web Multi App or Single App",
+	"description": "Template for create a custom Symfony v7.3 Web Multi App or Single App",
 	"type": "template",
 	"keywords": [
 		"template",
@@ -17,6 +17,7 @@
 	"support": {
 		"issues": "https://github.com/idmarinas/template-symfony/issues"
 	},
+	"license": "undefined",
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require": {
