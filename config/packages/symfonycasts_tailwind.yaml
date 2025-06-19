@@ -1,6 +1,6 @@
 symfonycasts_tailwind:
     # Specify the EXACT version of Tailwind CSS you want to use
-    binary_version: 'v4.1.5'
+    binary_version: 'v4.1.10'
     input_css:
         # Default:
         - '%kernel.project_dir%/assets/styles/app.css'
