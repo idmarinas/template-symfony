@@ -4,7 +4,6 @@
     <plugin id="Docker" />
     <plugin id="Git4Idea" />
     <plugin id="String Manipulation" />
-    <plugin id="com.github.blarc.ai-commits-intellij-plugin" />
     <plugin id="com.intellij.copyright" />
     <plugin id="com.intellij.css" />
     <plugin id="com.intellij.tailwindcss" />
