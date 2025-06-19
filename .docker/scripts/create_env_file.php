@@ -3,7 +3,7 @@
 /**
  * Copyright 2024-2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "idmarinas" on 08/04/2025, 13:05
+ * Last modified by "idmarinas" on 19/06/2025, 17:40
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -43,3 +43,4 @@ foreach ($config as $key => $value) {
 fclose($envFile);
 
 echo '.env.docker file has been created successfully.';
+echo "\n";
