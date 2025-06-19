@@ -26,4 +26,4 @@ framework:
             Symfony\Component\Notifier\Message\SmsMessage: async
 
             # Route your messages to the transports
-            # 'Shared\Message\YourMessage': async
+            # 'Core\Message\YourMessage': async
