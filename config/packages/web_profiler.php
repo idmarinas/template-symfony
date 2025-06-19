@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/03/2025, 15:47
+ * Last modified by "idmarinas" on 19/06/2025, 16:59
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -28,13 +28,11 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 
 	if ('dev' === $container->env()) {
 		$container->extension('web_profiler', [
-			'toolbar'             => true,
-			'intercept_redirects' => false,
+			'toolbar' => true,
 		]);
 
 		$container->extension('framework', [
 			'profiler' => [
-				'only_exceptions'         => false,
 				'collect_serializer_data' => true,
 			],
 		]);
@@ -42,8 +40,7 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 
 	if ('test' === $container->env()) {
 		$container->extension('web_profiler', [
-			'toolbar'             => false,
-			'intercept_redirects' => false,
+			'toolbar' => false,
 		]);
 		$container->extension('framework', [
 			'profiler' => [
