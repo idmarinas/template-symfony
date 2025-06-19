@@ -3,7 +3,7 @@ name: template_symfony
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    image: mariadb:11.7.2
+    image: mariadb:11.8.2
     restart: always
     ports:
       - "13306:3306"
