@@ -102,20 +102,20 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Shared\\": "src/",
+			"Core\\": "src/",
 			"Admin\\": "apps/admin/src",
 			"Api\\": "apps/api/src",
+			"Cron\\": "apps/cron/src",
 			"Web\\": "apps/web/src"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Shared\\Tests\\": "tests/",
-			"Admin\\Tests\\": "apps/admin/tests/",
-			"Api\\Tests\\": "apps/api/tests/",
-			"Web\\Tests\\": "apps/web/tests/",
-			"DataFixtures\\": "fixtures/",
-			"Factory\\": "factories/"
+			"Core\\Tests\\": "tests/",
+			"Admin\\Tests\\": "apps/admin/tests",
+			"Api\\Tests\\": "apps/api/tests",
+			"Cron\\Tests\\": "apps/cron/tests",
+			"Web\\Tests\\": "apps/web/tests"
 		}
 	},
 	"scripts": {
