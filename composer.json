@@ -147,6 +147,16 @@
 			"php bin/console doctrine:schema:drop --env=dev --force --ansi",
 			"php bin/console doctrine:schema:update --env=dev --force --ansi",
 			"php bin/console doctrine:fixtures:load --env=dev -n --ansi"
+		],
+		"dev:dump:env": [
+			"php bin/console secrets:decrypt-to-local --force --env=dev",
+			"@composer dump-env dev",
+			"php -f .docker/scripts/create_env_file.php"
+		],
+		"prod:dump:env": [
+			"php bin/console secrets:decrypt-to-local --force --env=prod",
+			"@composer dump-env prod",
+			"php -f .docker/scripts/create_env_file.php"
 		]
 	},
 	"config": {
