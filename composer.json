@@ -105,7 +105,9 @@
 			"Core\\": "src/",
 			"Admin\\": "apps/admin/src",
 			"Api\\": "apps/api/src",
+			"Blog\\": "apps/blog/src",
 			"Cron\\": "apps/cron/src",
+			"Forum\\": "apps/cron/src",
 			"Web\\": "apps/web/src"
 		}
 	},
@@ -114,7 +116,9 @@
 			"Core\\Tests\\": "tests/",
 			"Admin\\Tests\\": "apps/admin/tests",
 			"Api\\Tests\\": "apps/api/tests",
+			"Blog\\Tests\\": "apps/blog/tests",
 			"Cron\\Tests\\": "apps/cron/tests",
+			"Forum\\Tests\\": "apps/forum/tests",
 			"Web\\Tests\\": "apps/web/tests"
 		}
 	},
