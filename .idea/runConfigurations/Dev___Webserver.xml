@@ -8,15 +8,6 @@
             <option value="compose.override.yaml" />
           </list>
         </option>
-        <option name="services">
-          <list>
-            <option value="apache" />
-            <option value="database" />
-            <option value="database_test" />
-            <option value="mailer" />
-            <option value="php" />
-          </list>
-        </option>
         <option name="sourceFilePath" value="compose.yaml" />
       </settings>
     </deployment>
