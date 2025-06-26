@@ -31,6 +31,7 @@ services:
       ## Sites
       - ./.docker/apache/sites/prod/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
       - ./.docker/apache/sites/prod/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
+      # Shared files between deployments
     deploy:
       resources:
         limits:
@@ -44,8 +45,8 @@ services:
   php:
     restart: always
     volumes:
-      # Shared files between deploys
-      - source_uploads:/var/www/html/public/uploads # For example files uploaded by users
+      # Shared files between deployments
+      - source_uploads:/var/www/html/public/uploads # For example, files uploaded by users
 
 volumes:
   source_uploads:
