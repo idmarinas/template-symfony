@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/03/2025, 14:35
+ * Last modified by "idmarinas" on 19/06/2025, 18:59
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -18,12 +18,14 @@
  */
 
 return [
+	// Enabled necessary Bundles
+	// Disabled unnecessary Bundles
+	Idm\Bundle\Ui\IdmUiBundle::class                          => ['all' => false],
 	Symfony\Bundle\TwigBundle\TwigBundle::class               => ['all' => false],
-	Twig\Extra\TwigExtraBundle\TwigExtraBundle::class         => ['all' => false],
 	Symfony\UX\StimulusBundle\StimulusBundle::class           => ['all' => false],
 	Symfony\UX\Turbo\TurboBundle::class                       => ['all' => false],
 	Symfony\UX\TwigComponent\TwigComponentBundle::class       => ['all' => false],
 	Symfony\UX\Icons\UXIconsBundle::class                     => ['all' => false],
-	Idm\Bundle\Ui\IdmUiBundle::class                          => ['all' => false],
 	Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['all' => false],
+	Twig\Extra\TwigExtraBundle\TwigExtraBundle::class         => ['all' => false],
 ];
