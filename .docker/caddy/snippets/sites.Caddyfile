@@ -1,0 +1,59 @@
+(a-common) {
+	root * /srv/public
+
+	log "{args[0]}" {
+		output file "/data/logs/{args[0]}/access.log"
+	}
+
+	encode
+
+	file_server {
+		hide error_pages
+		precompressed
+	}
+
+	handle_errors {
+  	@custom_err file /error_pages/{err.status_code}.html
+  	handle @custom_err {
+  		rewrite * {file_match.relative}
+  		file_server
+  	}
+  	respond "{err.status_code} {err.status_text}"
+  }
+}
+
+# Headers for response
+(a-headers) {
+	# Disable Topics tracking if not enabled explicitly: https://github.com/jkarlin/topics
+	header ?Permissions-Policy "browsing-topics=()"
+	header ?X-XSS-Protection 1
+	header ?X-Content-Type-Options nosniff
+	header ?X-Frame-Options sameorigin
+	header ?X-Robots-Tag noindex
+	header ?Cross-Origin-Resource-Policy same-origin
+	header ?Cross-Origin-Opener-Policy same-origin-allow-popups
+	header ?Referrer-Policy no-referrer strict-origin strict-origin same-origin-when-cross-origin
+}
+
+# PHP module configuration
+(a-php) {
+	php_fastcgi php:9000 {
+		root /var/www/html/public
+		# only fall back to root index.php aka front controller.
+    try_files {path} index.php
+		env APP_ID "{args[0]}"
+
+		# Configure the FastCGI to resolve any symlinks in the root path.
+		# This ensures that OpCache is using the destination filenames,
+		# instead of the symlinks, to cache opcodes and php files see
+		# https://caddy.community/t/root-symlink-folder-updates-and-caddy-reload-not-working/10557
+#		resolve_root_symlink
+	}
+
+	 # return 404 for all other php files not matching the front controller
+	 # this prevents access to other php files you don't want to be accessible.
+	@phpFile {
+		path *.php*
+	}
+	error @phpFile "Not found" 404
+}

@@ -24,16 +24,33 @@ services:
       - db_password
   ###< doctrine/doctrine-bundle ###
 
-  apache:
-    image: idmarinas/apache:2.4
-    restart: always
+  caddy:
+    image: idmarinas/caddy:2.10
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost || exit 1
+    environment:
+      CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
     volumes:
-      - ./:/var/www/html
-      ## Config
-      - ./.docker/apache/conf/headers.conf:/usr/local/apache2/conf/x/headers.conf:ro
-      - ./.docker/apache/sites/common.conf:/usr/local/apache2/conf/x/common.conf:ro
+      # Project files
+      - ./:/srv
+      # Global config
+      - .docker/caddy/globals/prod.Caddyfile:/etc/caddy/globals/Caddyfile:ro
+      # Config
+      - .docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # Snippets
+      - .docker/caddy/snippets/sites.Caddyfile:/etc/caddy/snippets/sites.Caddyfile:ro
+      - .docker/caddy/snippets/prod.Caddyfile:/etc/caddy/snippets/Caddyfile:ro
+      # Sites
+      - .docker/caddy/sites:/etc/caddy/sites:ro
+      # Named volumes for /data and /config to persist important information.
+      - caddy_data:/data
+      - caddy_config:/config
+    secrets:
+      - cloudflare_api_token
     depends_on:
       - php
       - database
