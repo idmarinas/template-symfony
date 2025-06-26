@@ -57,3 +57,5 @@ volumes:
 secrets:
   db_password:
     environment: DATABASE_PASSWORD
+  cloudflare_api_token:
+    environment: CLOUDFLARE_API_TOKEN
