@@ -48,6 +48,8 @@ services:
       - ./.docker/php/conf.d/date_timezone.ini:/usr/local/etc/php/conf.d/date_timezone.ini:ro
 
 volumes:
+  caddy_data:
+  caddy_config:
   ###> doctrine/doctrine-bundle ###
   database_data:
   ###< doctrine/doctrine-bundle ###
