@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         php: [ '8.4' ]
-        symfony: [ '7.2.*' ]
+        symfony: [ '7.3.*' ]
 
     services:
       database_test:
