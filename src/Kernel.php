@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace Shared;
+namespace Core;
 
 use Override;
 use ReflectionObject;
