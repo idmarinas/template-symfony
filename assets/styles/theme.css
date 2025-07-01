@@ -1,0 +1,44 @@
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "idmarinas" on 19/06/2025, 18:32
+ *
+ * @project IDMarinas Template Symfony
+ * @see https://github.com/idmarinas/template-symfony
+ *
+ * @file theme.css
+ * @date 19/06/2025
+ * @time 18:32
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license undefined
+ *
+ * @since 1.0.0
+ */
+
+@theme {
+	--animate-swinging: swinging 2s ease infinite;
+	--animate-progress-waiting: progressBarAnimation 1s linear infinite;
+
+	@keyframes progressBarAnimation {
+		0% {
+			opacity: 0.3;
+			transform: scale(0.1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(1);
+		}
+	}
+	@keyframes swinging {
+		0% {
+			transform: translateX(-100%);
+		}
+		50% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+}
