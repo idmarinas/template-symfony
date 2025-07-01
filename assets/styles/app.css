@@ -33,4 +33,5 @@
 @source '../../vendor/idmarinas/ui-bundle/src/Twig/Component/**/*.php';
 
 
-
+/* Others */
+@source '../../vendor/symfony/twig-bridge/Resources/views/Form/tailwind_2_layout.html.twig';
