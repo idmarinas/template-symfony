@@ -11,13 +11,15 @@
  * @time 24:11
  *
  * @author Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since 1.0.0
  */
 
-@import "tailwindcss";
 @import "tailwindcss" source(none);
+
+/* Neutral Theme of UI Bundle */
+@import "../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
