@@ -17,6 +17,7 @@
  */
 
 @import "tailwindcss";
+@import "tailwindcss" source(none);
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
