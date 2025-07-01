@@ -1,0 +1,41 @@
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "idmarinas" on 01/07/2025, 18:41
+ *
+ * @project IDMarinas Template Symfony
+ * @see https://github.com/idmarinas/template-symfony
+ *
+ * @file base.css
+ * @date 19/06/2025
+ * @time 18:32
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license undefined
+ *
+ * @since 1.0.0
+ */
+
+@layer base {
+	*:not(.sf-toolbar) {
+		@apply motion-safe:transition motion-safe:transform-gpu motion-safe:duration-250 motion-safe:ease-in-out;
+
+		border-color: var(--border);
+		outline-color: var(--ring);
+	}
+
+	/* Prevent scrolling while dialog is open */
+	body {
+		background-color: var(--background);
+		color: var(--foreground);
+		min-height: 100dvh;
+
+		&:has(dialog[data-dialog-target="dialog"][open]) {
+			overflow: hidden;
+		}
+	}
+
+	dialog {
+		margin: auto;
+	}
+}
