@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 18:21
+ * Last modified by "IDMarinas" on 30/06/2025, 17:02
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,12 +12,12 @@
  * @time    20:13
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
 
-use Shared\Kernel;
+use Core\Kernel;
 
 require_once dirname(__DIR__) . '/vendor/autoload_runtime.php';
 
