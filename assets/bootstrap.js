@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "idmarinas" on 27/06/2025, 14:15
+ * Last modified by "IDMarinas" on 08/07/2025, 17:00
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -11,13 +11,13 @@
  * @time 14:16
  *
  * @author Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since 1.0.0
  */
 
 import {startStimulusApp} from '@symfony/stimulus-bundle'
-import {registerIdmUiBundle} from '@idmarinas/ui-bundle'
+import registerIdmUiBundle from '@idmarinas/ui-bundle'
 
 const app = startStimulusApp()
 registerIdmUiBundle(app)
