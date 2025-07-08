@@ -45,9 +45,9 @@ doctrine:
         controller_resolver:
             auto_mapping: false
         resolve_target_entities:
-            Idm\Bundle\User\Model\Entity\AbstractUser: Shared\Entity\User\User
-            Idm\Bundle\User\Model\Entity\AbstractPremium: Shared\Entity\User\Premium
-            Idm\Bundle\User\Model\Entity\AbstractConnections: Shared\Entity\User\Connections
+            Idm\Bundle\User\Model\Entity\AbstractUser: Core\Entity\User\User
+            Idm\Bundle\User\Model\Entity\AbstractPremium: Core\Entity\User\Premium
+            Idm\Bundle\User\Model\Entity\AbstractConnections: Core\Entity\User\Connections
 
 # when@test:
 #     doctrine:
