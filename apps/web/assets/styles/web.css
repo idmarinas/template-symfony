@@ -1,0 +1,43 @@
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 08/07/2025, 17:56
+ *
+ * @project IDMarinas Template Symfony
+ * @see https://github.com/idmarinas/template-symfony
+ *
+ * @file web.css
+ * @date 07/07/2025
+ * @time 19:53
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license undefined
+ *
+ * @since 1.0.0
+ */
+@import "tailwindcss" source(none);
+/* Neutral Theme of UI Bundle */
+@import "../../../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";
+
+@import "./base.css";
+@import "./theme.css";
+
+/* Plugins */
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+/***********
+ * Sources *
+ ***********/
+@source "../../../../templates/**/*.html.twig"; /** App Templates **/
+@source '../../templates/**/*.html.twig'; /** Web Templates **/
+
+/************
+ * External *
+ ************/
+
+/* UI Bundle */
+@source '../../vendor/idmarinas/ui-bundle/templates/**/*.html.twig';
+
+/* Others */
+/*@source '../../vendor/symfony/twig-bridge/Resources/views/Form/tailwind_2_layout.html.twig';*/
