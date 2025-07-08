@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+
+{% block importmap %}
+	{{ importmap('web', { 'nonce': csp_nonce('script') }) }}
+{% endblock %}
