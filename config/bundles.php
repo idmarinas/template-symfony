@@ -2,17 +2,17 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/03/2025, 17:25
+ * Last modified by "IDMarinas" on 07/07/2025, 19:58
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
  * @file    bundles.php
- * @date    25/03/2025
- * @time    21:45
+ * @date    08/07/2025
+ * @time    18:02
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
@@ -30,18 +30,18 @@ return [
 	Symfony\Bundle\SecurityBundle\SecurityBundle::class                      => ['all' => true],
 	Symfony\Bundle\MonologBundle\MonologBundle::class                        => ['all' => true],
 	Symfony\Bundle\MakerBundle\MakerBundle::class                            => ['dev' => true],
-	Idm\Bundle\Maker\IdmMakerBundle::class                                   => ['dev' => true],
-	DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class                    => ['test' => true],
 	Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class             => ['dev' => true, 'test' => true],
+	Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class            => ['dev' => true],
 	Zenstruck\Foundry\ZenstruckFoundryBundle::class                          => ['dev' => true, 'test' => true],
-	Idm\Bundle\Common\IdmCommonBundle::class                                 => ['all' => true],
+	DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class                    => ['test' => true],
+	Symfony\UX\TwigComponent\TwigComponentBundle::class                      => ['all' => true],
+	Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class        => ['all' => true],
+	Nelmio\SecurityBundle\NelmioSecurityBundle::class                        => ['all' => true],
+	Symfony\UX\Icons\UXIconsBundle::class                                    => ['all' => true],
 	SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle::class     => ['all' => true],
 	SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
-	Idm\Bundle\User\IdmUserBundle::class                                     => ['all' => true],
-	Symfony\UX\TwigComponent\TwigComponentBundle::class                      => ['all' => true],
-	Nelmio\SecurityBundle\NelmioSecurityBundle::class                        => ['all' => true],
-	Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class            => ['dev' => true, 'test' => true],
-	Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class        => ['all' => true],
-	Symfony\UX\Icons\UXIconsBundle::class                                    => ['all' => true],
+	Idm\Bundle\Maker\IdmMakerBundle::class                                   => ['dev' => true, 'test' => true],
+	Idm\Bundle\Common\IdmCommonBundle::class                                 => ['all' => true],
 	Idm\Bundle\Ui\IdmUiBundle::class                                         => ['all' => true],
+	Idm\Bundle\User\IdmUserBundle::class                                     => ['all' => true],
 ];
