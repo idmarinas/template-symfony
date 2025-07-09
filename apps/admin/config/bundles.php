@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 13/03/2025, 22:36
+ * Last modified by "IDMarinas" on 30/06/2025, 17:11
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,13 +12,16 @@
  * @time    18:11
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
 
 return [
-	EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
-	Idm\Bundle\Common\IdmCommonBundle::class               => ['all' => false],
-	Idm\Bundle\Ui\IdmUiBundle::class                       => ['all' => false], // Change to true if you need in Admin
+	// Enabled necessary Bundles
+	EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class                                              => ['all' => true],
+	TalesFromADev\Twig\Extra\Tailwind\Bridge\Symfony\Bundle\TalesFromADevTwigExtraTailwindBundle::class => ['all' => true],
+	// Disabled unnecessary Bundles
+	Idm\Bundle\Common\IdmCommonBundle::class                                                            => ['all' => false],
+	Idm\Bundle\Ui\IdmUiBundle::class                                                                    => ['all' => false],
 ];
