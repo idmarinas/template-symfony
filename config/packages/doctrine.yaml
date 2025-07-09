@@ -34,20 +34,21 @@ doctrine:
                 type: attribute
                 is_bundle: false
                 dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'Shared\Entity'
-                alias: App
+                prefix: 'Core\Entity'
+                alias: Core
         filters:
             softdeleteable:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                 enabled: true
-                prefix: 'Core\Entity'
-                alias: Core
         controller_resolver:
             auto_mapping: false
         resolve_target_entities:
             Idm\Bundle\User\Model\Entity\AbstractUser: Core\Entity\User\User
             Idm\Bundle\User\Model\Entity\AbstractPremium: Core\Entity\User\Premium
             Idm\Bundle\User\Model\Entity\AbstractConnections: Core\Entity\User\Connections
+            Idm\Bundle\Settings\Model\Entity\AbstractSetting: Core\Entity\Setting\Setting
+            Idm\Bundle\Settings\Model\Entity\AbstractSettingDomain: Core\Entity\Setting\SettingDomain
+            Idm\Bundle\Settings\Interfaces\Entity\EntityWithSettingsInterface: Core\Entity\User\User
 
 # when@test:
 #     doctrine:
