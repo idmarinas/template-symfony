@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 18:39
+ * Last modified by "IDMarinas" on 09/07/2025, 17:54
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,12 +12,12 @@
  * @time    15:51
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
 
-namespace Shared\Entity\User;
+namespace Core\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry;
