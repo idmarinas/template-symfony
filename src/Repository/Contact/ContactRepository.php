@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 18:39
+ * Last modified by "IDMarinas" on 09/07/2025, 15:38
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,16 +12,16 @@
  * @time    18:09
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
 
-namespace Shared\Repository\Contact;
+namespace Core\Repository\Contact;
 
+use Core\Entity\Contact\Contact;
 use Doctrine\Persistence\ManagerRegistry;
 use Idm\Bundle\Common\Model\Repository\AbstractContactRepository;
-use Shared\Entity\Contact\Contact;
 
 class ContactRepository extends AbstractContactRepository
 {
