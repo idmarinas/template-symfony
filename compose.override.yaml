@@ -1,7 +1,7 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    restart: unless-stopped
+    restart: on-failure
     environment:
       MARIADB_DATABASE: ${DATABASE_NAME}_dev
       MARIADB_USER: ${DATABASE_USER}_dev
@@ -10,7 +10,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   database_test:
-    restart: unless-stopped
+    restart: on-failure
     extends:
       file: compose.yaml
       service: database
@@ -22,7 +22,7 @@ services:
       - database_data_test:/var/lib/mysql
 
   caddy:
-    restart: unless-stopped
+    restart: on-failure
     volumes:
       # Global config
       - .docker/caddy/globals/dev.Caddyfile:/etc/caddy/globals/Caddyfile:ro
@@ -35,7 +35,7 @@ services:
       - database_test
 
   php:
-    restart: unless-stopped
+    restart: on-failure
     image: idmarinas/php:8.4-xdebug
     expose:
       - 9000
@@ -46,7 +46,7 @@ services:
 
   ###> symfony/mailer ###
   mailer:
-    restart: unless-stopped
+    restart: on-failure
     image: axllent/mailpit
     ports:
       - "1025"
