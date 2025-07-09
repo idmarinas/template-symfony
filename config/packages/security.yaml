@@ -7,7 +7,7 @@ security:
     providers:
         idm_user_provider:
             entity:
-                class: Shared\Entity\User\User
+                class: Core\Entity\User\User
                 property: email
 
     firewalls:
