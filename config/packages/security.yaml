@@ -9,7 +9,7 @@ security:
             entity:
                 class: Core\Entity\User\User
                 property: email
-
+    # Admin Firewall
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
@@ -37,6 +37,14 @@ security:
                     - executionContexts
                     - storage
             switch_user: false
+        # Api Firewall
+        api:
+            host: '^api\.%app.server_name.regexp%$'
+            stateless: true
+            provider: idm_user_provider
+            switch_user: false
+            # jwt: ~
+        # Main Firewall
         main:
             lazy: true
             provider: idm_user_provider
