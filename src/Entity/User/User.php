@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2025, 21:50
+ * Last modified by "IDMarinas" on 10/07/2025, 19:38
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -36,23 +36,49 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'idm_user_user')]
 #[Gedmo\Loggable(logEntryClass: UserLog::class)]
-#[Gedmo\SoftDeleteable()]
+#[Gedmo\SoftDeleteable]
 #[UniqueEntity('email', message: 'idm_user_bundle.email.not_unique')]
 #[UniqueEntity('displayName', message: 'idm_user_bundle.username.not_unique')]
-class User extends AbstractUser
+class User extends AbstractUser implements EntityWithSettingsInterface
 {
 	use UserPremiumTrait;
 	use SoftDeleteableEntity;
+
+	/** @var Collection<int, AbstractSetting> */
+	#[ORM\OneToMany(targetEntity: SettingUser::class, mappedBy: 'entity', cascade: ['all'])]
+	private Collection $settings;
 
 	public function __construct ()
 	{
 		$this->createdAt = new DateTime();
 		$this->updatedAt = new DateTime();
+		$this->premium = new Premium()->setUser($this);
+		$this->settings = new ArrayCollection();
+	}
 
-		$this->premium = new Premium()
-			->setUser($this)
-		;
+	public function getSettings (): Collection
+	{
+		return $this->settings;
+	}
+
+	public function addSetting (SettingUser|AbstractSetting $setting): self
+	{
+		if (!$this->settings->contains($setting)) {
+			$setting->setEntity($this);
+
+			$this->settings->add($setting);
+		}
+
+		return $this;
+	}
+
+	public function removeSetting (SettingUser|AbstractSetting $setting): self
+	{
+		if ($this->settings->removeElement($setting) && $setting->getEntity() === $this) {
+			// set the owning side to null (unless already changed)
+			$setting->setEntity(null);
+		}
+
+		return $this;
 	}
 }
-
-class_alias(User::class, 'App\Entity\User\User', false);
