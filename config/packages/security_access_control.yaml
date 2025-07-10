@@ -3,9 +3,9 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # Admin
-        -   -   path: ^/%app.route_prefix.admin%/(login|logout)$,
-                host: ^admin\.%app.server_name.regexp%$,
-                roles: PUBLIC_ACCESS
+        -   path: ^/%app.route_prefix.admin%/(login|logout)$
+            host: ^admin\.%app.server_name.regexp%$
+            roles: PUBLIC_ACCESS
         - { path: ^/%app.route_prefix.admin%(|/.*)$, host: ^admin\.%app.server_name.regexp%$, roles: ROLE_ADMIN }
 
         # The main route is public always
