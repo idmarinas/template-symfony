@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/07/2025, 17:57
+ * Last modified by "IDMarinas" on 10/07/2025, 19:15
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -17,6 +17,13 @@
  */
 
 @import "tailwindcss" source(none);
+
+/* Neutral Theme of UI Bundle */
+@import "../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";
+
+/* Plugins */
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
 
 /***********
  * Sources *
