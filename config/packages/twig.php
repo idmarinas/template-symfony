@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/03/2025, 14:32
+ * Last modified by "IDMarinas" on 10/07/2025, 19:10
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,7 +12,7 @@
  * @time    13:57
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
@@ -31,12 +31,12 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 		'file_name_pattern' => '*.twig',
 		'paths' => [
 			'apps/admin/templates' => 'Admin',
+			'apps/blog/templates' => 'Blog',
+			'apps/forum/templates' => 'Forum',
 			'apps/web/templates' => 'Web',
 //			'vendor/idmarinas/ui-bundle/templates/bundles/TwigBundle' => 'Twig' // Custom error pages
 		],
-		'form_themes' => [
-			'forms/tailwind_3_layout.html.twig'
-		],
+		'form_themes' => [],
 		'globals' => [
 			'app_version' => env('APP_VERSION'),
 		],
