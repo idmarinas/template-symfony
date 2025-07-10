@@ -17,15 +17,20 @@
  * @since   1.0.0
  */
 
-namespace Shared\Entity\User;
+namespace Core\Entity\User;
 
+use Core\Entity\Setting\SettingUser;
+use Core\Repository\User\UserRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Idm\Bundle\Settings\Interfaces\Entity\EntityWithSettingsInterface;
+use Idm\Bundle\Settings\Model\Entity\AbstractSetting;
 use Idm\Bundle\User\Model\Entity\AbstractUser;
 use Idm\Bundle\User\Traits\Entity\UserPremiumTrait;
-use Shared\Repository\User\UserRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
