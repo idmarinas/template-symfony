@@ -16,7 +16,7 @@ security:
             security: false
         admin:
             lazy: true
-            host: '^%app.route_prefix.admin%\.localhost$'
+            host: '^admin\.%app.server_name.regexp%$'
             provider: idm_user_provider
             user_checker: Idm\Bundle\User\Security\Checker\UserAdminChecker
             form_login:
