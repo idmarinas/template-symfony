@@ -29,6 +29,14 @@ public_controller:
     prefix: '/%app.route_prefix.public%'
     name_prefix: web_public_
 
+feedback_controllers:
+    resource:
+        path: ../src/Controller/Feedback
+        namespace: Web\Controller\Feedback
+    type: attribute
+    prefix: feedback
+    name_prefix: feedback_
+
 user_controllers:
     resource:
         path: ../src/Controller/User
