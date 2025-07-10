@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2025, 20:34
+ * Last modified by "IDMarinas" on 10/07/2025, 20:15
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,6 +19,8 @@
 
 namespace Admin\Controller;
 
+use Core\Entity\Feedback\Contact;
+use Core\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -27,8 +29,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Override;
-use Shared\Entity\Contact\Contact;
-use Shared\Entity\User\User;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
 
