@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/07/2025, 19:56
+ * Last modified by "IDMarinas" on 10/07/2025, 20:02
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,7 +19,7 @@
 
 namespace Core\Form\Contact;
 
-use Core\Entity\Contact\Contact;
+use Core\Entity\Feedback\Contact;
 use Idm\Bundle\Common\Model\Form\AbstractContactFormType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
