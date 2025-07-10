@@ -6,7 +6,9 @@
 parameters:
     app.title: '%env(APP_TITLE)%'
     app.route_prefix.admin: '%env(APP_ROUTE_PREFIX_ADMIN)%'
+    app.route_prefix.public: '%env(APP_ROUTE_PREFIX_PUBLIC)%'
     app.server_name: '%env(APP_SERVER_NAME)%'
+    app.server_name.regexp: '%env(preg_quote:APP_SERVER_NAME)%'
 
 services:
     # default configuration for services in *this* file
