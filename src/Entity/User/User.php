@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/07/2025, 19:38
+ * Last modified by "IDMarinas" on 10/07/2025, 19:41
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -46,7 +46,9 @@ class User extends AbstractUser implements EntityWithSettingsInterface
 
 	/** @var Collection<int, AbstractSetting> */
 	#[ORM\OneToMany(targetEntity: SettingUser::class, mappedBy: 'entity', cascade: ['all'])]
-	private Collection $settings;
+	public Collection $settings {
+		get => $this->settings;
+	}
 
 	public function __construct ()
 	{
@@ -54,11 +56,6 @@ class User extends AbstractUser implements EntityWithSettingsInterface
 		$this->updatedAt = new DateTime();
 		$this->premium = new Premium()->setUser($this);
 		$this->settings = new ArrayCollection();
-	}
-
-	public function getSettings (): Collection
-	{
-		return $this->settings;
 	}
 
 	public function addSetting (SettingUser|AbstractSetting $setting): self
