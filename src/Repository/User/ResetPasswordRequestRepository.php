@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 18:39
+ * Last modified by "IDMarinas" on 10/07/2025, 19:17
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,18 +12,18 @@
  * @time    15:51
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license undefined
  *
  * @since   1.0.0
  */
 
-namespace Shared\Repository\User;
+namespace Core\Repository\User;
 
+use Core\Entity\User\ResetPasswordRequest;
 use Doctrine\Persistence\ManagerRegistry;
 use Idm\Bundle\User\Model\Repository\AbstractResetPasswordRequestRepository;
-use Shared\Entity\User\ResetPasswordRequest;
 
-class ResetPasswordRequestRepository extends AbstractResetPasswordRequestRepository
+final class ResetPasswordRequestRepository extends AbstractResetPasswordRequestRepository
 {
 	public function __construct (ManagerRegistry $registry)
 	{
