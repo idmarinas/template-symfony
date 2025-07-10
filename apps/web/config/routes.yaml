@@ -34,5 +34,5 @@ user_controllers:
         path: ../src/Controller/User
         namespace: Web\Controller\User
     type: attribute
-    prefix: '%app.route_prefix.user%'
+    prefix: user
     name_prefix: idm_user_
