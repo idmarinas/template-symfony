@@ -30,6 +30,7 @@
 		"doctrine/orm": "^3.4",
 		"easycorp/easyadmin-bundle": "^4.24",
 		"idmarinas/common-bundle": "^3.5",
+		"idmarinas/settings-bundle": "^1.2",
 		"idmarinas/ui-bundle": "1.x-dev",
 		"idmarinas/user-bundle": "^2.1",
 		"nelmio/security-bundle": "^3.5",

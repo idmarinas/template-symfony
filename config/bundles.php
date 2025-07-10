@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/07/2025, 19:58
+ * Last modified by "IDMarinas" on 10/07/2025, 16:34
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -44,4 +44,5 @@ return [
 	Idm\Bundle\Common\IdmCommonBundle::class                                 => ['all' => true],
 	Idm\Bundle\Ui\IdmUiBundle::class                                         => ['all' => true],
 	Idm\Bundle\User\IdmUserBundle::class                                     => ['all' => true],
+	Idm\Bundle\Settings\IdmSettingsBundle::class                             => ['all' => true],
 ];
