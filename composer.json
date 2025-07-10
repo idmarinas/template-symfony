@@ -17,7 +17,7 @@
 	"support": {
 		"issues": "https://github.com/idmarinas/template-symfony/issues"
 	},
-	"license": "undefined",
+	"license": "BSD-3-Clause",
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require": {
