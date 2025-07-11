@@ -46,4 +46,19 @@ return [
 	'@hotwired/turbo'          => [
 		'version' => '7.3.0',
 	],
+	'@stimulus-components/notification' => [
+		'version' => '3.0.0',
+	],
+	'stimulus-use'                      => [
+		'version' => '0.52.3',
+	],
+	'@stimulus-components/dialog'       => [
+		'version' => '1.0.1',
+	],
+	'hotkeys-js'                        => [
+		'version' => '3.13.14',
+	],
+	'@idmarinas/ui-bundle'              => [
+		'path' => './vendor/idmarinas/ui-bundle/assets/dist/loader.js',
+	],
 ];
