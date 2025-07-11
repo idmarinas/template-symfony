@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/07/2025, 20:15
+ * Last modified by "IDMarinas" on 11/07/2025, 19:51
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,7 +19,12 @@
 
 namespace Admin\Controller;
 
+use Admin\Enums\Crud\ActionsEnum;
+use Admin\Traits\Crud\Property\EntityManagerTrait;
 use Core\Entity\Feedback\Contact;
+use Core\Entity\Setting\Setting;
+use Core\Entity\Setting\SettingDomain;
+use Core\Entity\Setting\SettingUser;
 use Core\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -32,16 +37,24 @@ use Override;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AdminDashboard(routePath: '/%app.route_prefix.admin%', routeName: 'admin')]
+#[AdminDashboard(routePath: '/%app.route_prefix.admin%', routeName: 'admin', routes: [
+	'index' => ['routePath' => '/all'],
+])]
 final class DashboardController extends AbstractDashboardController
 {
-	public function __construct (private readonly Packages $package) {}
+	use EntityManagerTrait;
 
+	public function __construct (
+		private readonly Packages $package,
+	) {}
+
+	#[Override]
 	public function index (): Response
 	{
 		return $this->render('@Admin/dashboard.html.twig');
 	}
 
+	#[Override]
 	public function configureDashboard (): Dashboard
 	{
 		$title = sprintf(
@@ -58,36 +71,57 @@ final class DashboardController extends AbstractDashboardController
 		;
 	}
 
+	#[Override]
 	public function configureMenuItems (): iterable
 	{
-		yield MenuItem::linkToDashboard('dashboard.menu.dashboard', 'fa fa-home');
+		yield from parent::configureMenuItems();
 
-//		yield MenuItem::section('dashboard.menu.section.settings', 'fa-solid fa-gears');
-//		yield MenuItem::linkToCrud('dashboard.menu.setting', 'fa-solid fa-gear', Setting::class);
-//		yield MenuItem::linkToCrud('dashboard.menu.setting_domain', 'fa-solid fa-wrench', SettingDomain::class);
+		yield MenuItem::subMenu('dashboard.menu.section.users', 'fa fa-users')
+			->setBadge($this->entityManager->getRepository(User::class)->countUserActives(), 'info')
+			->setSubItems([
+				MenuItem::linkToCrud('dashboard.menu.user', 'fa fa-user', User::class),
+				MenuItem::linkToCrud('dashboard.menu.setting_user', 'fa-solid fa-user-gear', SettingUser::class),
+			])
+		;
 
-		yield MenuItem::section('dashboard.menu.section.users', 'fa fa-users');
-		yield MenuItem::linkToCrud('dashboard.menu.user', 'fa fa-user', User::class);
+		yield MenuItem::subMenu('dashboard.menu.section.feedback', 'fa fa-comments')
+			->setBadge($this->entityManager->getRepository(Contact::class)->countContactTotal(), style: 'info')
+			->setSubItems([
+				MenuItem::linkToCrud('dashboard.menu.contact', 'fa fa-message', Contact::class),
+			])
+		;
 
-		yield MenuItem::section('dashboard.menu.section.feedback', 'fa fa-comments');
-		yield MenuItem::linkToCrud('dashboard.menu.contact', 'fa fa-message', Contact::class);
+		yield MenuItem::subMenu('dashboard.menu.section.settings', 'fa fa-gears')
+			->setSubItems([
+				MenuItem::linkToCrud('dashboard.menu.setting', 'fa-solid fa-gear', Setting::class),
+				MenuItem::linkToCrud('dashboard.menu.setting_domain', 'fa-solid fa-wrench', SettingDomain::class),
+			])
+		;
 	}
 
 	#[Override]
 	public function configureActions (): Actions
 	{
+		$detail = fn(Action $action) => $action->setIcon('fas fa-eye');
+		$edit = fn(Action $action) => $action->setIcon('fas fa-pen-to-square');
+		$delete = fn(Action $action) => $action->setIcon('fas fa-trash-can text-danger');
+		$save = fn(Action $action) => $action->setIcon('fa-solid fa-floppy-disk');
+		$new = fn(Action $action) => $action->setIcon('fas fa-square-plus me-1');
+
 		return parent::configureActions()
 			->add(Crud::PAGE_INDEX, Action::DETAIL)
 			->add(Crud::PAGE_NEW, Action::INDEX)
-			->update(Crud::PAGE_INDEX, Action::NEW, fn(Action $action) => $action->setIcon('fas fa-square-plus me-1'))
-			->update(Crud::PAGE_INDEX, Action::EDIT, fn(Action $action) => $action->setIcon('fas fa-pen-to-square me-1'))
-			->update(Crud::PAGE_INDEX, Action::DETAIL, fn(Action $action) => $action->setIcon('fas fa-eye me-1'))
-			->update(
-				Crud::PAGE_INDEX,
-				Action::DELETE,
-				fn(Action $action) => $action->setIcon('fas fa-trash-can text-danger me-1')
-			)
-			->setPermission('restore', 'ROLE_SUPER_ADMIN')
+			->add(Crud::PAGE_EDIT, Action::DETAIL)
+			->add(Crud::PAGE_EDIT, Action::DELETE)
+			->update(Crud::PAGE_INDEX, Action::NEW, $new)
+			->update(Crud::PAGE_INDEX, Action::EDIT, $edit)
+			->update(Crud::PAGE_INDEX, Action::DETAIL, $detail)
+			->update(Crud::PAGE_INDEX, Action::DELETE, $delete)
+			->update(Crud::PAGE_EDIT, Action::DETAIL, $detail)
+			->update(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN, $save)
+			->update(Crud::PAGE_DETAIL, Action::EDIT, $edit)
+			->setPermission(ActionsEnum::RESTORE, 'ROLE_SUPER_ADMIN')
+			->setPermission('log-entry', 'ROLE_SUPER_ADMIN')
 		;
 	}
 }
