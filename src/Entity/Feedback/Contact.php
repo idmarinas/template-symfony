@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/07/2025, 20:02
+ * Last modified by "IDMarinas" on 11/07/2025, 19:26
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,10 +19,12 @@
 
 namespace Core\Entity\Feedback;
 
-use Core\Repository\Contact\ContactRepository;
+use Core\Repository\Feedback\ContactRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Loggable\Loggable;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Idm\Bundle\Common\Model\Entity\AbstractContact;
 
@@ -31,7 +33,7 @@ use Idm\Bundle\Common\Model\Entity\AbstractContact;
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 #[Gedmo\Loggable(logEntryClass: ContactLog::class)]
 #[Gedmo\SoftDeleteable()]
-class Contact extends AbstractContact
+class Contact extends AbstractContact implements Loggable, SoftDeleteable
 {
 	use SoftDeleteableEntity;
 
