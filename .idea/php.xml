@@ -199,6 +199,7 @@
       <path value="$PROJECT_DIR$/vendor/gehrisandro/tailwind-merge-php" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/idmarinas/settings-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
