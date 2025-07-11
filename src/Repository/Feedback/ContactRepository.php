@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/07/2025, 20:02
+ * Last modified by "IDMarinas" on 11/07/2025, 19:26
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace Core\Repository\Contact;
+namespace Core\Repository\Feedback;
 
 use Core\Entity\Feedback\Contact;
 use Doctrine\Persistence\ManagerRegistry;
