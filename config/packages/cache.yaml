@@ -20,6 +20,9 @@ framework:
             encrypt.cache:
                 adapter: cache.adapter.encrypt
                 tags: true
+            idm.core.cache:
+                adapter: idm.core.service.cache_adapter
+                tags: true
 
 services:
     cache.adapter.encrypt:
@@ -32,7 +35,16 @@ services:
     marshaller.sodium.marshaller:
         class: Symfony\Component\Cache\Marshaller\SodiumMarshaller
         arguments:
-            - [ '%env(base64:APP_CACHE_DECRYPTION_KEY)%' ]
+            - [ '%env(base64:CACHE_DECRYPTION_KEY)%' ]
             # use multiple keys in order to rotate them
             #- ['%env(base64:CACHE_DECRYPTION_KEY)%', '%env(base64:OLD_CACHE_DECRYPTION_KEY)%']
+            - '@cache.default_marshaller'
+
+    idm.core.service.cache_adapter:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        public: false
+        arguments:
+            - ''
+            - '0'
+            - '%kernel.cache_dir%/pools/idm/core'
             - '@cache.default_marshaller'
