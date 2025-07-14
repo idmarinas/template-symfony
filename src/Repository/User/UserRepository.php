@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/07/2025, 19:00
+ * Last modified by "IDMarinas" on 14/07/2025, 19:35
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -34,7 +34,7 @@ final class UserRepository extends AbstractUserRepository
 {
 	public function __construct (
 		ManagerRegistry                         $registry,
-		#[Target('idm.app.cache')]
+		#[Target('idm.core.cache')]
 		private readonly TagAwareCacheInterface $cache
 	) {
 		parent::__construct($registry, User::class);
