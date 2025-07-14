@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/07/2025, 19:35
+ * Last modified by "IDMarinas" on 14/07/2025, 19:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -26,8 +26,6 @@ use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Idm\Bundle\Common\Model\Repository\AbstractContactRepository;
 use Psr\Cache\InvalidArgumentException;
-use Shared\Enums\CacheKeysEnum;
-use Shared\Enums\CacheTagsEnum;
 use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
