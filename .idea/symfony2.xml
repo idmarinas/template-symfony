@@ -8,17 +8,22 @@
     <option name="profilerCsvPath" value="var/cache/dev/profiler/index.csv" />
     <option name="containerFiles">
       <list>
-        <container_file path="var/cache/dev/Core_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/admin/dev/Core_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/api/dev/Core_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/blog/dev/Core_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/cron/dev/Core_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/forum/dev/Core_KernelDevDebugContainer.xml" />
+        <container_file path="var/cache/web/dev/Core_KernelDevDebugContainer.xml" />
       </list>
     </option>
     <option name="routingFiles">
       <list>
-        <routing_file path="app/cache/dev/appDevUrlGenerator.php" />
-        <routing_file path="var/cache/dev/appDevUrlGenerator.php" />
-        <routing_file path="var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" />
-        <routing_file path="var/cache/dev/srcDevDebugProjectContainerUrlGenerator.php" />
-        <routing_file path="var/cache/dev/url_generating_routes.php" />
-        <routing_file path="var/cache/dev/UrlGenerator.php" />
+        <routing_file path="var/cache/admin/dev/url_generating_routes.php" />
+        <routing_file path="var/cache/api/dev/url_generating_routes.php" />
+        <routing_file path="var/cache/blog/dev/url_generating_routes.php" />
+        <routing_file path="var/cache/cron/dev/url_generating_routes.php" />
+        <routing_file path="var/cache/forum/dev/url_generating_routes.php" />
+        <routing_file path="var/cache/web/dev/url_generating_routes.php" />
       </list>
     </option>
   </component>

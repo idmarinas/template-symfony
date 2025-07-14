@@ -29,6 +29,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83/Resources/stubs" />
     </exclude_path>
     <include_path>
+      <path value="$PROJECT_DIR$/var/cache/forum/dev/Symfony/Config" />
       <path value="$PROJECT_DIR$/var/cache/web/dev/Symfony/Config" />
       <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
