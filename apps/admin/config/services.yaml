@@ -7,6 +7,4 @@ services:
 
     Admin\:
         resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
+        exclude: '../src/{DependencyInjection|Entity}'
