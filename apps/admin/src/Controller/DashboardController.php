@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 11/07/2025, 19:51
+ * Last modified by "IDMarinas" on 17/07/2025, 19:09
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -31,7 +31,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Override;
 use Symfony\Component\Asset\Packages;
@@ -75,28 +74,6 @@ final class DashboardController extends AbstractDashboardController
 	public function configureMenuItems (): iterable
 	{
 		yield from parent::configureMenuItems();
-
-		yield MenuItem::subMenu('dashboard.menu.section.users', 'fa fa-users')
-			->setBadge($this->entityManager->getRepository(User::class)->countUserActives(), 'info')
-			->setSubItems([
-				MenuItem::linkToCrud('dashboard.menu.user', 'fa fa-user', User::class),
-				MenuItem::linkToCrud('dashboard.menu.setting_user', 'fa-solid fa-user-gear', SettingUser::class),
-			])
-		;
-
-		yield MenuItem::subMenu('dashboard.menu.section.feedback', 'fa fa-comments')
-			->setBadge($this->entityManager->getRepository(Contact::class)->countContactTotal(), style: 'info')
-			->setSubItems([
-				MenuItem::linkToCrud('dashboard.menu.contact', 'fa fa-message', Contact::class),
-			])
-		;
-
-		yield MenuItem::subMenu('dashboard.menu.section.settings', 'fa fa-gears')
-			->setSubItems([
-				MenuItem::linkToCrud('dashboard.menu.setting', 'fa-solid fa-gear', Setting::class),
-				MenuItem::linkToCrud('dashboard.menu.setting_domain', 'fa-solid fa-wrench', SettingDomain::class),
-			])
-		;
 	}
 
 	#[Override]
