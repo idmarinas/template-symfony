@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/07/2025, 19:09
+ * Last modified by "IDMarinas" on 17/07/2025, 19:42
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -20,12 +20,6 @@
 namespace Admin\Controller;
 
 use Admin\Enums\Crud\ActionsEnum;
-use Admin\Traits\Crud\Property\EntityManagerTrait;
-use Core\Entity\Feedback\Contact;
-use Core\Entity\Setting\Setting;
-use Core\Entity\Setting\SettingDomain;
-use Core\Entity\Setting\SettingUser;
-use Core\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -41,8 +35,6 @@ use Symfony\Component\HttpFoundation\Response;
 ])]
 final class DashboardController extends AbstractDashboardController
 {
-	use EntityManagerTrait;
-
 	public function __construct (
 		private readonly Packages $package,
 	) {}
