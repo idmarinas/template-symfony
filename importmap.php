@@ -33,8 +33,8 @@ return [
 		'path'       => './assets/app.js',
 		'entrypoint' => true,
 	],
-	'error_exception'          => [
-		'path'       => './assets/entries/error_exception/index.js',
+	'web'                               => [
+		'path'       => './apps/web/assets/web.js',
 		'entrypoint' => true,
 	],
 	'@hotwired/stimulus'       => [
