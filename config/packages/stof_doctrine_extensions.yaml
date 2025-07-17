@@ -6,11 +6,11 @@ stof_doctrine_extensions:
     orm:
         # Activate the extensions you want
         default:
-            timestampable: true
-            blameable: true
-            loggable: true
-            softdeleteable: true
-            ip_traceable: true
+            timestampable: false
+            blameable: false
+            loggable: false
+            softdeleteable: false
+            ip_traceable: false
             translatable: false
             sluggable: false
             tree: false
