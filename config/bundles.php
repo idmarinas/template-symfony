@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/07/2025, 16:34
+ * Last modified by "IDMarinas" on 17/07/2025, 18:54
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,7 +12,7 @@
  * @time    18:02
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license undefined
+ * @license BSD 3-Clause License
  *
  * @since   1.0.0
  */
@@ -37,12 +37,10 @@ return [
 	Symfony\UX\TwigComponent\TwigComponentBundle::class                      => ['all' => true],
 	Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class        => ['all' => true],
 	Nelmio\SecurityBundle\NelmioSecurityBundle::class                        => ['all' => true],
-	Symfony\UX\Icons\UXIconsBundle::class                                    => ['all' => true],
 	SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle::class     => ['all' => true],
 	SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
 	Idm\Bundle\Maker\IdmMakerBundle::class                                   => ['dev' => true, 'test' => true],
 	Idm\Bundle\Common\IdmCommonBundle::class                                 => ['all' => true],
-	Idm\Bundle\Ui\IdmUiBundle::class                                         => ['all' => true],
 	Idm\Bundle\User\IdmUserBundle::class                                     => ['all' => true],
 	Idm\Bundle\Settings\IdmSettingsBundle::class                             => ['all' => true],
 ];

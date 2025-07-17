@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 30/06/2025, 17:09
+ * Last modified by "IDMarinas" on 17/07/2025, 18:51
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,7 +12,7 @@
  * @time    22:56
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license undefined
+ * @license BSD 3-Clause License
  *
  * @since   1.0.0
  */
@@ -23,9 +23,7 @@ return [
 	Twig\Extra\TwigExtraBundle\TwigExtraBundle::class                => ['dev' => true],
 	// Disable unnecessary Bundles
 	Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => false],
-	Idm\Bundle\Ui\IdmUiBundle::class                                 => ['all' => false],
 	Symfony\UX\StimulusBundle\StimulusBundle::class                  => ['all' => false],
 	Symfony\UX\Turbo\TurboBundle::class                              => ['all' => false],
 	Symfony\UX\TwigComponent\TwigComponentBundle::class              => ['all' => false],
-	Symfony\UX\Icons\UXIconsBundle::class                            => ['all' => false],
 ];
