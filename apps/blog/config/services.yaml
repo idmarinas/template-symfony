@@ -1,0 +1,10 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Blog\:
+        resource: '../src/'
+        exclude: '../src/{DependencyInjection|Entity}'
