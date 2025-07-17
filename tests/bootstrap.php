@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 18:39
+ * Last modified by "IDMarinas" on 07/07/2025, 14:15
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,25 +17,27 @@
  * @since   1.0.0
  */
 
-use Shared\Kernel;
+use Core\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Filesystem\Filesystem;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-if (file_exists(dirname(__DIR__) . '/config/bootstrap.php')) {
-	require dirname(__DIR__) . '/config/bootstrap.php';
-} elseif (method_exists(Dotenv::class, 'bootEnv')) {
+if (method_exists(Dotenv::class, 'bootEnv')) {
 	new Dotenv()->bootEnv(dirname(__DIR__) . '/.env');
 }
 
-$kernel = new Kernel('test', true);
-$filesystem = new Filesystem();
-
-if ($filesystem->exists($kernel->getCacheDir())) {
-	$filesystem->remove($kernel->getCacheDir());
+if ($_SERVER['APP_DEBUG']) {
+	umask(0000);
 }
 
-if ($filesystem->exists($kernel->getLogDir())) {
-	$filesystem->remove($kernel->getLogDir());
+$kernel = new Kernel('test', true);
+$fs = new Filesystem();
+
+if ($fs->exists($kernel->getCacheDir())) {
+	$fs->remove($kernel->getCacheDir());
+}
+
+if ($fs->exists($kernel->getLogDir())) {
+	$fs->remove($kernel->getLogDir());
 }
