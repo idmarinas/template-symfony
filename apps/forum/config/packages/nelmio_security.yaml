@@ -1,0 +1,6 @@
+nelmio_security:
+    csp:
+        enforce:
+            script-src:
+                - self
+                - strict-dynamic
