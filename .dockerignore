@@ -20,13 +20,10 @@
 
 /.editorconfig
 /.env*
-/.whitesource
-
 /deploy.php
 /package.json
 /package-lock.json
 /rector.php
-/tailwind.config.js
 
 /*.yaml
 /*.yml
@@ -41,9 +38,10 @@
 /build/
 /config/secrets/
 /docs/
+/factories/
+/fixtures/
 /node_modules/
 /public/bundles/
 /storage/
 /var/
 /vendor/
-/Writerside/
