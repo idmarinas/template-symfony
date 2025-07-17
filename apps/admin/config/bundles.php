@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/07/2025, 18:51
+ * Last modified by "IDMarinas" on 17/07/2025, 19:09
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -21,5 +21,4 @@ return [
 	// Enabled necessary Bundles
 	EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
 	// Disabled unnecessary Bundles
-	Idm\Bundle\Common\IdmCommonBundle::class               => ['all' => false],
 ];
