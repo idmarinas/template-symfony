@@ -18,15 +18,6 @@ security:
             lazy: true
             host: '^admin\.%app.server_name.regexp%$'
             provider: idm_user_provider
-            user_checker: Idm\Bundle\User\Security\Checker\UserAdminChecker
-            form_login:
-                login_path: admin_login
-                check_path: admin_login
-                enable_csrf: true
-                form_only: true
-                default_target_path: admin
-            login_throttling:
-                limiter: idm_user.rate_limiter.login.admin
             logout:
                 path: '/%app.route_prefix.admin%/logout'
                 target: admin_login
@@ -47,16 +38,6 @@ security:
         # Main Firewall
         main:
             lazy: true
-            provider: idm_user_provider
-            user_checker: Idm\Bundle\User\Security\Checker\UserChecker
-            form_login:
-                login_path: idm_user_login_web
-                check_path: idm_user_login_web
-                enable_csrf: true
-                form_only: true
-                default_target_path: idm_user_profile_index
-            login_throttling:
-                limiter: idm_user.rate_limiter.login.main
             logout:
                 path: /logout
                 target: app_home
