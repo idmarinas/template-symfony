@@ -27,19 +27,11 @@
 </head>
 <body>
 	{% block body %}
-		<twig:Turbo:Frame id="container-flash-messages">
-			<twig:IdmUi:Container:FlashMessages :messages="app.flashes" />
-		</twig:Turbo:Frame>
-
 		{% block container %}
 			<main class="flex items-center justify-center">
 				{% block content %}{% endblock content %}
 			</main>
-		{% endblock %}
-
-		<twig:Turbo:Frame id="container-notifications-messages">
-			<twig:IdmUi:Container:NotificationMessages :messages="app.flashes" />
-		</twig:Turbo:Frame>
-	{% endblock %}
+		{% endblock container %}
+	{% endblock body %}
 </body>
 </html>
