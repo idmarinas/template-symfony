@@ -2,22 +2,18 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        idm_user_provider:
-            entity:
-                class: Core\Entity\User\User
-                property: email
-    # Admin Firewall
+        users_in_memory: { memory: null }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
+        # Admin Rirewall
         admin:
             lazy: true
             host: '^admin\.%app.server_name.regexp%$'
-            provider: idm_user_provider
+            provider: users_in_memory
             logout:
                 path: '/%app.route_prefix.admin%/logout'
                 target: admin_login
@@ -32,12 +28,13 @@ security:
         api:
             host: '^api\.%app.server_name.regexp%$'
             stateless: true
-            provider: idm_user_provider
+            provider: users_in_memory
             switch_user: false
             # jwt: ~
         # Main Firewall
         main:
             lazy: true
+            provider: users_in_memory
             logout:
                 path: /logout
                 target: app_home
