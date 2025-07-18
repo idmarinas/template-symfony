@@ -3,7 +3,7 @@
 <!--~
   ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
   ~
-  ~ Last modified by "idmarinas" on 18/06/2025, 19:56
+  ~ Last modified by "IDMarinas" on 18/07/2025, 14:06
   ~
   ~ @project IDMarinas Template Symfony
   ~ @see https://github.com/idmarinas/template-symfony
@@ -45,8 +45,14 @@
 		<testsuite name="IDMarinas Template Symfony API Test Suite">
 			<directory>apps/api/tests</directory>
 		</testsuite>
+		<testsuite name="IDMarinas Template Symfony Blog Test Suite">
+			<directory>apps/blog/tests</directory>
+		</testsuite>
 		<testsuite name="IDMarinas Template Symfony Cron Test Suite">
 			<directory>apps/cron/tests</directory>
+		</testsuite>
+		<testsuite name="IDMarinas Template Symfony Forum Test Suite">
+			<directory>apps/forum/tests</directory>
 		</testsuite>
 		<testsuite name="IDMarinas Template Symfony Web Test Suite">
 			<directory>apps/cron/tests</directory>
