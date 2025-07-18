@@ -3,7 +3,7 @@
 <!--~
   ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
   ~
-  ~ Last modified by "IDMarinas" on 18/07/2025, 14:06
+  ~ Last modified by "IDMarinas" on 18/07/2025, 14:22
   ~
   ~ @project IDMarinas Template Symfony
   ~ @see https://github.com/idmarinas/template-symfony
@@ -92,6 +92,7 @@
 	</source>
 
 	<extensions>
+		<bootstrap class="Zenstruck\Foundry\PHPUnit\FoundryExtension" />
 		<bootstrap class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
 	</extensions>
 </phpunit>
