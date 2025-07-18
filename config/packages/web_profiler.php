@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "idmarinas" on 19/06/2025, 16:59
+ * Last modified by "IDMarinas" on 18/07/2025, 14:18
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -44,7 +44,8 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 		]);
 		$container->extension('framework', [
 			'profiler' => [
-				'collect' => false,
+				'collect'                 => false,
+				'collect_serializer_data' => true,
 			],
 		]);
 	}
