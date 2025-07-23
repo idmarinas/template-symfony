@@ -1,12 +1,10 @@
 {
-	"name": "template-symfony-docs",
-	"scripts": {
-		"dev": "docus dev",
-		"build": "docus build"
-	},
-	"dependencies": {
-		"docus": "latest",
-		"better-sqlite3": "^11.10.0",
-		"nuxt": "^3.17.5"
-	}
+  "name": "template-symfony-docs",
+  "scripts": {
+    "dev": "docus dev",
+    "build": "docus build"
+  },
+  "dependencies": {
+    "docus": "latest"
+  }
 }
