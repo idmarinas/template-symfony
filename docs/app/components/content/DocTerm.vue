@@ -1,7 +1,7 @@
 <!---
   - Copyright 2025 (C) IDMarinas - All Rights Reserved
   -
-  - Last modified by "IDMarinas" on 23/07/2025, 21:03
+  - Last modified by "IDMarinas" on 24/07/2025, 14:57
   -
   - @project IDMarinas Template Symfony
   - @see https://github.com/idmarinas/template-symfony
@@ -20,7 +20,6 @@
 	<UTooltip arrow :delay-duration="0" :text="term.text">
 		<span>{{ term.abbr }}</span>
 	</UTooltip>
-
 </template>
 
 <script setup lang="ts">
@@ -50,11 +49,7 @@
 		},
 	}
 
-	// Calcular el valor a mostrar
-	const term: Term = computed(() => {
-	  const value = terms[props.name]
-	  return value || { abbr: props.name, text: `([${props.name}] not found)`}
-	})
+	const term: Term = terms[props.name] || { abbr: props.name, text: `([${props.name}] not found)`}
 </script>
 
 <style scoped>
