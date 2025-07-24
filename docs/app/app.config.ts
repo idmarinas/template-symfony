@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/07/2025, 20:14
+ * Last modified by "IDMarinas" on 24/07/2025, 16:43
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -21,6 +21,7 @@ export default defineAppConfig({
 		title: 'IDMarinas Template Symfony',
 	},
 	socials: {
+		bitly: 'https://bit.ly/m/idmarinas',
 		x: 'https://x.com/idmarinas',
 		github: 'https://github.com/idmarinas',
 		discord: 'https://discord.gg/FXEZqpF',
@@ -34,7 +35,9 @@ export default defineAppConfig({
 	ui: {
 		colors: {
 			primary: 'indigo',
-			secondary: 'cyan'
+			secondary: 'cyan',
+			purple: 'purple',
+			orange: 'orange'
 		}
 	}
 })
