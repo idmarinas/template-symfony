@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/07/2025, 20:11
+ * Last modified by "IDMarinas" on 24/07/2025, 16:48
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -20,7 +20,27 @@ export default defineNuxtConfig({
 	llms: {
 		domain: 'https://your-site.com', // Change me
 	},
+
+	ui: {
+		theme: {
+			colors: [
+				'primary',
+				'secondary',
+				'info',
+				'success',
+				'warning',
+				'error',
+				'purple',
+				'orange'
+			]
+		}
+	},
+
 	future: {
 		compatibilityVersion: 4,
+	},
+
+	devtools: {
+		enabled: true,
 	},
 })
