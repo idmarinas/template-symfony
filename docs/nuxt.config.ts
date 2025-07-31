@@ -17,10 +17,12 @@
  */
 
 export default defineNuxtConfig({
+	site: {
+		name: 'IDMarinas Template Symfony'
+	},
 	llms: {
 		domain: 'https://your-site.com', // Change me
 	},
-
 	ui: {
 		theme: {
 			colors: [
