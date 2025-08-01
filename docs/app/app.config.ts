@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/07/2025, 16:43
+ * Last modified by "IDMarinas" on 01/08/2025, 17:57
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -19,6 +19,10 @@
 export default defineAppConfig({
 	header: {
 		title: 'IDMarinas Template Symfony',
+		logo: {
+			light: 'images/logo-light.webp',
+			dark: 'images/logo-dark.webp',
+		}
 	},
 	socials: {
 		bitly: 'https://bit.ly/m/idmarinas',
