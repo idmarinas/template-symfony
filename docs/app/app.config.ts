@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/08/2025, 17:57
+ * Last modified by "IDMarinas" on 04/08/2025, 11:30
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -15,6 +15,8 @@
  *
  * @since 1.0.0
  */
+
+import {github} from '~~/shared.config'
 
 export default defineAppConfig({
 	header: {
@@ -31,11 +33,7 @@ export default defineAppConfig({
 		discord: 'https://discord.gg/FXEZqpF',
 		reddit: 'https://www.reddit.com/user/idmarinas/',
 	},
-	github: {
-		url: 'https://github.com/idmarinas/template-symfony',
-		branch: '1.x',
-		rootDir: 'docs'
-	},
+	github,
 	ui: {
 		colors: {
 			primary: 'indigo',
