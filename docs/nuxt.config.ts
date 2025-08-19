@@ -17,6 +17,10 @@
  */
 
 export default defineNuxtConfig({
+	extends: [
+		'docus',
+		'github:idmarinas/nuxt-layers/docs-versioning#master'
+	],
 	site: {
 		name: 'IDMarinas Template Symfony'
 	},
