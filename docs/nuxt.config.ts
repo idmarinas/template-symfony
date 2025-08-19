@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/07/2025, 21:07
+ * Last modified by "IDMarinas" on 19/08/2025, 19:29
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -23,6 +23,9 @@ export default defineNuxtConfig({
 	],
 	site: {
 		name: 'IDMarinas Template Symfony'
+	},
+	docsVersioning: {
+		enable: true,
 	},
 	llms: {
 		domain: 'https://your-site.com', // Change me
