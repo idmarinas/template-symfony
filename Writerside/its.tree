@@ -16,6 +16,5 @@
 		<toc-element topic="Quickstart.md" />
 	</toc-element>
 	<toc-element topic="Changelog.md" />
-	<toc-element topic="SECURITY.md" />
 	<toc-element topic="About.topic" />
 </instance-profile>
