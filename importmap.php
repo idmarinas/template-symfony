@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2025, 15:31
+ * Last modified by "IDMarinas" on 20/08/2025, 16:19
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -29,7 +29,7 @@
  * The "importmap:require" command can be used to add new entries to this file.
  */
 return [
-	'app'                      => [
+	'app'                               => [
 		'path'       => './assets/app.js',
 		'entrypoint' => true,
 	],
@@ -37,13 +37,13 @@ return [
 		'path'       => './apps/web/assets/web.js',
 		'entrypoint' => true,
 	],
-	'@hotwired/stimulus'       => [
+	'@hotwired/stimulus'                => [
 		'version' => '3.2.2',
 	],
-	'@symfony/stimulus-bundle' => [
+	'@symfony/stimulus-bundle'          => [
 		'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
 	],
-	'@hotwired/turbo'          => [
+	'@hotwired/turbo'                   => [
 		'version' => '7.3.0',
 	],
 	'@stimulus-components/notification' => [
@@ -57,8 +57,5 @@ return [
 	],
 	'hotkeys-js'                        => [
 		'version' => '3.13.14',
-	],
-	'@idmarinas/ui-bundle'              => [
-		'path' => './vendor/idmarinas/ui-bundle/assets/dist/loader.js',
 	],
 ];
