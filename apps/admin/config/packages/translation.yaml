@@ -1,4 +1,4 @@
 framework:
     translator:
         paths:
-            - '%kernel.project_dir%/translations'
+            - '%kernel.project_dir%/apps/admin/translations'
