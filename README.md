@@ -54,14 +54,6 @@
 
 #### Option 1
 
-> Clone repository
-
-````shell
-  git clone https://github.com/idmarinas/template-symfony.git
-````
-
-#### Option 2
-
 > Visit https://github.com/idmarinas/template-symfony and click the button **Use this template**
 
 ## Customize template
@@ -74,6 +66,15 @@
 ````
 
 > Now only need to answer the questions
+
+#### Option 2
+
+> Clone repository
+
+````shell
+  git clone https://github.com/idmarinas/template-symfony.git
+````
+
 <!-- readme-template -->
 
 ## 🖱️ Tech used in code
