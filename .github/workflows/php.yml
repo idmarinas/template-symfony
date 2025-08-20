@@ -70,10 +70,10 @@ jobs:
       #      - name: Built Tailwind CSS files
       #        run: 'php bin/console tailwind:build'
 
-      - name: Create Database
-        run: 'php bin/console doctrine:schema:create --env=test && php bin/console doctrine:fixtures:load --env=test -n'
-        env:
-          DATABASE_HOST: 127.0.0.1
+      #      - name: Create Database
+      #        run: 'php bin/console doctrine:schema:create --env=test && php bin/console doctrine:fixtures:load --env=test -n'
+      #        env:
+      #          DATABASE_HOST: 127.0.0.1
 
       - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
         run: ./vendor/bin/phpunit --exclude ignore
