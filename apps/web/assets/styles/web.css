@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/07/2025, 17:56
+ * Last modified by "IDMarinas" on 20/08/2025, 16:57
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -11,13 +11,13 @@
  * @time 19:53
  *
  * @author Iván Diaz Marinas (IDMarinas)
- * @license undefined
+ * @license BSD 3-Clause License
  *
  * @since 1.0.0
  */
 @import "tailwindcss" source(none);
 /* Neutral Theme of UI Bundle */
-@import "../../../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";
+/*@import "../../../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";*/
 
 @import "./base.css";
 @import "./theme.css";
