@@ -2,12 +2,12 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2025, 21:51
+ * Last modified by "IDMarinas" on 21/08/2025, 13:27
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
  *
- * @file    AdminLoginController.php
+ * @file    LoginController.php
  * @date    21/02/2025
  * @time    16:40
  *
@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-final class AdminLoginController extends AbstractController
+final class LoginController extends AbstractController
 {
 	#[Route(path: '/login', name: 'login', methods: ['GET', 'POST'])]
 	public function login (AuthenticationUtils $authenticationUtils): Response
