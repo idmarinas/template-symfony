@@ -76,7 +76,7 @@ jobs:
       #          DATABASE_HOST: 127.0.0.1
 
       - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
-        run: ./vendor/bin/phpunit --exclude ignore
+        run: ./vendor/bin/phpunit --exclude-group ignore
         env:
           DATABASE_HOST: 127.0.0.1
 
