@@ -3,7 +3,7 @@ name: template_symfony
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    image: mariadb:${DATABASE_VNUMBER}
+    image: mariadb:${DATABASE_VERSION_NUMBER}
     ports:
       - "13306:3306"
     environment:
