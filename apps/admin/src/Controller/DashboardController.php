@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/07/2025, 19:42
+ * Last modified by "IDMarinas" on 21/08/2025, 13:23
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -30,9 +30,11 @@ use Override;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AdminDashboard(routePath: '/%app.route_prefix.admin%', routeName: 'admin', routes: [
-	'index' => ['routePath' => '/all'],
-])]
+#[AdminDashboard(
+	routePath   : '/%app.route_prefix.admin%',
+	routeName   : 'admin',
+	routeOptions: ['methods' => 'GET'],
+	routes      : ['index' => ['routePath' => '/all']])]
 final class DashboardController extends AbstractDashboardController
 {
 	public function __construct (
