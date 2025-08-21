@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/08/2025, 16:53
+ * Last modified by "IDMarinas" on 21/08/2025, 18:06
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -31,5 +31,17 @@ class AppIdExtension implements Extension
 	public function bootstrap (Configuration $configuration, Facade $facade, ParameterCollection $parameters): void
 	{
 		$facade->registerSubscriber(new AppIdSubscriber());
+
+		$clearCache = $parameters->get('clear-cache');
+		$clear = match (true) {
+			$clearCache == 'off',
+				$clearCache == 'no',
+				$clearCache == 'false' => false,
+			default                  => (bool)$clearCache,
+		};
+
+		if ($parameters->has('clear-cache') && $clear) {
+			$facade->registerSubscriber(new ClearCacheSubscriber());
+		}
 	}
 }
