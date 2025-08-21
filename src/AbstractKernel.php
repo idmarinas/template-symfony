@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/08/2025, 17:01
+ * Last modified by "IDMarinas" on 21/08/2025, 18:11
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -30,7 +30,7 @@ abstract class AbstractKernel extends BaseKernel
 {
 	use MicroKernelTrait;
 
-	public function __construct (string $environment, bool $debug, private readonly string $id)
+	public function __construct (string $environment, bool $debug, private(set) readonly string $id)
 	{
 		parent::__construct($environment, $debug);
 	}
@@ -90,7 +90,7 @@ abstract class AbstractKernel extends BaseKernel
 		$this->doConfigureRoutes($routes, $this->getAppConfigDir());
 	}
 
-	private function doConfigureContainer (ContainerConfigurator $container, string $configDir): void
+	protected function doConfigureContainer (ContainerConfigurator $container, string $configDir): void
 	{
 		$container->import($configDir . '/{packages}/*.{php,yaml}');
 
@@ -101,7 +101,7 @@ abstract class AbstractKernel extends BaseKernel
 		}
 	}
 
-	private function doConfigureRoutes (RoutingConfigurator $routes, string $configDir): void
+	protected function doConfigureRoutes (RoutingConfigurator $routes, string $configDir): void
 	{
 		$exclude = match ($this->id) {
 			'api',
