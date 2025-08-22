@@ -6,7 +6,10 @@
         <option value="$PROJECT_DIR$/tests" />
         <option value="$PROJECT_DIR$/apps/admin/tests" />
         <option value="$PROJECT_DIR$/apps/api/tests" />
+        <option value="$PROJECT_DIR$/apps/blog/tests" />
         <option value="$PROJECT_DIR$/apps/cron/tests" />
+        <option value="$PROJECT_DIR$/apps/forum/tests" />
+        <option value="$PROJECT_DIR$/apps/web/tests" />
       </list>
     </option>
   </component>
