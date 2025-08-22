@@ -1,0 +1,6 @@
+"forum.{$SERVER_NAME:localhost}" {
+	import a-common forum
+	import a-headers
+
+	import a-php forum
+}

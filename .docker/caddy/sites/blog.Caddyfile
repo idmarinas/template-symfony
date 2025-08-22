@@ -1,0 +1,6 @@
+"blog.{$SERVER_NAME:localhost}" {
+	import a-common blog
+	import a-headers
+
+	import a-php blog
+}
