@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/08/2025, 13:23
+ * Last modified by "IDMarinas" on 25/08/2025, 19:37
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -38,7 +38,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class DashboardController extends AbstractDashboardController
 {
 	public function __construct (
-		private readonly Packages $package,
+		private readonly Packages $packages,
 	) {}
 
 	#[Override]
@@ -52,7 +52,7 @@ final class DashboardController extends AbstractDashboardController
 	{
 		$title = sprintf(
 			'<img class="mx-auto d-block" src="%s" alt="" /><small>%s</small>',
-			$this->package->getUrl('images/logos/icon96.webp'),
+			$this->packages->getUrl('images/logos/icon96.webp'),
 			$this->getParameter('app.title')
 		);
 
