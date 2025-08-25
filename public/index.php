@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 30/06/2025, 17:02
+ * Last modified by "IDMarinas" on 25/08/2025, 16:04
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,7 +12,7 @@
  * @time    20:13
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license undefined
+ * @license BSD 3-Clause License
  *
  * @since   1.0.0
  */
@@ -21,6 +21,4 @@ use Core\Kernel;
 
 require_once dirname(__DIR__) . '/vendor/autoload_runtime.php';
 
-return function (array $context) {
-	return new Kernel($context['APP_ENV'], (bool)$context['APP_DEBUG'], $context['APP_ID']);
-};
+return fn(array $context) => new Kernel($context['APP_ENV'], (bool)$context['APP_DEBUG'], $context['APP_ID']);
