@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 30/06/2025, 17:16
+ * Last modified by "IDMarinas" on 25/08/2025, 16:02
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,7 +12,7 @@
  * @time    21:02
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license undefined
+ * @license BSD 3-Clause License
  *
  * @since   1.0.0
  */
@@ -21,7 +21,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-return static function (ContainerConfigurator $container, ContainerBuilder $builder) {
+return static function (ContainerConfigurator $container, ContainerBuilder $builder): void {
 	if (!$builder->hasExtension('doctrine_migrations')) {
 		return;
 	}
