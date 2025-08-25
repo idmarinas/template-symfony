@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 09/07/2025, 17:50
+ * Last modified by "IDMarinas" on 25/08/2025, 16:04
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -31,7 +31,7 @@ class PregQuoteEnvVarProcessor implements EnvVarProcessorInterface
 	{
 		$env = $getEnv($name);
 
-		return preg_quote($env);
+		return preg_quote((string)$env);
 	}
 
 	/**
