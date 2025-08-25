@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/08/2025, 18:11
+ * Last modified by "IDMarinas" on 25/08/2025, 19:48
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -46,6 +46,7 @@ abstract class AbstractKernel extends BaseKernel
 		return $this->getProjectDir() . '/apps/' . $this->id . '/config';
 	}
 
+	#[Override]
 	public function getCacheDir (): string
 	{
 		// divide the cache for each application
@@ -54,6 +55,7 @@ abstract class AbstractKernel extends BaseKernel
 		return $dir . '/' . $this->id . '/' . $this->environment;
 	}
 
+	#[Override]
 	public function getLogDir (): string
 	{
 		// divide logs for each application
