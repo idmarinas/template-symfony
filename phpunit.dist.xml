@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--~
   ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
   ~
-  ~ Last modified by "IDMarinas" on 21/08/2025, 12:12
+  ~ Last modified by "IDMarinas" on 25/08/2025, 20:10
   ~
   ~ @project IDMarinas Template Symfony
   ~ @see https://github.com/idmarinas/template-symfony
   ~
   ~ @file phpunit.dist.xml
-  ~ @date 18/06/2025
-  ~ @time 20:03
+  ~ @date 25/08/2025
+  ~ @time 20:10
   ~
   ~ @author Iván Diaz Marinas (IDMarinas)
   ~ @license BSD 3-Clause License
@@ -22,7 +21,6 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          colors="true"
-         failOnDeprecation="true"
          failOnNotice="true"
          failOnWarning="true"
          bootstrap="tests/bootstrap.php"
@@ -36,25 +34,25 @@
 	</php>
 
 	<testsuites>
-		<testsuite name="IDMarinas Template Symfony Core Test Suite">
+		<testsuite name="core">
 			<directory>tests</directory>
 		</testsuite>
-		<testsuite name="IDMarinas Template Symfony Admin Test Suite">
+		<testsuite name="admin">
 			<directory>apps/admin/tests</directory>
 		</testsuite>
-		<testsuite name="IDMarinas Template Symfony API Test Suite">
+		<testsuite name="api">
 			<directory>apps/api/tests</directory>
 		</testsuite>
-		<testsuite name="IDMarinas Template Symfony Blog Test Suite">
+		<testsuite name="blog">
 			<directory>apps/blog/tests</directory>
 		</testsuite>
-		<testsuite name="IDMarinas Template Symfony Cron Test Suite">
+		<testsuite name="cron">
 			<directory>apps/cron/tests</directory>
 		</testsuite>
-		<testsuite name="IDMarinas Template Symfony Forum Test Suite">
+		<testsuite name="forum">
 			<directory>apps/forum/tests</directory>
 		</testsuite>
-		<testsuite name="IDMarinas Template Symfony Web Test Suite">
+		<testsuite name="web">
 			<directory>apps/web/tests</directory>
 		</testsuite>
 	</testsuites>
@@ -80,7 +78,9 @@
 			<directory>src</directory>
 			<directory>apps/admin/src</directory>
 			<directory>apps/api/src</directory>
+			<directory>apps/blog/src</directory>
 			<directory>apps/cron/src</directory>
+			<directory>apps/forum/src</directory>
 			<directory>apps/web/src</directory>
 		</include>
 
@@ -92,7 +92,9 @@
 	</source>
 
 	<extensions>
-		<bootstrap class="Zenstruck\Foundry\PHPUnit\FoundryExtension" />
 		<bootstrap class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+		<bootstrap class="Core\Tests\PHPUnit\Extension\AppIdExtension">
+			<parameter name="clear-cache" value="true" />
+		</bootstrap>
 	</extensions>
 </phpunit>
