@@ -116,7 +116,9 @@
 			"Blog\\Tests\\": "apps/blog/tests",
 			"Cron\\Tests\\": "apps/cron/tests",
 			"Forum\\Tests\\": "apps/forum/tests",
-			"Web\\Tests\\": "apps/web/tests"
+			"Web\\Tests\\": "apps/web/tests",
+			"DataFixtures\\": "fixtures/",
+			"Factory\\": "factories/"
 		}
 	},
 	"scripts": {
