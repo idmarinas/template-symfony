@@ -22,7 +22,7 @@ on:
       - rector.php
       - .editorconfig
       - .gitignore
-      - compose.yaml
+      - compose*.yaml
 
 jobs:
   build:
