@@ -68,7 +68,7 @@
 	"require-dev": {
 		"dama/doctrine-test-bundle": "^8.3",
 		"doctrine/doctrine-fixtures-bundle": "^4.1",
-		"idmarinas/composer-plugin": "^1.3",
+		"idmarinas/composer-plugin": "^1.4",
 		"idmarinas/maker-bundle": "^2.1",
 		"phpunit/phpunit": "^12.2",
 		"rector/rector": "^2.1",
