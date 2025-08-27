@@ -42,7 +42,7 @@ services:
     volumes:
       - ./.docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
       ## SSH
-      - ssh_key:/root/.ssh:ro
+      - ssh_key:/root/.ssh
 
   ###> symfony/mailer ###
   mailer:
