@@ -2,6 +2,9 @@ import snippets/Caddyfile
 
 {
 	skip_install_trust
+	admin :2019 {
+		origins ::1
+	}
 	import globals/Caddyfile
 
 	servers :80 {
