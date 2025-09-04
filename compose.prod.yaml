@@ -13,6 +13,16 @@ services:
 
   database:
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 5s
 
   caddy:
     restart: always
@@ -25,6 +35,7 @@ services:
           cpus: '0.5'
           memory: 500M
       restart_policy:
+        condition: on-failure
         delay: 5s
         max_attempts: 10
         window: 5s
@@ -34,6 +45,16 @@ services:
     volumes:
       # Shared files between deployments
       - source_uploads:/var/www/html/public/uploads # For example, files uploaded by users
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 5s
 
 volumes:
   source_uploads:
