@@ -31,7 +31,7 @@ services:
       - "443:443"
       - "443:443/udp"
     healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost || exit 1
+      test: wget --no-verbose --tries=1 --spider http://localhost:2019/metrics || exit 1
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
