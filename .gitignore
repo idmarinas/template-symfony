@@ -1,5 +1,7 @@
 ###> idmarinas/template-symfony ###
 **/*.dist
+.deployer/*.tar
+.deployer/.storage/*
 /build/
 /node_modules/
 /.env.docker
