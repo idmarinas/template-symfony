@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/07/2025, 19:33
+ * Last modified by "IDMarinas" on 14/09/2025, 18:37
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -31,7 +31,7 @@ return [
 	Symfony\Bundle\MonologBundle\MonologBundle::class                 => ['all' => true],
 	Symfony\Bundle\MakerBundle\MakerBundle::class                     => ['dev' => true],
 	Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class      => ['dev' => true, 'test' => true],
-	Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class     => ['dev' => true],
+	Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class     => ['all' => true],
 	Zenstruck\Foundry\ZenstruckFoundryBundle::class                   => ['dev' => true, 'test' => true],
 	DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class             => ['test' => true],
 	Symfony\UX\TwigComponent\TwigComponentBundle::class               => ['all' => true],

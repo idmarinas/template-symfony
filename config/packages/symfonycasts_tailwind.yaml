@@ -1,14 +1,13 @@
-when@dev:
-    symfonycasts_tailwind:
-        # Specify the EXACT version of Tailwind CSS you want to use
-        binary_version: 'v4.1.11'
-        input_css:
-            # APP Default:
-            - '%kernel.project_dir%/assets/styles/app.css'
-            # Web:
-            - '%kernel.project_dir%/apps/web/assets/styles/web.css'
-            # Others
-            - '%kernel.project_dir%/assets/entries/error_exception/error_exception.css'
+symfonycasts_tailwind:
+    # Specify the EXACT version of Tailwind CSS you want to use
+    binary_version: 'v4.1.12'
+    input_css:
+        # APP Default:
+        - '%kernel.project_dir%/assets/styles/app.css'
+        # Web:
+        - '%kernel.project_dir%/apps/web/assets/styles/web.css'
+        # Others
+        - '%kernel.project_dir%/assets/entries/error_exception/error_exception.css'
 
-        # Alternatively, you can specify the path to the binary that you manage yourself
-        #binary: 'node_modules/.bin/tailwindcss'
+    # Alternatively, you can specify the path to the binary that you manage yourself
+    #binary: 'node_modules/.bin/tailwindcss'
