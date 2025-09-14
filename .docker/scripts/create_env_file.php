@@ -1,9 +1,8 @@
 <?php
-
 /**
  * Copyright 2024-2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "idmarinas" on 19/06/2025, 17:42
+ * Last modified by "IDMarinas" on 14/09/2025, 12:25
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -18,7 +17,6 @@
  * @since   1.0.0
  */
 
-// TODO: trasladar a composer-plugin
 // Incluye el archivo de configuración
 $dir = dirname(__DIR__, 2);
 $config = include "$dir/.env.local.php";
