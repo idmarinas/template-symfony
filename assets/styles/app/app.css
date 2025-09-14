@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/08/2025, 17:05
+ * Last modified by "IDMarinas" on 14/09/2025, 16:21
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -28,4 +28,5 @@
 /***********
  * Sources *
  ***********/
-@source '../../templates/**/*.html.twig';
+@source '../../../templates/**/*.html.twig';
+@source not '../../../templates/bundles/TwigBundle/**/*.html.twig';

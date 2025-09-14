@@ -1,12 +1,12 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 05/03/2025, 14:11
+ * Last modified by "IDMarinas" on 14/09/2025, 16:19
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
  *
- * @file index.js
+ * @file exception_error.js
  * @date 05/03/2025
  * @time 12:26
  *
@@ -16,4 +16,4 @@
  * @since 1.0.0
  */
 
-import './error_exception.css';
+import './styles/exception_error.css';

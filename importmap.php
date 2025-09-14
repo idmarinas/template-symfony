@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/08/2025, 16:19
+ * Last modified by "IDMarinas" on 14/09/2025, 16:21
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -31,6 +31,10 @@
 return [
 	'app'                               => [
 		'path'       => './assets/app.js',
+		'entrypoint' => true,
+	],
+	'exception_error'                   => [
+		'path'       => './assets/exception_error.js',
 		'entrypoint' => true,
 	],
 	'web'                               => [
