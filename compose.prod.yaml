@@ -29,7 +29,7 @@ services:
         window: 5s
 
   messenger_worker_async:
-    image: idmarinas/template_symfony:${APP_VERSION}
+    image: idmarinas/template-symfony:${APP_VERSION}
     entrypoint: '/usr/local/bin/msn_async_entrypoint.sh'
     restart: always
     healthcheck:
@@ -47,7 +47,7 @@ services:
 
 
   messenger_worker_scheduler:
-    image: idmarinas/template_symfony:${APP_VERSION}
+    image: idmarinas/template-symfony:${APP_VERSION}
     entrypoint: '/usr/local/bin/msn_scheduler_entrypoint.sh'
     restart: always
     healthcheck:

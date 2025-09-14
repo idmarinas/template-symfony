@@ -19,5 +19,5 @@ Write-Host "DEV Building Docker Imagen" -BackgroundColor Red
 Write-Host "$appTitle" -BackgroundColor Green
 Write-Host "Tag: $appVersion" -BackgroundColor Blue
 
-docker build --target dev -f .docker/Dockerfile -t "idmarinas/template_symfony:$appVersion-dev" .
+docker build --target dev -f .docker/Dockerfile -t "idmarinas/template-symfony:$appVersion-dev" .
 docker image prune -f

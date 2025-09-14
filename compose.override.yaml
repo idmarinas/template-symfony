@@ -25,7 +25,7 @@ services:
 
   webserver:
     restart: no
-    image: idmarinas/template_symfony:${APP_VERSION}-dev
+    image: idmarinas/template-symfony:${APP_VERSION}-dev
     privileged: true
     volumes:
       - ./:/app
