@@ -4,3 +4,19 @@
 	trusted_proxies_strict
 	client_ip_headers CF-Connecting-IP
 }
+
+(a-maintenance) {
+	@maintenance file /maintenance.flag {
+    root /app
+  }
+
+  error @maintenance 503
+  handle_errors {
+    root * /app/var/cache/error_pages
+    rewrite * /{err.status_code}.html
+    templates {
+        root /app
+    }
+    file_server
+  }
+}
