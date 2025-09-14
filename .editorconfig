@@ -41,6 +41,7 @@ indent_style             = space
 insert_final_newline     = false
 trim_trailing_whitespace = false
 
+# Configuration for yaml config files
 [{config,**/config}/**/*.{yaml,yml}]
 indent_style = space
 indent_size  = 4
