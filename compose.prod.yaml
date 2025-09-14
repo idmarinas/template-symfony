@@ -1,60 +1,70 @@
 services:
-  deploy:
-    deploy:
-      resources:
-        limits:
-          cpus: '0.3'
-          memory: 350M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 10
-        window: 5s
-
   database:
     restart: always
     deploy:
       resources:
         limits:
           cpus: '0.5'
-          memory: 500M
+          memory: 600M
       restart_policy:
         condition: on-failure
         delay: 5s
         max_attempts: 10
         window: 5s
 
-  caddy:
+  webserver:
     restart: always
     volumes:
       # Shared files between deployments
-      - source_uploads:/srv/public/uploads # For example, files uploaded by users
+      - source_uploads:/app/public/uploads # For example, files uploaded by users
     deploy:
       resources:
         limits:
           cpus: '0.5'
-          memory: 500M
+          memory: 400M
       restart_policy:
         condition: on-failure
         delay: 5s
         max_attempts: 10
         window: 5s
 
-  php:
+  messenger_worker_async:
+    image: idmarinas/template_symfony:${APP_VERSION}
+    entrypoint: '/usr/local/bin/msn_async_entrypoint.sh'
     restart: always
-    volumes:
-      # Shared files between deployments
-      - source_uploads:/var/www/html/public/uploads # For example, files uploaded by users
+    healthcheck:
+      test: [ "CMD", "php", "bin/console", "about" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - database
     deploy:
       resources:
         limits:
           cpus: '0.5'
-          memory: 500M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 10
-        window: 5s
+          memory: 128M
+
+
+  messenger_worker_scheduler:
+    image: idmarinas/template_symfony:${APP_VERSION}
+    entrypoint: '/usr/local/bin/msn_scheduler_entrypoint.sh'
+    restart: always
+    healthcheck:
+      test: [ "CMD", "php", "bin/console", "about" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - scheduler_cache:/app/var/scheduler
+    depends_on:
+      - database
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
 
 volumes:
   source_uploads:
+  scheduler_cache:

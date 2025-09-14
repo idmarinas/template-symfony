@@ -1,7 +1,9 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    restart: on-failure
+    restart: no
+    ports:
+      - "13306:3306"
     environment:
       MARIADB_DATABASE: ${DATABASE_NAME}_dev
       MARIADB_USER: ${DATABASE_USER}_dev
@@ -10,7 +12,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   database_test:
-    restart: on-failure
+    restart: no
     extends:
       file: compose.yaml
       service: database
@@ -21,32 +23,23 @@ services:
     volumes:
       - database_data_test:/var/lib/mysql
 
-  caddy:
-    restart: on-failure
+  webserver:
+    restart: no
+    image: idmarinas/template_symfony:${APP_VERSION}-dev
+    privileged: true
     volumes:
-      # Global config
-      - .docker/caddy/globals/dev.Caddyfile:/etc/caddy/globals/Caddyfile:ro
-      # Snippets
-      - .docker/caddy/snippets/dev.Caddyfile:/etc/caddy/snippets/Caddyfile:ro
-    tty: true
-    depends_on: !override
-      - php
-      - database
-      - database_test
-
-  php:
-    restart: on-failure
-    image: idmarinas/php:8.4-xdebug
-    expose:
-      - 9000
-    volumes:
-      - ./.docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
+      - ./:/app
+      - docker_dev_data:/var/lib/docker
       ## SSH
       - ssh_key:/root/.ssh
+    depends_on: !override
+      - database
+      - database_test
+      - mailer
 
   ###> symfony/mailer ###
   mailer:
-    restart: on-failure
+    restart: no
     image: axllent/mailpit
     ports:
       - "1025"
@@ -59,5 +52,6 @@ services:
 volumes:
   database_data_dev:
   database_data_test:
+  docker_dev_data:
   ssh_key:
     external: true

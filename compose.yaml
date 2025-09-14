@@ -4,8 +4,6 @@ services:
   ###> doctrine/doctrine-bundle ###
   database:
     image: mariadb:${DATABASE_VERSION_NUMBER}
-    ports:
-      - "13306:3306"
     environment:
       MARIADB_AUTO_UPGRADE: true
       MARIADB_DATABASE: ${DATABASE_NAME}
@@ -24,46 +22,24 @@ services:
       - db_password
   ###< doctrine/doctrine-bundle ###
 
-  caddy:
-    image: idmarinas/caddy:2.10
+  webserver:
+    image: idmarinas/template-symfony:${APP_VERSION}
     ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:2019/metrics || exit 1
+      - "80:80" # HTTP
+      - "443:443" # HTTPS
+      - "443:443/udp" # HTTP/3
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
     volumes:
-      # Project files
-      - ./:/srv
-      # Global config
-      - .docker/caddy/globals/prod.Caddyfile:/etc/caddy/globals/Caddyfile:ro
-      # Config
-      - .docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      # Snippets
-      - .docker/caddy/snippets/sites.Caddyfile:/etc/caddy/snippets/sites.Caddyfile:ro
-      - .docker/caddy/snippets/prod.Caddyfile:/etc/caddy/snippets/Caddyfile:ro
-      # Sites
-      - .docker/caddy/sites:/etc/caddy/sites:ro
       # Named volumes for /data and /config to persist important information.
       - caddy_data:/data
       - caddy_config:/config
     secrets:
       - cloudflare_api_token
+    tty: true
     depends_on:
-      - php
       - database
-
-  php:
-    image: idmarinas/php:8.4
-    healthcheck:
-      test: php -v || exit 1
-    volumes:
-      - ./:/var/www/html
-      ## PHP Conf
-      - ./.docker/php/conf.d/date_timezone.ini:/usr/local/etc/php/conf.d/date_timezone.ini:ro
 
 volumes:
   caddy_data:
