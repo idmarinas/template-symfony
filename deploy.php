@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/07/2025, 20:01
+ * Last modified by "IDMarinas" on 14/09/2025, 11:55
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -16,8 +16,6 @@
  *
  * @since   1.0.0
  */
-
-/** @noinspection PhpUnhandledExceptionInspection */
 
 /*
  * TODO: updating the database
