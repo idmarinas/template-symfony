@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 05/03/2025, 11:46
+ * Last modified by "IDMarinas" on 14/09/2025, 11:32
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -17,27 +17,24 @@
  * @since   1.0.0
  */
 
-/** @noinspection PhpUnhandledExceptionInspection */
-
 namespace Deployer;
 
 import('recipe/common.php');
 
 desc('Upload files to server');
 task('deploy:upload_files', function () {
-	writeln('<info>Uploading files to {{local_prod_text}} server...</info>');
-	upload('./', '{{release_path}}', [
-		'flags'   => '-azPh',
-		'options' => [
-			'--include=.env.local.php',
-			'--exclude-from=.deployer/exclude_files',
-			'--bwlimit=4096',
-			'--chmod=D770,F664',
-		],
-	]);
+    writeln('<fg=blue>Subiendo archivos a {{text_prod}}...</>');
+    upload('./', '{{release_path}}', [
+        'flags'   => '-azPh',
+        'options' => [
+            '--include=compose.yaml',
+            '--include=compose.prod.yaml',
+            '--exclude=**/*',
+            '--chmod=F440',
+        ],
+    ]);
+    writeln('<fg=blue>Subiendo idmarinas_pfc_{{app_version}}.tar a {{text_prod}}...</>');
+    upload('./.deployer/idmarinas_pfc_{{app_version}}.tar', '{{release_path}}', [
+        'options' => ['--chmod=F750'],
+    ]);
 });
-// Disable deploy:update_code and add deploy:upload_files
-task('deploy:update_code')
-	->disable()
-	->addBefore('deploy:upload_files')
-;
