@@ -2,5 +2,8 @@
 	import a-common blog
 	import a-headers
 
-	import a-php blog
+	import a-maintenance
+	php_server {
+		env APP_ID blog
+	}
 }

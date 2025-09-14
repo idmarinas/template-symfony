@@ -2,5 +2,8 @@
 	import a-common forum
 	import a-headers
 
-	import a-php forum
+	import a-maintenance
+	php_server {
+		env APP_ID forum
+	}
 }

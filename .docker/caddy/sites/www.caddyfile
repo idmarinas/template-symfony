@@ -6,5 +6,8 @@
 	import a-common www
 	import a-headers
 
-	import a-php web
+	import a-maintenance
+	php_server {
+		env APP_ID web
+	}
 }
