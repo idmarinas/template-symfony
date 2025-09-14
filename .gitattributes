@@ -1,13 +1,10 @@
 * text=lf
 
-
 .idea/ merge=ours
-.gitattributes merge=ours
 composer.json merge=ours
 composer.lock merge=ours
+.gitattributes merge=ours
 symfony.lock merge=ours
-package.json merge=ours
-package-lock.json merge=ours
 README.md merge=ours
 TODO.md merge=ours
 TIPS.md merge=ours
