@@ -101,8 +101,7 @@
 			"Admin\\": "apps/admin/src",
 			"Api\\": "apps/api/src",
 			"Blog\\": "apps/blog/src",
-			"Cron\\": "apps/cron/src",
-			"Forum\\": "apps/cron/src",
+			"Forum\\": "apps/forum/src",
 			"Web\\": "apps/web/src"
 		}
 	},
@@ -112,7 +111,6 @@
 			"Admin\\Tests\\": "apps/admin/tests",
 			"Api\\Tests\\": "apps/api/tests",
 			"Blog\\Tests\\": "apps/blog/tests",
-			"Cron\\Tests\\": "apps/cron/tests",
 			"Forum\\Tests\\": "apps/forum/tests",
 			"Web\\Tests\\": "apps/web/tests",
 			"DataFixtures\\": "fixtures/",
@@ -124,13 +122,11 @@
 			"cache:clear -iadmin": "symfony-cmd",
 			"cache:clear -iapi": "symfony-cmd",
 			"cache:clear -iblog": "symfony-cmd",
-			"cache:clear -icron": "symfony-cmd",
 			"cache:clear -iforum": "symfony-cmd",
 			"cache:clear -iweb": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iadmin --no-cleanup": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iapi --no-cleanup": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iblog --no-cleanup": "symfony-cmd",
-			"assets:install %PUBLIC_DIR% -icron --no-cleanup": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iforum --no-cleanup": "symfony-cmd",
 			"assets:install %PUBLIC_DIR% -iweb --no-cleanup": "symfony-cmd",
 			"importmap:install": "symfony-cmd"
