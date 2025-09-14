@@ -3,20 +3,26 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="Core\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Core\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/apps/admin/src" isTestSource="false" packagePrefix="Admin\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/admin/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/apps/admin/tests" isTestSource="true" packagePrefix="Admin\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/apps/web/src" isTestSource="false" packagePrefix="Web\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/web/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/apps/web/tests" isTestSource="true" packagePrefix="Web\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/apps/api/src" isTestSource="false" packagePrefix="Api\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/api/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/apps/api/tests" isTestSource="true" packagePrefix="Api\Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/cron/src" isTestSource="false" packagePrefix="Cron\" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/cron/tests" isTestSource="true" packagePrefix="Cron\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/cron/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/apps/blog/src" isTestSource="false" packagePrefix="Blog\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/blog/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/apps/blog/tests" isTestSource="true" packagePrefix="Blog\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/forum/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/apps/forum/tests" isTestSource="true" packagePrefix="Forum\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/factories" isTestSource="true" packagePrefix="Factory\" />
       <sourceFolder url="file://$MODULE_DIR$/fixtures" isTestSource="true" packagePrefix="DataFixtures\" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/forum/src" isTestSource="false" packagePrefix="Forum\" />
       <excludeFolder url="file://$MODULE_DIR$/assets/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/var" />
       <excludeFolder url="file://$MODULE_DIR$/vendor" />
