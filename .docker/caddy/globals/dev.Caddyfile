@@ -3,5 +3,3 @@ debug
 metrics
 
 persist_config off
-
-auto_https disable_redirects
