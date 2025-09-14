@@ -3,9 +3,22 @@
     <deployment type="docker-compose.yml">
       <settings>
         <option name="envFilePath" value="F:\Projects\template-symfony\.env.docker" />
+        <option name="envFilePaths">
+          <list>
+            <option value="F:\Projects\template-symfony\.env.docker" />
+          </list>
+        </option>
         <option name="secondarySourceFiles">
           <list>
             <option value="compose.override.yaml" />
+          </list>
+        </option>
+        <option name="services">
+          <list>
+            <option value="database" />
+            <option value="database_test" />
+            <option value="mailer" />
+            <option value="webserver" />
           </list>
         </option>
         <option name="sourceFilePath" value="compose.yaml" />
