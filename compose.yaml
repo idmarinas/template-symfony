@@ -24,10 +24,6 @@ services:
 
   webserver:
     image: idmarinas/template-symfony:${APP_VERSION}
-    ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "443:443/udp" # HTTP/3
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
@@ -40,6 +36,27 @@ services:
     tty: true
     depends_on:
       - database
+    networks:
+      - proxy
+      - default
+    labels:
+      - "traefik.enable=true"
+      # Main web
+      - "traefik.tcp.routers.template-symfony.rule=HostSNI(`${APP_SERVER_NAME}`)"
+      - "traefik.tcp.routers.template-symfony.service=template-symfony"
+      - "traefik.tcp.routers.template-symfony.entrypoints=web,websecure"
+      - "traefik.tcp.services.template-symfony.loadbalancer.server.port=443"
+      - "traefik.tcp.routers.template-symfony.tls=true"
+      - "traefik.tcp.routers.template-symfony.tls.passthrough=true"
+      - "traefik.tcp.routers.template-symfony.priority=1"
+      # WWW (redirect)
+      - "traefik.tcp.routers.template-symfony-www.rule=HostSNI(`www.${APP_SERVER_NAME}`)"
+      - "traefik.tcp.routers.template-symfony-www.service=template-symfony-www"
+      - "traefik.tcp.routers.template-symfony-www.entrypoints=web,websecure"
+      - "traefik.tcp.services.template-symfony-www.loadbalancer.server.port=443"
+      - "traefik.tcp.routers.template-symfony-www.tls=true"
+      - "traefik.tcp.routers.template-symfony-www.tls.passthrough=true"
+      - "traefik.tcp.routers.template-symfony-www.priority=2"
 
 volumes:
   caddy_data:
@@ -53,3 +70,7 @@ secrets:
     environment: DATABASE_PASSWORD
   cloudflare_api_token:
     environment: CLOUDFLARE_API_TOKEN
+
+networks:
+  proxy:
+    external: true
