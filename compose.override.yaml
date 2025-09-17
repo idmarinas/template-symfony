@@ -32,10 +32,7 @@ services:
       - docker_dev_data:/var/lib/docker
       ## SSH
       - ssh_key:/root/.ssh
-    depends_on: !override
-      - database
-      - database_test
-      - mailer
+    depends_on: !reset [ ]
 
   ###> symfony/mailer ###
   mailer:
