@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 16:18
+ * Last modified by "IDMarinas" on 24/09/2025, 16:27
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -24,6 +24,7 @@ import('recipe/common.php');
 set('local/storage/backup', '.deployer/.storage/{{app/version}}');
 set('docker:volumes', [
 	'Public Uploads' => '{{docker/project_name}}_source_uploads',
+	'Database Data'  => '{{docker/project_name}}_database_data',
 ]);
 
 //
