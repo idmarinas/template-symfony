@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/09/2025, 12:12
+ * Last modified by "IDMarinas" on 24/09/2025, 12:29
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -37,26 +37,26 @@ import(__DIR__ . '/.deployer/task/download_files.php');
 //
 // Config
 //
-set('project_name', 'IDMarinas Template Symfony');
+set('project_name', $_ENV['APP_TITLE'] ?? 'Your Project Name');
 set('user', 'idmarinas');
 // Release number
 set('release_name', fn() => within('{{deploy_path}}', function () {
-    $latest = run('cat .dep/latest_release || echo 0');
+	$latest = run('cat .dep/latest_release || echo 0');
 
-    return str_pad(strval(intval($latest) + 1), 10, '0', STR_PAD_LEFT);
+	return str_pad(strval(intval($latest) + 1), 10, '0', STR_PAD_LEFT);
 }));
 set('keep_releases', 5);
 set('what', get('project_name'));
-set('app_version', $_ENV['APP_VERSION'] ?? '0.0.0');
 set('cleanup_use_sudo', true);
-set('docker_services_to_start', 'webserver database '); // messenger_worker_scheduler messenger_worker_async
-set('msn_workers_container_names', [
-//    'Worker Async' => 'template_symfony-messenger_worker_async-1',
-//    'Worker Scheduler' => 'template_symfony-messenger_worker_scheduler-1',
-]);
+
+//
+// Project Config
+//
+set('app/version', $_ENV['APP_VERSION'] ?? '0.0.0');
+set('docker/project_name', 'template_symfony');
 
 // Path to the bin *.
-set('bin/webserver', 'docker exec template_symfony-webserver-1');
+set('bin/webserver', 'docker exec {{docker/project_name}}-webserver-1');
 set('bin/php', '{{bin/webserver}} php');
 set('bin/composer', '{{bin/webserver}} composer');
 set('bin/console', '{{bin/php}} bin/console');
@@ -68,42 +68,42 @@ set('http_group', 'www-data');
 // Hosts
 //
 host('sN.production')
-    ->setHostname('1.1.1.1')
-    ->setPort(22)
-    ->setRemoteUser('username')
-    ->setDeployPath('/var/www/html')
-    ->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server'])
+	->setHostname('1.1.1.1')
+	->setPort(22)
+	->setRemoteUser('username')
+	->setDeployPath('/var/www/html')
+	->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server'])
 ;
 
 //
 // Deploy Task - Upload a new version
 //
 task('deploy', [
-    'deploy:prepare',
-    'download:backups',
-    'deploy:upload_files',
-    'docker:image:load',
-    'docker:copy:env_docker',
-    'deploy:symfony:workers:stop',
-    'docker:container:start',
-    'doctrine:migrations',
-    //    'deploy:env',
-    //    'deploy:shared',
-    //    'deploy:writable',
-    'deploy:publish',
+	'deploy:prepare',
+	'download:backups',
+	'deploy:upload_files',
+	'docker:image:load',
+	'docker:copy:env_docker',
+	'deploy:symfony:workers:stop',
+	'docker:container:start',
+	'doctrine:migrations',
+	//    'deploy:env',
+	//    'deploy:shared',
+	//    'deploy:writable',
+	'deploy:publish',
 ]);
 
 task('deploy:prepare', [
-    'deploy:info',
-    'deploy:setup',
-    'deploy:lock',
-    'deploy:release',
-    'docker:image:build',
+	'deploy:info',
+	'deploy:setup',
+	'deploy:lock',
+	'deploy:release',
+	'docker:image:build',
 ]);
 task('deploy:publish', [
-    'deploy:symlink',
-    'deploy:unlock',
-    'maintenance:off',
-    'deploy:cleanup',
-    'deploy:success',
+	'deploy:symlink',
+	'deploy:unlock',
+	'maintenance:off',
+	'deploy:cleanup',
+	'deploy:success',
 ]);
