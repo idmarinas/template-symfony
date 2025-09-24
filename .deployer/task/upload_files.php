@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 12:22
+ * Last modified by "IDMarinas" on 24/09/2025, 16:31
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -33,8 +33,8 @@ task('deploy:upload_files', function () {
 			'--chmod=F440',
 		],
 	]);
-	writeln('<fg=blue>Subiendo idmarinas_pfc_{{app/version}}.tar a {{text_prod}}...</>');
-	upload('./.deployer/idmarinas_pfc_{{app/version}}.tar', '{{release_path}}', [
+	writeln('<fg=blue>Subiendo {{docker/image/tar}} a {{text_prod}}...</>');
+	upload('./.deployer/{{docker/image/tar}}', '{{release_path}}', [
 		'options' => ['--chmod=F750'],
 	]);
 });
