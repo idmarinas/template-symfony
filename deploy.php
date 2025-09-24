@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 12:29
+ * Last modified by "IDMarinas" on 24/09/2025, 16:32
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -24,7 +24,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\Dotenv\Dotenv;
 
 // Obtener las variables .env en $_ENV
-new Dotenv()->bootEnv(__DIR__ . '/.env');
+new Dotenv()->loadEnv(__DIR__ . '/.env');
 
 import(__DIR__ . '/.deployer/common_text_vars.php');
 import(__DIR__ . '/.deployer/task/docker.php');
