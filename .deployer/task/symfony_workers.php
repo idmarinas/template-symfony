@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/09/2025, 11:32
+ * Last modified by "IDMarinas" on 24/09/2025, 12:31
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -21,32 +21,31 @@ namespace Deployer;
 
 import('recipe/common.php');
 
-set('msn_workers_container_names', [
-    'Messenger Worker Async'     => 'pfc-messenger_worker_async-1',
-    'Messenger Worker Scheduler' => 'pfc-messenger_worker_scheduler-1',
+set('symfony/workers/names', [
+	'Messenger Worker Async'     => '{{docker/project_name}}-messenger_worker_async-1',
+	'Messenger Worker Scheduler' => '{{docker/project_name}}-messenger_worker_scheduler-1',
 ]);
 
 //
 // Tasks
 //
-
-desc();
+desc('Detener y borrar los contenedores workers para recrearlos');
 task('deploy:symfony:workers:stop', function () {
-    writeln('<info>Deteniendo y borrando los contenedores workers</>');
+	writeln('<info>Deteniendo y borrando los contenedores workers</>');
 
-    $workers = get('msn_workers_container_names');
+	$workers = get('symfony/workers/names');
 
-    foreach ($workers as $name => $worker) {
-        if (test('[ -n "$(docker ps -q --filter name=' . $worker . ')" ]')) {
-            writeln("<info>Deteniendo worker y Borrando contenedor: <options=bold>$name</></info>");
-            run("docker exec $worker php bin/console messenger:stop-workers");
-            run("docker wait $worker");
-            run("docker rm -f $worker");
-        } elseif (test('[ -n "$(docker ps -aq --filter name=' . $worker . ')" ]')) {
-            writeln("<fg=yellow>El worker <options=bold>$name</> no está funcionando se borra el contenedor.</>");
-            run("docker rm -f $worker");
-        } else {
-            writeln("<fg=red>El worker <options=bold>$name</> no tiene un contenedor asociado.</>");
-        }
-    }
+	foreach ($workers as $name => $worker) {
+		if (test('[ -n "$(docker ps -q --filter name=' . $worker . ')" ]')) {
+			writeln("<info>Deteniendo worker y Borrando contenedor: <options=bold>$name</></info>");
+			run("docker exec $worker php bin/console messenger:stop-workers");
+			run("docker wait $worker");
+			run("docker rm -f $worker");
+		} elseif (test('[ -n "$(docker ps -aq --filter name=' . $worker . ')" ]')) {
+			writeln("<fg=yellow>El worker <options=bold>$name</> no está funcionando se borra el contenedor.</>");
+			run("docker rm -f $worker");
+		} else {
+			writeln("<fg=red>El worker <options=bold>$name</> no tiene un contenedor asociado.</>");
+		}
+	}
 });
