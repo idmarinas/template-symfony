@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/09/2025, 11:32
+ * Last modified by "IDMarinas" on 24/09/2025, 16:18
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -21,37 +21,45 @@ namespace Deployer;
 
 import('recipe/common.php');
 
-set('storage_backup', '.deployer/.storage/{{app_version}}');
-
-/*
- * descargar volúmenes Docker como copia de seguridad
- * También los logs del contenedor, que no están en un volumen
- */
+set('local/storage/backup', '.deployer/.storage/{{app/version}}');
+set('docker:volumes', [
+	'Public Uploads' => '{{docker/project_name}}_source_uploads',
+]);
 
 //
 // Task
 //
 desc('Descargar los archivos logs del contenedor web.');
 task('download:backups:logs', function () {
-    writeln('<info>Descargando los archivos logs del contenedor web a <fg=blue>{{storage_backup}}</>.</>');
+	writeln('<info>Descargando los archivos logs del contenedor web a <fg=blue>{{local/storage/backup}}</>.</>');
 
-    run('mkdir -p {{deploy_path}}/backups');
-    run('docker cp pfc-webserver-1:/app/var/log {{deploy_path}}/backups');
-    download('{{deploy_path}}/backups/log', '{{storage_backup}}');
-    run('rm -r {{deploy_path}}/backups/log');
+	run('mkdir -p {{deploy_path}}/backups');
+
+	if (test('[ -d docker cp {{docker/project_name}}-webserver-1:/app/var/log ]')) {
+		run('docker cp {{docker/project_name}}-webserver-1:/app/var/log {{deploy_path}}/backups');
+		download('{{deploy_path}}/backups/log', '{{local/storage/backup}}');
+		run('rm -r {{deploy_path}}/backups/log');
+	}
 });
 
-desc('Descargar una copia de subidas "uploads".');
-task('download:backups:uploads', function () {
-    writeln('<info>Descargando una copia de los archivos en subidas "uploads" a <fg=blue>{{storage_backup}}</>.</>');
+desc('Descargar una copia de los volúmenes Docker.');
+task('download:backups:volume', function () {
+	writeln('<info>Descargando una copia de los volúmenes Docker.</>');
+	$volumes = get('docker:volumes');
 
-    run(
-        'docker run --rm -v pfc_source_uploads:/volume debian:stable-slim \
-                    tar -cz -C /volume . > {{deploy_path}}/backups/pfc_source_uploads_backup.tar.gz'
-    );
-    run('mkdir -p {{deploy_path}}/backups');
-    download('{{deploy_path}}/backups/pfc_source_uploads_backup.tar.gz', '{{storage_backup}}');
-    run('rm -r {{deploy_path}}/backups/pfc_source_uploads_backup.tar.gz');
+	foreach ($volumes as $name => $volume) {
+		writeln("<info>Descargando una copia del volumen '$name' a <fg=blue>{{local/storage/backup}}</>.</>");
+		$file = parse('{{$volume}}_backup.tar.gz');
+
+		if (test('[ -n "$(docker volume ls -q --filter name=' . $volume . ')" ]')) {
+			run("docker run --rm -v $volume:/volume debian:stable-slim tar -cz -C /volume . > {{deploy_path}}/backups/$file");
+			run('mkdir -p {{deploy_path}}/backups');
+			download("{{deploy_path}}/backups/$file", '{{local/storage/backup}}');
+			run("rm -r {{deploy_path}}/backups/$file");
+		} else {
+			writeln("<fg=red>El volumen $name: $volume no existe.</>");
+		}
+	}
 });
 
 task('download:backups', ['download:backups:logs', 'download:backups:uploads']);
