@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 16:27
+ * Last modified by "IDMarinas" on 25/09/2025, 12:11
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -22,7 +22,7 @@ namespace Deployer;
 import('recipe/common.php');
 
 set('local/storage/backup', '.deployer/.storage/{{app/version}}');
-set('docker:volumes', [
+set('docker/volumes', [
 	'Public Uploads' => '{{docker/project_name}}_source_uploads',
 	'Database Data'  => '{{docker/project_name}}_database_data',
 ]);
@@ -46,7 +46,7 @@ task('download:backups:logs', function () {
 desc('Descargar una copia de los volúmenes Docker.');
 task('download:backups:volume', function () {
 	writeln('<info>Descargando una copia de los volúmenes Docker.</>');
-	$volumes = get('docker:volumes');
+	$volumes = get('docker/volumes');
 
 	foreach ($volumes as $name => $volume) {
 		writeln("<info>Descargando una copia del volumen '$name' a <fg=blue>{{local/storage/backup}}</>.</>");
