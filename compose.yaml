@@ -1,4 +1,4 @@
-name: template_symfony
+name: ${APP_PROJECT_NAME}
 
 services:
   ###> doctrine/doctrine-bundle ###
@@ -23,7 +23,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   webserver:
-    image: idmarinas/template-symfony:${APP_VERSION}
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token

@@ -25,7 +25,7 @@ services:
 
   webserver:
     restart: no
-    image: idmarinas/template-symfony:${APP_VERSION}-dev
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-dev
     privileged: true
     volumes:
       - ./:/app
@@ -45,6 +45,16 @@ services:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
   ###< symfony/mailer ###
+
+  # Used initially to generate the .env.docker file.
+  php:
+    image: idmarinas/php:8.4-xdebug
+    healthcheck:
+      test: php -v || exit 1
+    volumes:
+      - ./:/var/www/html
+      ## SSH
+      - ssh_key:/root/.ssh
 
 volumes:
   database_data_dev:

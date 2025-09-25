@@ -14,10 +14,11 @@ function Get-Env
 
 $appVersion = Get-Env -VarName "APP_VERSION"
 $appTitle = Get-Env -VarName "APP_TITLE"
+$projectName = Get-Env -VarName "APP_PROJECT_NAME"
 
 Write-Host "DEV Building Docker Imagen" -BackgroundColor Red
 Write-Host "$appTitle" -BackgroundColor Green
 Write-Host "Tag: $appVersion" -BackgroundColor Blue
 
-docker build --target dev -f .docker/Dockerfile -t "idmarinas/template-symfony:$appVersion-dev" .
+docker build --target dev -f .docker/Dockerfile -t "idmarinas/${projectName}:$appVersion-dev" .
 docker image prune -f

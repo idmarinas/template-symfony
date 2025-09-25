@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 16:32
+ * Last modified by "IDMarinas" on 25/09/2025, 11:51
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -53,7 +53,7 @@ set('cleanup_use_sudo', true);
 // Project Config
 //
 set('app/version', $_ENV['APP_VERSION'] ?? '0.0.0');
-set('docker/project_name', 'template_symfony');
+set('docker/project_name', $_ENV['APP_PROJECT_NAME'] ?? 'your_project_name');
 
 // Path to the bin *.
 set('bin/webserver', 'docker exec {{docker/project_name}}-webserver-1');
