@@ -40,15 +40,15 @@ services:
       - proxy
       - default
     labels:
-      traefik.enable: true
-      # Main web
-      traefik.tcp.routers.template-symfony.rule: HostSNI(`${APP_SERVER_NAME}`) || HostSNI(`www.${APP_SERVER_NAME}`)
-      traefik.tcp.routers.template-symfony.service: template-symfony
-      traefik.tcp.routers.template-symfony.entrypoints: web,websecure
-      traefik.tcp.services.template-symfony.loadbalancer.server.port: 443
-      traefik.tcp.routers.template-symfony.tls: true
-      traefik.tcp.routers.template-symfony.tls.passthrough: true
-      traefik.tcp.routers.template-symfony.priority: 20
+      - 'traefik.enable=true'
+      # Main web and subdomains
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.rule=HostSNI(`${APP_SERVER_NAME}`) || HostSNI(`www.${APP_SERVER_NAME}`)'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.service=${APP_PROJECT_NAME}'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.entrypoints=web,websecure'
+      - 'traefik.tcp.services.${APP_PROJECT_NAME}.loadbalancer.server.port=443'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.tls=true'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.tls.passthrough=true'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.priority=20'
 
 volumes:
   caddy_data:
