@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/09/2025, 12:11
+ * Last modified by "IDMarinas" on 26/09/2025, 13:38
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -47,22 +47,28 @@ task('download:backups:logs', function () {
 
 desc('Descargar una copia de los volúmenes Docker.');
 task('download:backups:volume', function () {
-	writeln('<info>Descargando una copia de los volúmenes Docker.</>');
+	writeln('<info>Creando una copia de los volúmenes Docker.</>');
 	$volumes = get('docker/volumes');
+	$backupVolumes = '{{deploy_path}}/backups/volumes';
+
+	run("mkdir -p $backupVolumes");
 
 	foreach ($volumes as $name => $volume) {
-		writeln("<info>Descargando una copia del volumen '$name' a <fg=blue>{{local/storage/backup}}</>.</>");
-		$file = parse('{{$volume}}_backup.tar.gz');
+		writeln("<info>Creando copia del volumen '$name'.</>");
+		$file = parse("{$volume}_backup.tar.gz");
 
 		if (test('[ -n "$(docker volume ls -q --filter name=' . $volume . ')" ]')) {
-			run("docker run --rm -v $volume:/volume debian:stable-slim tar -cz -C /volume . > {{deploy_path}}/backups/$file");
-			run('mkdir -p {{deploy_path}}/backups');
-			download("{{deploy_path}}/backups/$file", '{{local/storage/backup}}');
-			run("rm -r {{deploy_path}}/backups/$file");
+			run("docker run --rm -v $volume:/volume debian:stable-slim tar -cz -C /volume . > $backupVolumes/$file");
 		} else {
 			writeln("<fg=red>El volumen $name: $volume no existe.</>");
 		}
 	}
+
+	writeln('Descargando las copias de volúmenes a <fg=blue>{{local/storage/backup}}/volumes</>');
+	// Se descargan los volúmenes
+	download('{{deploy_path}}/backups/volumes/', '{{local/storage/backup}}/volumes/', ['options' => ['--mkpath']]);
+	// Borrar el directorio "volumes" una vez descargados los archivos
+	run('rm -r {{deploy_path}}/backups/volumes');
 });
 
-task('download:backups', ['download:backups:logs', 'download:backups:uploads']);
+task('download:backups', ['download:backups:logs', 'download:backups:volume']);
