@@ -44,7 +44,6 @@ RUN install-php-extensions \
 ###< recipes ###
 
 # Caddy config files
-COPY --link ./.docker/caddy/Caddyfile /etc/frankenphp/Caddyfile
 COPY --link ./.docker/caddy/sites /etc/frankenphp/sites
 COPY --link ./.docker/caddy/snippets/sites.caddyfile /etc/frankenphp/snippets/sites.caddyfile
 
@@ -73,8 +72,7 @@ WORKDIR /app
 RUN install-php-extensions xdebug
 
 # Caddy config files
-COPY --link ./.docker/caddy/snippets/dev.caddyfile /etc/frankenphp/snippets/Caddyfile
-COPY --link ./.docker/caddy/globals/dev.caddyfile /etc/frankenphp/globals/Caddyfile
+COPY --link ./.docker/caddy/main_dev.caddyfile /etc/frankenphp/Caddyfile
 
 # PHP config files
 RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
@@ -108,8 +106,7 @@ FROM base AS prod
 WORKDIR /app
 
 # Caddy config files
-COPY --link ./.docker/caddy/snippets/prod.caddyfile /etc/frankenphp/snippets/Caddyfile
-COPY --link ./.docker/caddy/globals/prod.caddyfile /etc/frankenphp/globals/Caddyfile
+COPY --link ./.docker/caddy/main_prod.caddyfile /etc/frankenphp/Caddyfile
 
 # PHP config files
 RUN mv "${PHP_INI_DIR}/php.ini-production" "${PHP_INI_DIR}/php.ini"
@@ -125,7 +122,6 @@ RUN composer install --prefer-dist --no-progress --no-interaction --no-dev --opt
 ENV APP_ENV=prod
 
 RUN php bin/console cache:clear \
-#    && php bin/console assets:install \
     && php bin/console tailwind:build assets/styles/app/app.css --minify \
     && php bin/console tailwind:build assets/styles/exception_error.css --minify \
     && php bin/console importmap:install \
@@ -137,6 +133,6 @@ RUN chmod 440 .env.local.php .env.docker \
     && rm -f .env .env.dev .env.prod
 
 RUN rm -rf .docker/
-RUN rm -rf assets/
+#RUN rm -rf assets/ # Puede afectar si se usan alias en Twig que apunten a este directorio
 RUN rm -rf config/secrets/
 RUN rm -rf /etc/frankenphp/sites/dev_redir.caddyfile
