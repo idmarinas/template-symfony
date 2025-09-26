@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/09/2025, 11:51
+ * Last modified by "IDMarinas" on 26/09/2025, 15:39
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -38,7 +38,7 @@ import(__DIR__ . '/.deployer/task/download_files.php');
 // Config
 //
 set('project_name', $_ENV['APP_TITLE'] ?? 'Your Project Name');
-set('user', 'idmarinas');
+set('user', 'IDMarinas');
 // Release number
 set('release_name', fn() => within('{{deploy_path}}', function () {
 	$latest = run('cat .dep/latest_release || echo 0');
