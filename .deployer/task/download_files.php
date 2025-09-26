@@ -32,14 +32,16 @@ set('docker/volumes', [
 //
 desc('Descargar los archivos logs del contenedor web.');
 task('download:backups:logs', function () {
-	writeln('<info>Descargando los archivos logs del contenedor web a <fg=blue>{{local/storage/backup}}</>.</>');
+	writeln('<info>Descargando los "logs" del contenedor web a <fg=blue>{{local/storage/backup}}</>.</>');
 
-	run('mkdir -p {{deploy_path}}/backups');
+	run('mkdir -p {{deploy_path}}/backups/log');
 
-	if (test('[ -d docker cp {{docker/project_name}}-webserver-1:/app/var/log ]')) {
-		run('docker cp {{docker/project_name}}-webserver-1:/app/var/log {{deploy_path}}/backups');
-		download('{{deploy_path}}/backups/log', '{{local/storage/backup}}');
+	if (test('{{bin/webserver}} sh -c "[ -d "/app/var/log" ]"')) {
+		run('docker cp {{docker/project_name}}-webserver-1:/app/var/log {{deploy_path}}/backups/');
+		download('{{deploy_path}}/backups/log/', '{{local/storage/backup}}/log/', ['options' => ['--mkpath']]);
 		run('rm -r {{deploy_path}}/backups/log');
+	} else {
+		writeln('<fg=red>El contenedor web no tiene un directorio de logs.</>');
 	}
 });
 
