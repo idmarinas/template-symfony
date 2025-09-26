@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/09/2025, 13:37
+ * Last modified by "IDMarinas" on 26/09/2025, 15:33
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -73,4 +73,11 @@ task('docker:image:prune', function () {
 	writeln('<info>' . end($lines) . '</>');
 });
 
-before('deploy:cleanup', 'docker:image:prune');
+desc('Eliminar el archivo .tar de la imagen Docker');
+task('docker:tar:remove', function () {
+	writeln('<info>Eliminando archivo {{docker/image/tar}} del servidor</>');
+	run('rm {{release_path}}/{{docker/image/tar}}');
+});
+
+before('deploy:success', 'docker:image:prune');
+before('deploy:success', 'docker:tar:remove');
