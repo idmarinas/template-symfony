@@ -1,10 +1,12 @@
-import snippets/Caddyfile {
+{
     skip_install_trust
+    debug
+    metrics
+    persist_config off
+
     admin :2019 {
         origins ::1
     }
-
-    import globals/Caddyfile
 
     servers :80 {
         name "{$SERVER_NAME:localhost}"
@@ -12,8 +14,11 @@ import snippets/Caddyfile {
 
     servers :443 {
         name "{$SERVER_NAME:localhost}_ssl"
-        import a-trusted-proxies
     }
+}
+
+(a-maintenance) {
+
 }
 
 import snippets/sites.caddyfile
