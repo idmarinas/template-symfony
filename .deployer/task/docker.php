@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 13:38
+ * Last modified by "IDMarinas" on 26/09/2025, 13:37
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -61,13 +61,16 @@ desc('Iniciar de los contenedores Docker');
 task('docker:container:start', function () {
 	writeln('<info>Creando contenedor Docker en "{{text_prod}}"</>');
 	within('{{release_or_current_path}}', function () {
-		run('docker compose {{docker/compose/files}} up --force-recreate -d --wait {{docker_services_to_start}}');
+		run('docker compose {{docker/compose/files}} up --force-recreate -d --wait {{docker/services/start}}');
 	});
 });
 
 desc('Eliminar imágenes Docker no utilizadas');
 task('docker:image:prune', function () {
-	run('docker image prune -f', real_time_output: true);
+	$output = run('docker image prune -f');
+	$lines = explode("\n", trim($output));
+
+	writeln('<info>' . end($lines) . '</>');
 });
 
 before('deploy:cleanup', 'docker:image:prune');
