@@ -16,7 +16,7 @@
 # Headers for response
 (a-headers) {
 	# Disable Topics tracking if not enabled explicitly: https://github.com/jkarlin/topics
-	header ?Permissions-Policy "browsing-topics=()"
+#	header ?Permissions-Policy "browsing-topics=()"
 	header ?X-XSS-Protection 1
 	header ?X-Content-Type-Options nosniff
 	header ?X-Frame-Options sameorigin
