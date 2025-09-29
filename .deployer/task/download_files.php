@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/09/2025, 13:38
+ * Last modified by "IDMarinas" on 29/09/2025, 15:41
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -54,7 +54,7 @@ task('download:backups:volume', function () {
 	run("mkdir -p $backupVolumes");
 
 	foreach ($volumes as $name => $volume) {
-		writeln("<info>Creando copia del volumen '$name'.</>");
+		writeln("<info>Creando copia del volumen <fg=blue>'$name'</>.</>");
 		$file = parse("{$volume}_backup.tar.gz");
 
 		if (test('[ -n "$(docker volume ls -q --filter name=' . $volume . ')" ]')) {
