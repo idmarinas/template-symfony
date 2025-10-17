@@ -2,7 +2,7 @@
 <!--~
   ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
   ~
-  ~ Last modified by "IDMarinas" on 25/08/2025, 20:10
+  ~ Last modified by "IDMarinas" on 17/10/2025, 18:51
   ~
   ~ @project IDMarinas Template Symfony
   ~ @see https://github.com/idmarinas/template-symfony
@@ -46,9 +46,6 @@
 		<testsuite name="blog">
 			<directory>apps/blog/tests</directory>
 		</testsuite>
-		<testsuite name="cron">
-			<directory>apps/cron/tests</directory>
-		</testsuite>
 		<testsuite name="forum">
 			<directory>apps/forum/tests</directory>
 		</testsuite>
@@ -79,7 +76,6 @@
 			<directory>apps/admin/src</directory>
 			<directory>apps/api/src</directory>
 			<directory>apps/blog/src</directory>
-			<directory>apps/cron/src</directory>
 			<directory>apps/forum/src</directory>
 			<directory>apps/web/src</directory>
 		</include>
