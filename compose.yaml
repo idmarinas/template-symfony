@@ -23,7 +23,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   webserver:
-    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-build.${APP_VERSION_BUILD}
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
@@ -34,8 +34,6 @@ services:
     secrets:
       - cloudflare_api_token
     tty: true
-    depends_on:
-      - database
     networks:
       - proxy
       - default

@@ -16,7 +16,8 @@ services:
     extends:
       file: compose.yaml
       service: database
-    ports: !reset [ ]
+    ports:
+      - "13307:3306"
     environment:
       MARIADB_DATABASE: ${DATABASE_NAME}_test
       MARIADB_USER: ${DATABASE_USER}_test
@@ -25,14 +26,13 @@ services:
 
   webserver:
     restart: no
-    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-dev
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-dev-build.${APP_VERSION_BUILD}
     privileged: true
     volumes:
       - ./:/app
       - docker_dev_data:/var/lib/docker
       ## SSH
       - ssh_key:/root/.ssh
-    depends_on: !reset [ ]
 
   ###> symfony/mailer ###
   mailer:
@@ -53,8 +53,6 @@ services:
       test: php -v || exit 1
     volumes:
       - ./:/var/www/html
-      ## SSH
-      - ssh_key:/root/.ssh
 
 volumes:
   database_data_dev:

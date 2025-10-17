@@ -4,8 +4,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 600M
+          cpus: '0.8'
+          memory: 350M
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -17,20 +17,22 @@ services:
     volumes:
       # Shared files between deployments
       - source_uploads:/app/public/uploads # For example, files uploaded by users
+    depends_on:
+      - database
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 400M
+          cpus: '1'
+          memory: 250M
       restart_policy:
         condition: on-failure
         delay: 5s
         max_attempts: 10
         window: 5s
 
-  messenger_worker_async:
-    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}
-    entrypoint: '/usr/local/bin/msn_async_entrypoint.sh'
+  worker_async:
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-build.${APP_VERSION_BUILD}
+    entrypoint: '/usr/local/bin/worker_async_entrypoint.sh'
     restart: always
     healthcheck:
       test: [ "CMD", "php", "bin/console", "about" ]
@@ -42,13 +44,12 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 128M
+          cpus: '0.7'
+          memory: 175M
 
-
-  messenger_worker_scheduler:
-    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}
-    entrypoint: '/usr/local/bin/msn_scheduler_entrypoint.sh'
+  worker_scheduler:
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-build.${APP_VERSION_BUILD}
+    entrypoint: '/usr/local/bin/worker_scheduler_entrypoint.sh'
     restart: always
     healthcheck:
       test: [ "CMD", "php", "bin/console", "about" ]
@@ -56,14 +57,14 @@ services:
       timeout: 10s
       retries: 3
     volumes:
-      - scheduler_cache:/app/var/scheduler
+      - scheduler_cache:/app/storage/scheduler
     depends_on:
       - database
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 128M
+          cpus: '0.7'
+          memory: 175M
 
 volumes:
   source_uploads:
