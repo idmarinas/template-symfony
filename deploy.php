@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/09/2025, 15:39
+ * Last modified by "IDMarinas" on 17/10/2025, 18:30
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -26,13 +26,14 @@ use Symfony\Component\Dotenv\Dotenv;
 // Obtener las variables .env en $_ENV
 new Dotenv()->loadEnv(__DIR__ . '/.env');
 
-import(__DIR__ . '/.deployer/common_text_vars.php');
+import(__DIR__ . '/.deployer/common.php');
 import(__DIR__ . '/.deployer/task/docker.php');
 import(__DIR__ . '/.deployer/task/upload_files.php');
 import(__DIR__ . '/.deployer/task/doctrine.php');
 import(__DIR__ . '/.deployer/task/maintenance.php');
 import(__DIR__ . '/.deployer/task/symfony_workers.php');
 import(__DIR__ . '/.deployer/task/download_files.php');
+import(__DIR__ . '/.deployer/task/restore_volumes.php');
 
 //
 // Config
@@ -53,7 +54,9 @@ set('cleanup_use_sudo', true);
 // Project Config
 //
 set('app/version', $_ENV['APP_VERSION'] ?? '0.0.0');
+set('app/version/build', $_ENV['APP_VERSION_BUILD'] ?? 1);
 set('docker/project_name', $_ENV['APP_PROJECT_NAME'] ?? 'your_project_name');
+set('docker/services/start', 'webserver database worker_async worker_scheduler');
 
 // Path to the bin *.
 set('bin/webserver', 'docker exec {{docker/project_name}}-webserver-1');
@@ -72,8 +75,10 @@ host('sN.production')
 	->setPort(22)
 	->setRemoteUser('username')
 	->setDeployPath('/var/www/html')
-	->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server'])
+	->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Sn - Server Production'])
 ;
+
+task('docker:volume:restore')->disable();
 
 //
 // Deploy Task - Upload a new version
@@ -85,11 +90,8 @@ task('deploy', [
 	'docker:image:load',
 	'docker:copy:env_docker',
 	'deploy:symfony:workers:stop',
-	'docker:container:start',
+	'docker:service:start',
 	'doctrine:migrations',
-	//    'deploy:env',
-	//    'deploy:shared',
-	//    'deploy:writable',
 	'deploy:publish',
 ]);
 
