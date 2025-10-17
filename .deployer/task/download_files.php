@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 29/09/2025, 15:41
+ * Last modified by "IDMarinas" on 17/10/2025, 18:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,56 +19,74 @@
 
 namespace Deployer;
 
+use Exception;
+
 import('recipe/common.php');
 
-set('local/storage/backup', '.deployer/.storage/{{app/version}}');
-set('docker/volumes', [
-	'Public Uploads' => '{{docker/project_name}}_source_uploads',
-	'Database Data'  => '{{docker/project_name}}_database_data',
-]);
+set('local/storage/backup', '.storage/{{app/version}}/' . date('Y-m-d'));
 
 //
 // Task
 //
-desc('Descargar los archivos logs del contenedor web.');
-task('download:backups:logs', function () {
+task('backup:logs', function () {
 	writeln('<info>Descargando los "logs" del contenedor web a <fg=blue>{{local/storage/backup}}</>.</>');
 
 	run('mkdir -p {{deploy_path}}/backups/log');
 
 	if (test('{{bin/webserver}} sh -c "[ -d "/app/var/log" ]"')) {
 		run('docker cp {{docker/project_name}}-webserver-1:/app/var/log {{deploy_path}}/backups/');
-		download('{{deploy_path}}/backups/log/', '{{local/storage/backup}}/log/', ['options' => ['--mkpath']]);
+		download('{{deploy_path}}/backups/log/', '{{local/storage/backup}}/logs/', ['options' => ['--mkpath']]);
 		run('rm -r {{deploy_path}}/backups/log');
 	} else {
 		writeln('<fg=red>El contenedor web no tiene un directorio de logs.</>');
 	}
-});
+})->desc('Descargar los archivos logs del contenedor web.');
 
-desc('Descargar una copia de los volúmenes Docker.');
-task('download:backups:volume', function () {
-	writeln('<info>Creando una copia de los volúmenes Docker.</>');
-	$volumes = get('docker/volumes');
-	$backupVolumes = '{{deploy_path}}/backups/volumes';
+task('backup:volumes', function () {
+	info('Creando una copia de los volúmenes Docker.');
 
-	run("mkdir -p $backupVolumes");
+	$services = get('docker/services/start');
+	$services = explode(' ', $services);
 
-	foreach ($volumes as $name => $volume) {
-		writeln("<info>Creando copia del volumen <fg=blue>'$name'</>.</>");
-		$file = parse("{$volume}_backup.tar.gz");
+	try {
+		$containers = parseServicesToContainers($services);
+	} catch (Exception $exception) {
+		warning($exception->getMessage());
 
-		if (test('[ -n "$(docker volume ls -q --filter name=' . $volume . ')" ]')) {
-			run("docker run --rm -v $volume:/volume debian:stable-slim tar -cz -C /volume . > $backupVolumes/$file");
-		} else {
-			writeln("<fg=red>El volumen $name: $volume no existe.</>");
-		}
+		return;
 	}
 
-	writeln('Descargando las copias de volúmenes a <fg=blue>{{local/storage/backup}}/volumes</>');
-	// Se descargan los volúmenes
-	download('{{deploy_path}}/backups/volumes/', '{{local/storage/backup}}/volumes/', ['options' => ['--mkpath']]);
-	// Borrar el directorio "volumes" una vez descargados los archivos
-	run('rm -r {{deploy_path}}/backups/volumes');
-});
+	foreach ($containers as $container) {
+		info("<options=bold>Procesando el contenedor $container</>");
 
-task('download:backups', ['download:backups:logs', 'download:backups:volume']);
+		try {
+			doBackupVolumes($container);
+		} catch (Exception $exception) {
+			warning($exception->getMessage());
+		}
+	}
+})->desc('Descargar una copia de los volúmenes Docker.');
+
+task('download:backups', ['backup:logs', 'backup:volumes'])->hidden();
+
+/**
+ * @throws Exception
+ */
+function doBackupVolumes (string $container): void
+{
+	$fileName = date('H.i.s') . '_' . $container . '_backup.tar';
+	$localFile = "{{local/storage/backup}}/$fileName";
+	$backupFile = "/backup/$fileName";
+
+	writeln('Creando la copia de los volúmenes de ' . currentHost()->getTag());
+
+	$dirs = getVolumeDirs($container);
+	writeln('Dirs: ' . $dirs);
+	run(
+		"docker run --rm --volumes-from $container -v {{deploy_path}}:/backup debian:stable-slim tar cvf $backupFile $dirs --ignore-failed-read"
+	);
+
+	writeln('Descargando el archivo al sistema local...');
+	download("{{deploy_path}}/$fileName", $localFile, ['options' => ['--mkpath']]);
+	run("sudo rm -rf {{deploy_path}}/$fileName");
+}

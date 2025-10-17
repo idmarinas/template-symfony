@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/09/2025, 15:33
+ * Last modified by "IDMarinas" on 17/10/2025, 18:34
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -24,8 +24,8 @@ import('recipe/common.php');
 set('docker/compose/files', '--env-file .env.docker -f compose.yaml -f compose.prod.yaml');
 set('docker/services/start', 'webserver database');
 set('docker/project_name', 'template_symfony');
-set('docker/image/name', 'idmarinas/{{docker/project_name}}:{{app/version}}');
-set('docker/image/tar', 'deployer_{{docker/project_name}}_{{app/version}}.tar');
+set('docker/image/name', 'idmarinas/{{docker/project_name}}:{{app/version}}-build.{{app/version/build}}');
+set('docker/image/tar', 'deployer_{{docker/project_name}}_{{app/version}}_build.{{app/version/build}}.tar');
 
 //
 // Tasks
@@ -57,13 +57,16 @@ task('docker:copy:env_docker', function () {
 	run('docker rm deployer_{{docker/project_name}}_temp');
 });
 
-desc('Iniciar de los contenedores Docker');
-task('docker:container:start', function () {
+desc('Iniciar de los servicios Docker');
+task('docker:service:start', function () {
 	writeln('<info>Creando contenedor Docker en "{{text_prod}}"</>');
 	within('{{release_or_current_path}}', function () {
-		run('docker compose {{docker/compose/files}} up --force-recreate -d --wait {{docker/services/start}}');
+		run('docker compose {{docker/compose/files}} up -d --wait {{docker/services/start}}');
 	});
-});
+})
+	->addAfter('docker:volume:restore')
+	->hidden()
+;
 
 desc('Eliminar imágenes Docker no utilizadas');
 task('docker:image:prune', function () {
@@ -73,11 +76,4 @@ task('docker:image:prune', function () {
 	writeln('<info>' . end($lines) . '</>');
 });
 
-desc('Eliminar el archivo .tar de la imagen Docker');
-task('docker:tar:remove', function () {
-	writeln('<info>Eliminando archivo {{docker/image/tar}} del servidor</>');
-	run('rm {{release_path}}/{{docker/image/tar}}');
-});
-
-before('deploy:success', 'docker:image:prune');
-before('deploy:success', 'docker:tar:remove');
+before('deploy:cleanup', 'docker:image:prune');

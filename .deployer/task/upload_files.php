@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/09/2025, 18:22
+ * Last modified by "IDMarinas" on 17/10/2025, 18:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -38,12 +38,3 @@ task('deploy:upload_files', function () {
 		'options' => ['--chmod=F750'],
 	]);
 });
-
-desc('Borrar el archivo de la imagen .tar una vez completado el deploy.');
-task('deploy:clean:image_tar', function () {
-	writeln('<fg=red>Borrando {{docker/image/tar}} de {{text_prod}}...</>');
-
-	run('rm {{release_path}}/{{docker/image/tar}}');
-});
-
-after('deploy:success', 'deploy:clean:image_tar');

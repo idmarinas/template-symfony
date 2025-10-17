@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/09/2025, 12:31
+ * Last modified by "IDMarinas" on 17/10/2025, 18:36
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -19,11 +19,9 @@
 
 namespace Deployer;
 
-import('recipe/common.php');
-
 set('symfony/workers/names', [
-	'Messenger Worker Async'     => '{{docker/project_name}}-messenger_worker_async-1',
-	'Messenger Worker Scheduler' => '{{docker/project_name}}-messenger_worker_scheduler-1',
+	'Messenger Worker Async'     => '{{docker/project_name}}-worker_async-1',
+	'Messenger Worker Scheduler' => '{{docker/project_name}}-worker_scheduler-1',
 ]);
 
 //
@@ -37,10 +35,21 @@ task('deploy:symfony:workers:stop', function () {
 
 	foreach ($workers as $name => $worker) {
 		if (test('[ -n "$(docker ps -q --filter name=' . $worker . ')" ]')) {
-			writeln("<info>Deteniendo worker y Borrando contenedor: <options=bold>$name</></info>");
-			run("docker exec $worker php bin/console messenger:stop-workers");
-			run("docker wait $worker");
-			run("docker rm -f $worker");
+			info("Deteniendo worker y Borrando contenedor: <options=bold>$name</>");
+
+			// Comprobar el estado del worker
+			$status = run("docker inspect $worker");
+			$status = json_decode($status, true)[0]['State']['Status'];
+
+			if ('running' == $status) {
+				run("docker exec $worker php bin/console messenger:stop-workers");
+				run("docker wait $worker");
+				run("docker rm -f $worker");
+			} else {
+				// El contenedor probablemente esté reiniciando
+				run("docker stop $worker");
+				run("docker rm -f $worker");
+			}
 		} elseif (test('[ -n "$(docker ps -aq --filter name=' . $worker . ')" ]')) {
 			writeln("<fg=yellow>El worker <options=bold>$name</> no está funcionando se borra el contenedor.</>");
 			run("docker rm -f $worker");
