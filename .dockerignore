@@ -50,3 +50,4 @@ phpunit.xml
 phpunit.*.xml
 phpstan.dist.neon
 rector.php
+initial_bd.sql
