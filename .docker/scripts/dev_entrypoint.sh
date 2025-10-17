@@ -3,7 +3,7 @@
 ##
 # Copyright 2025 (C) IDMarinas - All Rights Reserved
 #
-# Last modified by "IDMarinas" on 14/09/2025, 12:15
+# Last modified by "IDMarinas" on 17/10/2025, 18:38
 #
 # @project IDMarinas Template Symfony
 # @see https://github.com/idmarinas/template-symfony
@@ -19,6 +19,5 @@
 #
 
 dockerd &
-sleep 3
 docker-php-entrypoint
 exec frankenphp run --config '/etc/frankenphp/Caddyfile' "$@"

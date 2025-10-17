@@ -20,5 +20,5 @@ Write-Host "PROD Contruyendo la imagen Docker" -BackgroundColor Red
 Write-Host "$appTitle" -BackgroundColor Green
 Write-Host "Tag: $appVersion" -BackgroundColor Blue
 
-docker build --target prod -f .docker/Dockerfile -t "idmarinas/${projectName}:$appVersion" .
-docker save -o ".deployer/idmarinas_$projectName_$appVersion.tar" "idmarinas/${projectName}:$appVersion"
+docker build --target prod -f .docker/Dockerfile -t "idmarinas/${projectName}:$appVersion-build.$appVersionBuild" .
+docker save -o ".deployer/deployer_$projectName_${appVersion}_build.$appVersionBuild.tar" "idmarinas/${projectName}:$appVersion-build.$appVersionBuild"

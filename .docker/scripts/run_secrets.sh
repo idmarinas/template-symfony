@@ -4,7 +4,7 @@
 ##
 # Copyright 2025 (C) IDMarinas - All Rights Reserved
 #
-# Last modified by "IDMarinas" on 14/09/2025, 12:26
+# Last modified by "IDMarinas" on 17/10/2025, 18:38
 #
 # @project IDMarinas Template Symfony
 # @see https://github.com/idmarinas/template-symfony
@@ -69,12 +69,3 @@ done
 
 docker-php-entrypoint
 exec frankenphp run --config '/etc/frankenphp/Caddyfile' "$@"
-
-#CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile" ]
-# Solo ejecutar el comando si se proporcionaron argumentos
-#if [ $# -gt 0 ]; then
-#    exec "$@"
-##else
-#    # Si no hay argumentos, ejecutar el comando por defecto de caddy
-##    exec caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
-#fi
