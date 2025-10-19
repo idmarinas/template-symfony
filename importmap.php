@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/09/2025, 16:21
+ * Last modified by "IDMarinas" on 19/10/2025, 18:50
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -29,37 +29,37 @@
  * The "importmap:require" command can be used to add new entries to this file.
  */
 return [
-	'app'                               => [
-		'path'       => './assets/app.js',
-		'entrypoint' => true,
-	],
-	'exception_error'                   => [
-		'path'       => './assets/exception_error.js',
-		'entrypoint' => true,
-	],
-	'web'                               => [
-		'path'       => './apps/web/assets/web.js',
-		'entrypoint' => true,
-	],
-	'@hotwired/stimulus'                => [
-		'version' => '3.2.2',
-	],
-	'@symfony/stimulus-bundle'          => [
-		'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
-	],
-	'@hotwired/turbo'                   => [
-		'version' => '7.3.0',
-	],
-	'@stimulus-components/notification' => [
-		'version' => '3.0.0',
-	],
-	'stimulus-use'                      => [
-		'version' => '0.52.3',
-	],
-	'@stimulus-components/dialog'       => [
-		'version' => '1.0.1',
-	],
-	'hotkeys-js'                        => [
-		'version' => '3.13.14',
-	],
+    'app'                               => [
+        'path'       => './assets/app.js',
+        'entrypoint' => true,
+    ],
+    'exception_error'                   => [
+        'path'       => './assets/exception_error.js',
+        'entrypoint' => true,
+    ],
+    'web'                               => [
+        'path'       => './apps/web/assets/web.js',
+        'entrypoint' => true,
+    ],
+    '@hotwired/stimulus'                => [
+        'version' => '3.2.2',
+    ],
+    '@symfony/stimulus-bundle'          => [
+        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
+    ],
+    '@hotwired/turbo'                   => [
+        'version' => '7.3.0',
+    ],
+    '@stimulus-components/notification' => [
+        'version' => '3.0.0',
+    ],
+    'stimulus-use'                      => [
+        'version' => '0.52.3',
+    ],
+    '@stimulus-components/dialog'       => [
+        'version' => '1.0.1',
+    ],
+    'hotkeys-js'                        => [
+        'version' => '3.13.14',
+    ],
 ];
