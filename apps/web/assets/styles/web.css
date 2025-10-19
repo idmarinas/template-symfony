@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/08/2025, 16:57
+ * Last modified by "IDMarinas" on 19/10/2025, 18:05
  *
  * @project IDMarinas Template Symfony
  * @see https://github.com/idmarinas/template-symfony
@@ -37,7 +37,7 @@
  ************/
 
 /* UI Bundle */
-@source '../../vendor/idmarinas/ui-bundle/templates/**/*.html.twig';
+/*@source '../../../../vendor/idmarinas/ui-bundle/templates!**!*.html.twig';*/
 
 /* Others */
 /*@source '../../vendor/symfony/twig-bridge/Resources/views/Form/tailwind_2_layout.html.twig';*/
