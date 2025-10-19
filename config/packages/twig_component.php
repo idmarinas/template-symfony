@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/06/2025, 14:33
+ * Last modified by "IDMarinas" on 19/10/2025, 18:48
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -12,7 +12,7 @@
  * @time    13:57
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license undefined
+ * @license BSD 3-Clause License
  *
  * @since   1.0.0
  */
