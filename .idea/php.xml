@@ -20,8 +20,6 @@
       <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer/vendor" />
     </exclude_path>
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/behat" />
-      <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/vendor/bin" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/dama" />
