@@ -30,9 +30,6 @@ services:
     privileged: true
     volumes:
       - ./:/app
-      - docker_dev_data:/var/lib/docker
-      ## SSH
-      - ssh_key:/root/.ssh
 
   ###> symfony/mailer ###
   mailer:
@@ -53,6 +50,18 @@ services:
       test: php -v || exit 1
     volumes:
       - ./:/var/www/html
+
+  # Used to publish the application
+  deployer:
+    image: idmarinas/php:8.4-deployer
+    privileged: true
+    healthcheck:
+      test: php -v || exit 1
+    volumes:
+      - ./:/app
+      - /var/lib/docker  # Volumen anónimo temporal
+      ## SSH
+      - ssh_key:/root/.ssh
 
 volumes:
   database_data_dev:

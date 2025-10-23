@@ -81,7 +81,6 @@ RUN apk add --no-cache \
     git \
     openssh \
     rsync \
-    docker \
     && git config --global --add safe.directory /app \
     && git config --global core.eol lf \
     && git config --global core.autocrlf input \
@@ -89,10 +88,6 @@ RUN apk add --no-cache \
     && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc\
     && echo 'export PATH="$PATH:/config/composer/vendor/bin"' >> /etc/bash/bashrc
-
-COPY --link --chmod=755 ./.docker/scripts/dev_entrypoint.sh /usr/local/bin/dev_entrypoint.sh
-
-ENTRYPOINT ["/usr/local/bin/dev_entrypoint.sh"]
 
 ###
 # Production Image
