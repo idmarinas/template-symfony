@@ -1,6 +1,6 @@
 function Get-Env
 {
-  param([string]$VarName, [string]$File = "$PSScriptRoot/../../.env")
+  param([string]$VarName, [string]$File = "$PSScriptRoot/../../../.env")
 
   $line = Get-Content $File | Where-Object { $_ -match "^$VarName\s*=" } | Select-Object -First 1
 
