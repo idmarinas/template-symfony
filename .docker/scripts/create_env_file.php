@@ -2,7 +2,7 @@
 /**
  * Copyright 2024-2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/09/2025, 12:25
+ * Last modified by "IDMarinas" on 28/10/2025, 21:00
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -28,7 +28,7 @@ $envFile = fopen("$dir/.env.docker", 'w');
 // Recorre el array y escribe cada clave-valor en el archivo .env
 foreach ($config as $key => $value) {
 	if ('DATABASE_NAME' === $key || 'DATABASE_USER' === $key) {
-		$value = str_replace('_dev', '', $value);
+		$value = str_replace(['_dev', '_test'], '', $value);
 	}
 
 	if (str_contains($value, ' ')) {
