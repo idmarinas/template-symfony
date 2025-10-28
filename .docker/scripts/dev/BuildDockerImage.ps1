@@ -19,7 +19,7 @@ $projectName = Get-Env -VarName "APP_PROJECT_NAME"
 
 Write-Host "DEV Building Docker Imagen" -BackgroundColor Red
 Write-Host "$appTitle" -BackgroundColor Green
-Write-Host "Tag: $appVersion" -BackgroundColor Blue
+Write-Host "Tag: $appVersion+build.$appVersionBuild" -BackgroundColor Blue
 
 docker build --target dev -f .docker/Dockerfile -t "idmarinas/${projectName}:$appVersion-dev-build.$appVersionBuild" .
 docker image prune -f
