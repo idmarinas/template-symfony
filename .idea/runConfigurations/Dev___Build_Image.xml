@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Dev - Build Image" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="F:\Projects\template-symfony\.docker\scripts\BuildDockerImageDEV.ps1" workingDirectory="F:\Projects\template-symfony" executablePath="C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+  <configuration default="false" name="Dev - Build Image" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="F:\Projects\template-symfony\.docker\scripts\dev\BuildDockerImage.ps1" workingDirectory="F:\Projects\template-symfony" executablePath="C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
     <envs />
     <method v="2" />
   </configuration>
