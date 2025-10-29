@@ -43,14 +43,6 @@ services:
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
   ###< symfony/mailer ###
 
-  # Used initially to generate the .env.docker file.
-  php:
-    image: idmarinas/php:8.4-xdebug
-    healthcheck:
-      test: php -v || exit 1
-    volumes:
-      - ./:/var/www/html
-
   # Used to publish the application
   deployer:
     image: idmarinas/php:8.4-deployer
