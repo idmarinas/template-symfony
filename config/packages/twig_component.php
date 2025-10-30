@@ -30,11 +30,11 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 		'anonymous_template_directory' => 'components/',
 		'defaults'                     => [
 			// Namespace & directory for components
-			'Core\\Twig\\Component\\'  => 'components/',
-			'Admin\\Twig\\Component\\' => 'app/admin/templates/components/',
-			'Blog\\Twig\\Component\\'  => 'app/blog/templates/components/',
-			'Forum\\Twig\\Component\\' => 'app/forum/templates/components/',
-			'Web\\Twig\\Component\\'   => 'app/web/templates/components/',
+			'Core\\Twig\\Components\\'  => 'components/',
+			'Admin\\Twig\\Components\\' => 'app/admin/templates/components/',
+			'Blog\\Twig\\Components\\'  => 'app/blog/templates/components/',
+			'Forum\\Twig\\Components\\' => 'app/forum/templates/components/',
+			'Web\\Twig\\Components\\'   => 'app/web/templates/components/',
 		],
 	]);
 };
