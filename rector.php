@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/10/2025, 18:48
+ * Last modified by "IDMarinas" on 30/10/2025, 14:50
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -46,6 +46,7 @@ return RectorConfig::configure()
 	->withComposerBased(twig: true, doctrine: true, symfony: true)
 	->withSymfonyContainerXml(__DIR__ . '/var/cache/web/dev/Core_KernelDevDebugContainer.xml')
 	->withSkip([
+		__DIR__ . '/config/secrets',
 		__DIR__ . '/config/bundles.php',
 		__DIR__ . '/apps/*/config/bundles.php',
 	])
