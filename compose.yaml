@@ -23,7 +23,8 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   webserver:
-    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-build.${APP_VERSION_BUILD}
+    image: ${DOCKER_IMAGE_NAME_WEBSERVER}
+    pull_policy: never
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token

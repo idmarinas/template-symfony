@@ -26,8 +26,6 @@ services:
 
   webserver:
     restart: no
-    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-dev-build.${APP_VERSION_BUILD}
-    privileged: true
     volumes:
       - ./:/app
 
