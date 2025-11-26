@@ -19,6 +19,9 @@
 
 namespace Deployer;
 
+import(__DIR__ . '/tasks.php');
+import(__DIR__ . '/config.php');
+
 use Exception;
 
 //
