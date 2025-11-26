@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/10/2025, 18:30
+ * Last modified by "IDMarinas" on 26/11/2025, 12:25
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -75,7 +75,7 @@ host('sN.production')
 	->setPort(22)
 	->setRemoteUser('username')
 	->setDeployPath('/var/www/html')
-	->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Sn - Server Production'])
+	->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Sn - Docker Server'])
 ;
 
 task('docker:volume:restore')->disable();
