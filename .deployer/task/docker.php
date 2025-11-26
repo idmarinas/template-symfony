@@ -19,8 +19,6 @@
 
 namespace Deployer;
 
-import('recipe/common.php');
-
 set('docker/compose/files', '--env-file .env.docker -f compose.yaml -f compose.prod.yaml');
 set('docker/services/start', 'webserver database');
 set('docker/project_name', 'template_symfony');

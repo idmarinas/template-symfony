@@ -21,8 +21,6 @@ namespace Deployer;
 
 use Throwable;
 
-import('recipe/common.php');
-
 set('need_db_migration', false);
 set('doctrine_schema_validate_config', '--skip-mapping');
 set('doctrine/migration/duration', '1m');

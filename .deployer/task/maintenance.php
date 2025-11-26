@@ -24,8 +24,6 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Symfony\Component\Console\Input\InputOption;
 
-import('recipe/common.php');
-
 option(
 	name       : 'duration',
 	mode       : InputOption::VALUE_OPTIONAL,

@@ -21,8 +21,6 @@ namespace Deployer;
 
 use Exception;
 
-import('recipe/common.php');
-
 set('local/storage/backup', '.storage/{{app/version}}/' . date('Y-m-d'));
 
 //
