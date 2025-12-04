@@ -35,11 +35,11 @@ foreach ($config as $key => $value) {
 		$value = '"' . $value . '"';
 	}
 
-	fwrite($envFile, "$key=$value\n");
+	if (false !== fwrite($envFile, "$key=$value\n")) {
+		echo '.env.docker file has been created successfully.';
+		echo "\n";
+	}
 }
 
 // Cierra el archivo
 fclose($envFile);
-
-echo '.env.docker file has been created successfully.';
-echo "\n";
