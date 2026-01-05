@@ -12,10 +12,9 @@
   </component>
   <component name="PhpIncludePathManager">
     <exclude_path>
-      <path value="F:/Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer/vendor" />
+      <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer/vendor" />
     </exclude_path>
     <include_path>
-      <path value="F:/Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer" />
       <path value="$PROJECT_DIR$/vendor/bin" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/dama" />
@@ -194,6 +193,7 @@
       <path value="$PROJECT_DIR$/vendor/zenstruck" />
       <path value="$PROJECT_DIR$/vendor/zenstruck/assert" />
       <path value="$PROJECT_DIR$/vendor/zenstruck/foundry" />
+      <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />
