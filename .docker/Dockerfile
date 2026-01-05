@@ -119,10 +119,7 @@ RUN php bin/console cache:clear \
     && php bin/console importmap:install \
     && php bin/console asset-map:compile \
     && php bin/console error:dump var/cache/error_pages/ -f \
-    && composer prod:dump:env
-
-RUN chmod 440 .env.local.php .env.docker \
-    && rm -f .env .env.dev .env.prod
-
-RUN rm -rf .docker/
-RUN rm -rf config/secrets/
+    && composer prod:dump:env \
+    && chmod 440 .env.local.php .env.docker \
+    && rm -f .env .env.dev .env.prod \
+    && rm -rf .docker config/secrets/
