@@ -32,9 +32,9 @@ when@dev: &dev
             autoconfigure: true
 
         Factory\:
-            resource: '../factories/'
+            resource: '../tests/Factory/'
 
         DataFixtures\:
-            resource: '../fixtures/'
+            resource: '../tests/Fixture/'
 
 when@test: *dev

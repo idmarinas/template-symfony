@@ -114,8 +114,8 @@
 			"Blog\\Tests\\": "apps/blog/tests",
 			"Forum\\Tests\\": "apps/forum/tests",
 			"Web\\Tests\\": "apps/web/tests",
-			"DataFixtures\\": "fixtures/",
-			"Factory\\": "factories/"
+			"DataFixtures\\": "tests/Fixture",
+			"Factory\\": "tests/Factory"
 		}
 	},
 	"scripts": {
