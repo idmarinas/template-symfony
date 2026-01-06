@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 24/09/2025, 12:43
- *
- * @project IDMarinas Template Symfony
- * @see     https://github.com/idmarinas/template-symfony
- *
- * @file    doctrine.php
- * @date    09/09/2025
- * @time    13:27
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
- *
- * @since   1.0.0
- */
 
 namespace Deployer;
 
