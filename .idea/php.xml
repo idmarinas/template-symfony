@@ -10,6 +10,11 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpCodeSniffer">
+    <phpcs_settings>
+      <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="d1816036-7734-41dc-bad3-407479aca11d" timeout="30000" />
+    </phpcs_settings>
+  </component>
   <component name="PhpIncludePathManager">
     <exclude_path>
       <path value="$PROJECT_DIR$/../../Tools/Scoop/apps/composer/current/home/vendor/deployer/deployer/vendor" />
