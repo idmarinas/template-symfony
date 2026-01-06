@@ -15,7 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/apps/forum/tests" isTestSource="true" packagePrefix="Forum\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/apps/forum/src" isTestSource="false" packagePrefix="Forum\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Factory" isTestSource="true" packagePrefix="Factory\" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/Fixture" isTestSource="true" packagePrefix="DataFixtures\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/DataFixtures" isTestSource="true" packagePrefix="DataFixtures\" />
       <excludeFolder url="file://$MODULE_DIR$/assets/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/var" />
       <excludeFolder url="file://$MODULE_DIR$/vendor" />
