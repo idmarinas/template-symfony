@@ -114,7 +114,7 @@
 			"Blog\\Tests\\": "apps/blog/tests",
 			"Forum\\Tests\\": "apps/forum/tests",
 			"Web\\Tests\\": "apps/web/tests",
-			"DataFixtures\\": "tests/Fixture",
+			"DataFixtures\\": "tests/DataFixtures",
 			"Factory\\": "tests/Factory"
 		}
 	},

@@ -35,6 +35,6 @@ when@dev: &dev
             resource: '../tests/Factory/'
 
         DataFixtures\:
-            resource: '../tests/Fixture/'
+            resource: '../tests/DataFixtures/'
 
 when@test: *dev
