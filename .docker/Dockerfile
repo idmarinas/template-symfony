@@ -82,6 +82,7 @@ RUN apk add --no-cache \
     && git config --global --add safe.directory /app \
     && git config --global core.eol lf \
     && git config --global core.autocrlf input \
+    && composer global require deployer/deployer --no-interaction --no-progress \
     && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc
 
