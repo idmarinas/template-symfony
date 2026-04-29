@@ -17,6 +17,8 @@ services:
     volumes:
       # Shared files between deployments
       - source_uploads:/app/public/uploads # For example, files uploaded by users
+      # Shared cache between deployments
+      - share_dir_cache:/app/${APP_SHARE_DIR}
     depends_on:
       - database
     deploy:
@@ -46,6 +48,9 @@ services:
         limits:
           cpus: '0.7'
           memory: 175M
+    volumes:
+      # Shared cache between deployments
+      - share_dir_cache:/app/${APP_SHARE_DIR}
 
   worker_scheduler:
     image: ${DOCKER_IMAGE_NAME_WEBSERVER}
@@ -57,7 +62,8 @@ services:
       timeout: 10s
       retries: 3
     volumes:
-      - scheduler_cache:/app/var/storage/scheduler
+      # Shared cache between deployments
+      - share_dir_cache:/app/${APP_SHARE_DIR}
     depends_on:
       - database
     deploy:
@@ -68,4 +74,4 @@ services:
 
 volumes:
   source_uploads:
-  scheduler_cache:
+  share_dir_cache:
