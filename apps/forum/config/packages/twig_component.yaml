@@ -1,0 +1,5 @@
+twig_component:
+    defaults:
+        Forum\Twig\Components\:
+            template_directory: '@Forum/components'
+            name_prefix: Forum

@@ -1,0 +1,5 @@
+twig_component:
+    defaults:
+        Blog\Twig\Components\:
+            template_directory: '@Blog/components'
+            name_prefix: Blog
