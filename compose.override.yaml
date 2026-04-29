@@ -28,22 +28,12 @@ services:
     restart: no
     volumes:
       - ./:/app
-
-  ###> symfony/mailer ###
-  mailer:
-    restart: no
-    image: axllent/mailpit
-    ports:
-      - "1025"
-      - "8025"
-    environment:
-      MP_SMTP_AUTH_ACCEPT_ANY: 1
-      MP_SMTP_AUTH_ALLOW_INSECURE: 1
-  ###< symfony/mailer ###
+    networks:
+      - mailpit
 
   # Used to publish the application
   deployer:
-    image: idmarinas/php:8.4-deployer
+    image: idmarinas/deployer:8.4
     privileged: true
     healthcheck:
       test: php -v || exit 1
@@ -58,4 +48,8 @@ volumes:
   database_data_test:
   docker_dev_data:
   ssh_key:
+    external: true
+
+networks:
+  mailpit:
     external: true

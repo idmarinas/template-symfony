@@ -1,19 +1,41 @@
 # Useful Commands
 
-> En una terminal debian (WSL)
-> Permite guardar la credencial de la key
+## Guardar credenciales (key) en Debian
 
 ```bash
     eval $(ssh-agent) && ssh-add
 ```
 
-## Download TailwindCSS Standalone CLI
+## Migrations
 
-wget https://github.com/tailwindlabs/tailwindcss/releases/download/v4.0.11/tailwindcss-linux-x64-musl -P
-/var/www/html/var/tailwind/cli
-chmod +x /var/www/html/var/tailwind/cli/tailwindcss-linux-x64-musl
+Generar una nueva migración
 
-## Search Replace
+```bash 
+  symfony doctrine:migrations:diff
+```
 
-> **Search**: "symfony/(.+)": "7.3.*"  
-> **Replace**: "symfony/$1": "7.4.*"
+Migrar la base de datos o a una versión concreta
+
+```bash
+  symfony doctrine:migrations:migrate 'DoctrineMigrations\Version20210707115250' 
+```
+
+Fusionar histórico de migraciones
+
+```Bash
+  symfony doctrine:migrations:diff --from-empty-schema
+```
+
+Saltar una migración
+
+```bash
+  symfony doctrine:migrations:version 'DoctrineMigrations\Version20221216162459' --add
+```
+
+# Encrypt Cache
+
+First, you need to generate a secure key and add it to your secret store as CACHE_DECRYPTION_KEY:
+
+```bash
+php -r 'echo base64_encode(sodium_crypto_box_keypair()); echo "\n";'
+```

@@ -57,7 +57,7 @@ services:
       timeout: 10s
       retries: 3
     volumes:
-      - scheduler_cache:/app/storage/scheduler
+      - scheduler_cache:/app/var/storage/scheduler
     depends_on:
       - database
     deploy:

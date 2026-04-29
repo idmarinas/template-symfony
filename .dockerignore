@@ -25,15 +25,16 @@
 **/vendor/
 
 .aiassistant/
+.claude/
 .deployer/
 .github/
 .idea/
+.storage/
 build/
 docs/
-factories/
-fixtures/
 public/assets/
 public/bundles/
+public/uploads/
 tests/
 var/
 
@@ -44,10 +45,12 @@ var/
 .env.local
 .env.local.php
 .env.test
+.GHCR_PAT
 *.md
 deploy.php
-phpunit.xml
-phpunit.*.xml
+package*.json
+bun.lock
+phpunit*.xml
 phpstan.dist.neon
 rector.php
-initial_bd.sql
+favicon_package_v0.16.zip
