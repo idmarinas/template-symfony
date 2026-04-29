@@ -10,10 +10,9 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 	}
 
 	$container->extension('twig_component', [
-		'anonymous_template_directory' => 'components/',
-		'defaults'                     => [
+		'defaults' => [
 			// Namespace & directory for components
-			'Core\\Twig\\Components\\' => 'components/',
+			'Admin\\Twig\\Components\\' => 'app/admin/templates/components/',
 		],
 	]);
 };
