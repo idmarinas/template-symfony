@@ -1,0 +1,90 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Attribute\Argument;
+use Symfony\Component\Console\Attribute\Ask;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\ExceptionInterface;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\SingleCommandApplication;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Validation;
+use function Symfony\Component\String\u;
+
+if (!is_dir(dirname(__DIR__).'/vendor')) {
+	throw new LogicException('Dependencies are missing. Try running "composer install".');
+}
+
+if (!is_file(dirname(__DIR__).'/vendor/symfony/filesystem/Filesystem.php')) {
+	throw new LogicException('Symfony Filesystem is missing. Try running "composer require symfony/filesystem".');
+}
+
+if (!is_file(dirname(__DIR__).'/vendor/autoload_runtime.php')) {
+	throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
+}
+
+require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+
+try {
+	new SingleCommandApplication()
+		->setName('Updater de Symfony')
+		->setVersion('1.0.0')
+		->setDescription('Update Symfony version in composer.json')
+		->setCode(function (
+			OutputInterface $output,
+			InputInterface  $input,
+			#[Argument(description: 'Symfony version to update to')]
+			#[Ask(question: 'What version do you want to update to?')]
+			string          $version,
+		): int {
+			$io = new SymfonyStyle($input, $output);
+
+			if (!preg_match('/^\d+\.\d+$/', $version)) {
+				$io->error('Invalid version format. Expected: major.minor (e.g., 6.3, 8.0)');
+
+				$version = $io->ask(
+					'What version do you want to update to?',
+					validator: Validation::createCallable(
+						new Regex('/^\d+\.\d+$/', message: 'Invalid version format. Expected: major.minor (e.g., 6.3, 8.0)')
+					)
+				);
+			}
+
+			$io->info("Updating composer.json to Symfony $version...");
+
+			$composerJson = dirname(__DIR__).'/composer.json';
+			if (!file_exists($composerJson)) {
+				throw new Exception('composer.json not found in the project root.');
+			}
+
+			$content = u(file_get_contents($composerJson));
+
+			$oldVersion = null;
+			$content = $content->replaceMatches(
+				'#("extra":(?:\S*|\s*){(?:\S*|\s*)"symfony":(?:\S*|\s*){(?:.*)"require": *)"(\d\.\d\.\*)"#s',
+				function (array $matches) use ($version, &$oldVersion) {
+					$oldVersion = $matches[2];
+
+					return "$matches[1]\"$version.*\"";
+				}
+			);
+			$content = $content->replaceMatches(
+				'/"symfony\/(.+)": +"(\d+\.\d\.\*)"/',
+				fn(array $matches) => "\"symfony/$matches[1]\": \"$version.*\""
+			);
+
+			file_put_contents($composerJson, $content);
+
+			$io->note("From old version: $oldVersion");
+			$io->success('Symfony version updated successfully.');
+
+			return Command::SUCCESS;
+		})
+		->run()
+	;
+} catch (ExceptionInterface $e) {
+	echo "\n❌ Error: ".$e->getMessage()."\n\n";
+	exit(1);
+}
