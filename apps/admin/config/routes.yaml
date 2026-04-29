@@ -9,3 +9,4 @@ admin_controllers:
     type: attribute
     prefix: '/%app.route_prefix.admin%'
     name_prefix: admin_
+    trailing_slash_on_root: false

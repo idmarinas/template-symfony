@@ -28,6 +28,7 @@ public_controller:
     type: attribute
     prefix: '/%app.route_prefix.public%'
     name_prefix: web_public_
+    trailing_slash_on_root: false
 
 feedback_controllers:
     resource:
@@ -36,6 +37,7 @@ feedback_controllers:
     type: attribute
     prefix: feedback
     name_prefix: feedback_
+    trailing_slash_on_root: false
 
 user_controllers:
     resource:
@@ -44,3 +46,4 @@ user_controllers:
     type: attribute
     prefix: user
     name_prefix: idm_user_
+    trailing_slash_on_root: false
