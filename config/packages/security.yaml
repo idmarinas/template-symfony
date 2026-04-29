@@ -1,19 +1,35 @@
+# yaml-language-server: $schema=../../vendor/symfony/security-bundle/Resources/config/schema/security-1.0.xsd
+
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User\User
+                property: email
+
     firewalls:
         dev:
+            # Ensure dev tools and static assets are always allowed
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-        # Admin Rirewall
+        # Admin Firewall
         admin:
             lazy: true
+            stateless: false
             host: '^admin\.%app.server_name.regexp%$'
             provider: users_in_memory
+            switch_user: false
+            form_login:
+                enable_csrf: true
+                login_path: admin_login
+                check_path: admin_login
+                default_target_path: admin_dashboard
             logout:
                 path: '/%app.route_prefix.admin%/logout'
                 target: admin_login
@@ -23,18 +39,25 @@ security:
                     - cookies
                     - executionContexts
                     - storage
-            switch_user: false
-        # Api Firewall
-        api:
-            host: '^api\.%app.server_name.regexp%$'
-            stateless: true
-            provider: users_in_memory
-            switch_user: false
-            # jwt: ~
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: false
+                secure: true
+                signature_properties: [ 'password', 'updatedAt', 'deletedAt' ]
         # Main Firewall
         main:
             lazy: true
-            provider: users_in_memory
+            stateless: false
+            provider: app_user_provider
+            switch_user: false
+            user_checker: App\Security\Checker\UserChecker
+            form_login:
+                #login_path: user_login
+                #check_path: user_login
+                default_target_path: app_home
+                enable_csrf: true
             logout:
                 path: /logout
                 target: app_home
@@ -42,20 +65,24 @@ security:
                 clear_site_data:
                     - cookies
                     - storage
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: false
+                secure: true
+                #signature_properties: [ 'password', 'updatedAt', 'deletedAt', 'bannedUntil' ]
 
-            # activate different ways to authenticate
+            # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
 
 when@dev: &dev
     security:
         password_hashers:
-            # By default, password hashers are resource intensive and take time. This is
-            # important to generate secure password hashes. In tests however, secure hashes
-            # are not important, waste resources and increase test times. The following
-            # reduces the work factor to the lowest possible values.
+            # Password hashers are resource-intensive by design to ensure security.
+            # In tests, it's safe to reduce their cost to improve performance.
             Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
                 algorithm: auto
                 cost: 4 # Lowest possible value for bcrypt
