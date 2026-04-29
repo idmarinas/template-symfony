@@ -36,7 +36,7 @@ task('maintenance:on', function () {
 
 	run("{{bin/webserver}} sh -c 'cat > /app/maintenance.flag <<'\\''EOF'\\''\n$json\nEOF'");
 
-	writeln('<info>Modo mantenimiento activado hasta: <options=bold>' . $end->format('Y-m-d H:i:s T') . '</></>');
+	writeln('<info>Modo mantenimiento activado hasta: <options=bold>'.$end->format('Y-m-d H:i:s T').'</></>');
 });
 
 desc('Desactivar modo mantenimiento');
@@ -45,7 +45,7 @@ task('maintenance:off', function () {
 	run('{{bin/webserver}} rm -f /app/maintenance.flag');
 });
 
-function getDuration ($duration): array
+function getDuration($duration): array
 {
 	// calcular fecha de fin según duración
 	if (preg_match('/^(\d+)([mh])$/', $duration, $matches)) {

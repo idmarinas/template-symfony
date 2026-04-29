@@ -24,7 +24,7 @@ task('docker:volume:restore', function () {
 		implode(', ', $services),
 	);
 	if (askConfirmation(parse($ask), false)) {
-		run('docker stop ' . implode(' ', $containers));
+		run('docker stop '.implode(' ', $containers));
 
 		foreach ($containers as $container) {
 			info("<options=bold>Procesando el contenedor $container</>");
@@ -35,16 +35,16 @@ task('docker:volume:restore', function () {
 			}
 		}
 
-		run('docker start ' . implode(' ', $containers));
+		run('docker start '.implode(' ', $containers));
 	}
 })
 	->desc('Restaure los volúmenes de los servicios que se inician.')
 	->once()->hidden()
 ;
 
-function doDockerRestore (string $container): void
+function doDockerRestore(string $container): void
 {
-	$fileName = $container . '_backup.tar';
+	$fileName = $container.'_backup.tar';
 	$localFile = ".restore/$container/$fileName";
 	$backupFile = "/backup/$fileName";
 
@@ -53,9 +53,9 @@ function doDockerRestore (string $container): void
 	on(select('restore=old_docker_server'), function () use ($container, $fileName, $localFile, $backupFile) {
 		$dirs = getVolumeDirs($container);
 
-		writeln('Creando la copia de los volúmenes de ' . currentHost()->getTag());
+		writeln('Creando la copia de los volúmenes de '.currentHost()->getTag());
 
-		writeln('Dirs: ' . $dirs);
+		writeln('Dirs: '.$dirs);
 		run(
 			"docker run --rm --volumes-from $container -v {{deploy_path}}:/backup debian:stable-slim tar cvf $backupFile $dirs --ignore-failed-read"
 		);
@@ -68,7 +68,7 @@ function doDockerRestore (string $container): void
 	// restore
 	// docker run --rm --volumes-from dbstore2 -v $(pwd):/backup ubuntu bash -c 'cd /dbdata && tar xvf /backup/backup.tar --strip 1'
 	on(select('restore=new_docker_server'), function () use ($container, $fileName, $localFile, $backupFile) {
-		writeln('Subiendo archivo a ' . currentHost()->getTag());
+		writeln('Subiendo archivo a '.currentHost()->getTag());
 		upload($localFile, "{{deploy_path}}/$fileName", ['options' => ['--mkpath']]);
 		runLocally('rm -rf .restore/');
 

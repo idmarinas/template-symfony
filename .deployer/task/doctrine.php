@@ -36,7 +36,12 @@ desc('Ejecutar migraciones de Doctrine');
 task('doctrine:migrate', function () {
 	if (get('need_db_migration')) {
 		writeln('<info>Activando el modo mantenimiento</>');
-		invoke('migration:estimate:time');
+		try {
+			invoke('migration:estimate:time');
+		} catch (Throwable $e) {
+			writeln('<fg=yellow>No se pudo estimar el tiempo de migración, usando valor por defecto</>');
+			set('doctrine/migration/duration', '5m');
+		}
 		invoke('maintenance:on');
 
 		writeln('<info>Ejecutando migraciones de Doctrine</>');
@@ -46,25 +51,31 @@ task('doctrine:migrate', function () {
 
 desc('Estimar tiempo de migración real');
 task('migration:estimate:time', function () {
-	// 1. Obtener estadísticas de la base de datos
-	$tableStats = run(
-		'{{bin/console}} doctrine:query:sql "SELECT table_name, table_rows, ROUND(((data_length + index_length) / 1024 / 1024), 2) AS size_mb FROM information_schema.TABLES WHERE table_schema = DATABASE() ORDER BY table_rows DESC"'
-	);
+	try {
+		// 1. Obtener lista de migraciones pendientes
+		$migrationsList = run('{{bin/console}} doctrine:migrations:list --no-interaction --no-ansi');
 
-	// 2. Analizar migraciones pendientes
-	$migrationsList = run('{{bin/console}} doctrine:migrations:list --no-interaction --no-ansi');
+		preg_match_all('#(DoctrineMigrations\\\\Version[0-9]+)\s+\|\s+not migrated#im', $migrationsList, $matches);
+		$pendingMigrations = $matches[1] ?? [];
 
-	preg_match_all('#(DoctrineMigrations\\\\Version[0-9]+)\s+\|\s+not migrated#im', $migrationsList, $matches);
-	$pendingMigrations = $matches[1] ?? [];
+		if (empty($pendingMigrations)) {
+			writeln('<info>No hay migraciones pendientes</info>');
 
-	// 3. Estimar basado en contenido y volumen
-	$estimation = analyzeRealMigrationTime($tableStats, $pendingMigrations);
+			return;
+		}
 
-	writeln('<info>Estimación basada en datos reales:</info>');
-	writeln("<comment>Tiempo estimado: <options=bold>{$estimation['duration']}</></comment>");
-	writeln("<comment>Factores considerados: <options=bold>{$estimation['factors']}</></comment>");
+		// 2. Estimar basado en migraciones pendientes
+		$estimation = analyzeRealMigrationTime('', $pendingMigrations);
 
-	set('doctrine/migration/duration', $estimation['duration']);
+		writeln('<info>Estimación basada en datos reales:</info>');
+		writeln("<comment>Tiempo estimado: <options=bold>{$estimation['duration']}</></comment>");
+		writeln("<comment>Factores considerados: <options=bold>{$estimation['factors']}</></comment>");
+
+		set('doctrine/migration/duration', $estimation['duration']);
+	} catch (Throwable $e) {
+		writeln("<fg=yellow>Advertencia: No se pudo estimar el tiempo de migración: {$e->getMessage()}</>");
+		set('doctrine/migration/duration', '5m');
+	}
 });
 
 desc('Ejecutar migraciones de Doctrine');
@@ -73,7 +84,7 @@ task('doctrine:migrations', [
 	'doctrine:migrate',
 ]);
 
-function analyzeRealMigrationTime (string $tableStats, array $migrations): array
+function analyzeRealMigrationTime(string $tableStats, array $migrations): array
 {
 	$factors = [];
 	$estimatedSeconds = 5;
@@ -132,9 +143,9 @@ function analyzeRealMigrationTime (string $tableStats, array $migrations): array
 
 	// Convertir a formato legible
 	if ($estimatedSeconds < 3600) {
-		$duration = ceil($estimatedSeconds / 60) . 'm';
+		$duration = ceil($estimatedSeconds / 60).'m';
 	} else {
-		$duration = ceil($estimatedSeconds / 3600) . 'h';
+		$duration = ceil($estimatedSeconds / 3600).'h';
 	}
 
 	return [

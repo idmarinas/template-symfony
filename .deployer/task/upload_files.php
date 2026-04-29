@@ -14,8 +14,4 @@ task('deploy:upload_files', function () {
 			'--chmod=F440',
 		],
 	]);
-	writeln('<fg=blue>Subiendo {{docker/image/tar}} a {{text_prod}}...</>');
-	upload('./.deployer/{{docker/image/tar}}', '{{release_path}}', [
-		'options' => ['--chmod=F750'],
-	]);
 });

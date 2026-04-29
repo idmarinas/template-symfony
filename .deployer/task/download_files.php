@@ -4,7 +4,7 @@ namespace Deployer;
 
 use Exception;
 
-set('local/storage/backup', '.storage/{{app/version}}/' . date('Y-m-d'));
+set('local/storage/backup', '.storage/{{app/version}}/'.date('Y-m-d'));
 
 //
 // Task
@@ -26,7 +26,7 @@ task('backup:logs', function () {
 task('backup:volumes', function () {
 	info('Creando una copia de los volúmenes Docker.');
 
-	$services = get('docker/services/start');
+	$services = get('docker/services/start').' worker_async worker_scheduler';
 	$services = explode(' ', $services);
 
 	try {
@@ -53,16 +53,16 @@ task('download:backups', ['backup:logs', 'backup:volumes'])->hidden();
 /**
  * @throws Exception
  */
-function doBackupVolumes (string $container): void
+function doBackupVolumes(string $container): void
 {
-	$fileName = date('H.i.s') . '_' . $container . '_backup.tar';
+	$fileName = date('H.i.s').'_'.$container.'_backup.tar';
 	$localFile = "{{local/storage/backup}}/$fileName";
 	$backupFile = "/backup/$fileName";
 
-	writeln('Creando la copia de los volúmenes de ' . currentHost()->getTag());
+	writeln('Creando la copia de los volúmenes de '.currentHost()->getTag());
 
 	$dirs = getVolumeDirs($container);
-	writeln('Dirs: ' . $dirs);
+	writeln('Dirs: '.$dirs);
 	run(
 		"docker run --rm --volumes-from $container -v {{deploy_path}}:/backup debian:stable-slim tar cvf $backupFile $dirs --ignore-failed-read"
 	);
