@@ -19,8 +19,7 @@
 /* Neutral Theme of UI Bundle */
 /*@import "../../../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";*/
 
-@import "./base.css";
-@import "./theme.css";
+@import "./themes/web.css";
 
 /* Plugins */
 @plugin '@tailwindcss/typography';
