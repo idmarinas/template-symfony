@@ -2,10 +2,10 @@
   <configuration default="false" name="Dev - Webserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
     <deployment type="docker-compose.yml">
       <settings>
-        <option name="envFilePath" value="F:\Projects\template-symfony\.env.docker" />
+        <option name="envFilePath" value="\\wsl.localhost\Proyectos\home\idmarinas\Proyectos\Projects\infommo\.env.docker" />
         <option name="envFilePaths">
           <list>
-            <option value="F:\Projects\template-symfony\.env.docker" />
+            <option value="\\wsl.localhost\Proyectos\home\idmarinas\Proyectos\Projects\infommo\.env.docker" />
           </list>
         </option>
         <option name="secondarySourceFiles">
@@ -17,7 +17,6 @@
           <list>
             <option value="database" />
             <option value="database_test" />
-            <option value="mailer" />
             <option value="webserver" />
           </list>
         </option>
