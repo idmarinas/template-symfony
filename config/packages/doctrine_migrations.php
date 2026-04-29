@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2026 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 29/04/2026, 18:22
- *
- * @project IDMarinas Template Symfony
- * @see     https://github.com/idmarinas/template-symfony
- *
- * @file    doctrine_migrations.php
- * @date    29/04/2026
- * @time    18:23
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
- *
- * @since   1.0.0
- */
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 

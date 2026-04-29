@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 19/10/2025, 18:48
- *
- * @project IDMarinas Template Symfony
- * @see     https://github.com/idmarinas/template-symfony
- *
- * @file    nelmio_security.php
- * @date    30/06/2025
- * @time    17:33
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
- *
- * @since   1.0.0
- */
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
@@ -65,7 +48,7 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 			'report_logger_service' => 'monolog.logger.csp',
 			'hosts'                 => [],
 			'content-types'         => [],
-			'enforce'               => [
+			'report'                => [
 				'level1_fallback'           => true,
 				'browser_adaptive'          => [
 					'enabled' => false,
@@ -73,19 +56,16 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 				'report-uri'                => '%router.request_context.base_url%/nelmio/csp/report',
 				'block-all-mixed-content'   => true, # defaults to false, blocks HTTP content over HTTPS transport
 				'upgrade-insecure-requests' => true, # defaults to false, upgrades HTTP requests to HTTPS transport
-				'base-uri'                  => ['self'],
+				'base-uri'                  => ['none'],
 				'manifest-src'              => ['self'],
-				'frame-ancestors'           => ['self'],
 				'object-src'                => ['none'],
-				'frame-src'                 => ['self'],
-				'form-action'               => ['self'],
-				'connect-src'               => ['self'],
-				'img-src'                   => ['self', 'data:'],
-				'font-src'                  => ['self'],
+				'style-src'                 => ['self', 'data:'],
+				'script-src'                => ['self', 'unsafe-inline', 'unsafe-eval', 'strict-dynamic', 'https:', 'http:'],
 			],
 			'report_endpoint'       => [
-				'log_level' => 'notice',
-				'filters'   => [
+				'log_level'   => 'notice',
+				'log_channel' => 'csp',
+				'filters'     => [
 					'domains'          => true,
 					'schemes'          => true,
 					'browser_bugs'     => true,
@@ -93,18 +73,42 @@ return static function (ContainerConfigurator $container, ContainerBuilder $buil
 				],
 			],
 		],
+		'permissions_policy' => [
+			'enabled'  => true,
+			'policies' => [
+				// Media permissions
+				'camera'                    => [],
+				'microphone'                => [],
+
+				// Location and sensors
+				'geolocation'               => [],
+				'accelerometer'             => [],
+				'gyroscope'                 => [],
+				'magnetometer'              => [],
+
+				// Privacy features
+				// 'interest_cohort'           => [], # Disable FLoC tracking
+
+				// Payment and authentication
+				'payment'                   => ['self'],
+				'publickey_credentials_get' => ['self'],
+
+				// Display and interaction
+				'fullscreen'                => ['self'],
+				'picture_in_picture'        => ['self'],
+				'autoplay'                  => [],
+
+				// Disable Topics tracking if not enabled explicitly: https://github.com/jkarlin/topics
+				// 'browsing_topics'           => [],
+			],
+		],
 	]);
 
-	if ('prod' === $container->env()) {
+	if ('dev' === $container->env()) {
 		$container->extension('nelmio_security', [
 			'csp' => [
 				'report' => [
-					'level1_fallback'  => true,
-					'browser_adaptive' => [
-						'enabled' => true,
-					],
-					'report-uri'       => '%router.request_context.base_url%/nelmio/csp/report',
-					'default-src'      => ['self'],
+					'style-src' => ['unsafe-inline'],
 				],
 			],
 		]);
