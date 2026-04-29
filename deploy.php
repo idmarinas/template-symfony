@@ -19,7 +19,14 @@
 
 namespace Deployer;
 
-import(__DIR__ . '/.deployer/common.php');
+require __DIR__.'/vendor/autoload.php';
+
+use Symfony\Component\Dotenv\Dotenv;
+
+// Obtener las variables .env en $_ENV
+new Dotenv()->loadEnv(__DIR__.'/.env');
+
+import(__DIR__.'/.deployer/common.php');
 
 //
 // Config
@@ -46,10 +53,27 @@ task('deploy', [
 	'deploy:prepare',
 	'download:backups',
 	'deploy:upload_files',
-	'docker:image:load',
+	'docker:registry:login',
+	'docker:image:pull',
 	'docker:copy:env_docker',
 	'deploy:symfony:workers:stop',
 	'docker:service:start',
 	'doctrine:migrations',
+	'deploy:symfony:workers:start',
 	'deploy:publish',
+]);
+
+task('deploy:prepare', [
+	'deploy:info',
+	'deploy:setup',
+	'deploy:lock',
+	'deploy:release',
+	'docker:image:build',
+]);
+task('deploy:publish', [
+	'deploy:symlink',
+	'deploy:unlock',
+	'maintenance:off',
+	'deploy:cleanup',
+	'deploy:success',
 ]);
