@@ -3,15 +3,20 @@
   <component name="ExternalDependencies">
     <plugin id="Docker" />
     <plugin id="Git4Idea" />
+    <plugin id="JavaScript" />
     <plugin id="String Manipulation" />
     <plugin id="com.intellij.copyright" />
     <plugin id="com.intellij.css" />
     <plugin id="com.intellij.tailwindcss" />
     <plugin id="com.jetbrains.php" />
+    <plugin id="com.jetbrains.php.rector" />
+    <plugin id="com.jetbrains.twig" />
+    <plugin id="de.espend.idea.php.annotation" />
     <plugin id="fr.adrienbrault.idea.symfony2plugin" />
     <plugin id="org.editorconfig.editorconfigjetbrains" />
     <plugin id="org.jetbrains.plugins.github" />
     <plugin id="org.jetbrains.plugins.phpstorm-docker" />
+    <plugin id="org.jetbrains.plugins.phpstorm-remote-interpreter" />
     <plugin id="ru.adelf.idea.dotenv" />
   </component>
 </project>
