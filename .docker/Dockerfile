@@ -1,7 +1,9 @@
-FROM dunglas/frankenphp:builder-php8.4-alpine AS builder
+FROM dunglas/frankenphp:1-builder-php8.4-alpine AS builder
 
 # Copy xcaddy in the builder image
 COPY --from=caddy:builder /usr/bin/xcaddy /usr/bin/xcaddy
+
+RUN apk update && apk upgrade --no-self-upgrade --no-cache --no-interactive && rm -rf /var/cache/apk/*
 
 # CGO must be enabled to build FrankenPHP
 RUN CGO_ENABLED=1 \
@@ -38,6 +40,7 @@ RUN install-php-extensions \
     intl \
     pdo_mysql \
     sysvsem \
+    xsl \
     zip \
     zstd
 
@@ -82,7 +85,6 @@ RUN apk add --no-cache \
     && git config --global --add safe.directory /app \
     && git config --global core.eol lf \
     && git config --global core.autocrlf input \
-    && composer global require deployer/deployer --no-interaction --no-progress \
     && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc
 
@@ -114,13 +116,14 @@ RUN composer install --prefer-dist --no-progress --no-interaction --no-dev --opt
 
 ENV APP_ENV=prod
 
-RUN php bin/console cache:clear \
-    && php bin/console tailwind:build assets/styles/app/app.css --minify \
-    && php bin/console tailwind:build assets/styles/exception_error.css --minify \
-    && php bin/console importmap:install \
+RUN composer auto-scripts \
+    && composer tailwind:build -- --minify \
     && php bin/console asset-map:compile \
     && php bin/console error:dump var/cache/error_pages/ -f \
-    && composer prod:dump:env \
-    && chmod 440 .env.local.php .env.docker \
-    && rm -f .env .env.dev .env.prod \
-    && rm -rf .docker config/secrets/
+    && composer prod:dump:env
+
+RUN chmod 440 .env.local.php .env.docker \
+    && rm -f .env .env.dev .env.prod .env.prod.local .GHCR_PAT
+
+RUN rm -rf .docker/
+RUN rm -rf config/secrets/

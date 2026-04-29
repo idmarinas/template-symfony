@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2024-2025 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 28/10/2025, 21:00
- *
- * @project IDMarinas Template Symfony
- * @see     https://github.com/idmarinas/template-symfony
- *
- * @file    create_env_file.php
- * @date    20/02/2025
- * @time    17:34
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
- *
- * @since   1.0.0
- */
 
 // Incluye el archivo de configuración
 $dir = dirname(__DIR__, 2);
@@ -32,7 +15,7 @@ foreach ($config as $key => $value) {
 	}
 
 	if (str_contains($value, ' ')) {
-		$value = '"' . $value . '"';
+		$value = '"'.$value.'"';
 	}
 
 	fwrite($envFile, "$key=$value\n");
