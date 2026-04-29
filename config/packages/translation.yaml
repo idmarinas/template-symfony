@@ -1,8 +1,13 @@
+# yaml-language-server: $schema=../../vendor/symfony/framework-bundle/Resources/config/schema/symfony-1.0.xsd
+
 framework:
     set_content_language_from_locale: true
     default_locale: '%env(APP_LOCALE_DEFAULT)%'
     enabled_locales: [ es, en ]
+
     translator:
         default_path: '%kernel.project_dir%/translations'
-        fallbacks: [ es, en ]
         providers:
+        fallbacks: [ es, en ]
+        globals:
+            app_version: '%env(APP_VERSION)%+build.%env(APP_VERSION_BUILD)%'
