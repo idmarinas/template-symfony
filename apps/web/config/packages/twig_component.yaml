@@ -1,0 +1,5 @@
+twig_component:
+    defaults:
+        Web\Twig\Components\:
+            template_directory: '@Web/components'
+            name_prefix: Web
