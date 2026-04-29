@@ -160,7 +160,14 @@
 			"php bin/console secrets:decrypt-to-local --force --env=prod",
 			"@composer dump-env prod",
 			"php -f .docker/scripts/create_env_file.php"
-		]
+		],
+		"tailwind:build": [
+			"php bin/console tailwind:build",
+			"@composer tailwind:web --",
+			"@composer tailwind:error --"
+		],
+		"tailwind:web": "php bin/console tailwind:build apps/web/assets/styles/web.css",
+		"tailwind:error": "php bin/console tailwind:build assets/styles/exception_error.css"
 	},
 	"config": {
 		"allow-plugins": {
