@@ -4,7 +4,7 @@ namespace Deployer;
 
 use Exception;
 
-set('local/storage/backup', '.storage/{{app/version}}/build-{{app/version/build}}/'.date('Y-m-d'));
+set('local/storage/backup', '.storage/{{app/version}}/build-{{app/version/build}}');
 
 //
 // Task
