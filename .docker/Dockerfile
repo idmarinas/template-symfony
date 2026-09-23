@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1-builder-php8.4-alpine AS builder
+FROM dunglas/frankenphp:1-builder-php8.5-alpine AS builder
 
 # Copy xcaddy in the builder image
 COPY --from=caddy:builder /usr/bin/xcaddy /usr/bin/xcaddy
@@ -22,7 +22,7 @@ RUN CGO_ENABLED=1 \
         # Add extra Caddy modules here \
         --with github.com/caddy-dns/cloudflare
 
-FROM dunglas/frankenphp:1-php8.4-alpine AS base
+FROM dunglas/frankenphp:1-php8.5-alpine AS base
 
 # Replace the official binary by the one contained your custom modules
 COPY --from=builder /usr/local/bin/frankenphp /usr/local/bin/frankenphp
