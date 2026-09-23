@@ -7,7 +7,7 @@ security:
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g., switch_user)
         app_user_provider:
             entity:
                 class: App\Entity\User\User
@@ -23,7 +23,7 @@ security:
             lazy: true
             stateless: false
             host: '^admin\.%app.server_name.regexp%$'
-            provider: users_in_memory
+            provider: app_user_provider
             switch_user: false
             form_login:
                 enable_csrf: true
@@ -52,7 +52,6 @@ security:
             stateless: false
             provider: app_user_provider
             switch_user: false
-            user_checker: App\Security\Checker\UserChecker
             form_login:
                 #login_path: user_login
                 #check_path: user_login
