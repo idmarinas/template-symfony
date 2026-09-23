@@ -1,14 +1,12 @@
-FROM dunglas/frankenphp:1-builder-php8.5-alpine AS builder
+FROM dunglas/frankenphp:1-builder-php8.5-trixie AS builder
 
 # Copy xcaddy in the builder image
 COPY --from=caddy:builder /usr/bin/xcaddy /usr/bin/xcaddy
 
-RUN apk update && apk upgrade --no-self-upgrade --no-cache --no-interactive && rm -rf /var/cache/apk/*
-
 # CGO must be enabled to build FrankenPHP
 RUN CGO_ENABLED=1 \
     XCADDY_SETCAP=1 \
-    XCADDY_GO_BUILD_FLAGS=$'-ldflags "-w -s -extldflags \'-Wl,-z,stack-size=0x80000\'"' \
+    XCADDY_GO_BUILD_FLAGS="-ldflags='-w -s' -tags=nobadger,nomysql,nopgx" \
     CGO_CFLAGS=$(php-config --includes) \
     CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs)" \
     xcaddy build \
@@ -22,7 +20,7 @@ RUN CGO_ENABLED=1 \
         # Add extra Caddy modules here \
         --with github.com/caddy-dns/cloudflare
 
-FROM dunglas/frankenphp:1-php8.5-alpine AS base
+FROM dunglas/frankenphp:1-php8.5-trixie AS base
 
 # Replace the official binary by the one contained your custom modules
 COPY --from=builder /usr/local/bin/frankenphp /usr/local/bin/frankenphp
@@ -30,7 +28,7 @@ COPY --from=builder /usr/local/bin/frankenphp /usr/local/bin/frankenphp
 LABEL authors="IDMarinas"
 
 # Update packages
-RUN apk update && apk upgrade --no-self-upgrade --no-cache --no-interactive && rm -rf /var/cache/apk/*
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 
 RUN install-php-extensions \
     @composer \
@@ -79,14 +77,15 @@ RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
 COPY --link ./.docker/php/conf.d/dev/opcache.ini /usr/local/etc/php/conf.d/01_opcache.ini
 COPY --link ./.docker/php/conf.d/dev/php.ini /usr/local/etc/php/conf.d/01_php.ini
 
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     git \
+    && rm -rf /var/lib/apt/lists/* \
     && git config --global --add safe.directory /app \
     && git config --global core.eol lf \
     && git config --global core.autocrlf input \
-    && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
-    && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc
+    && echo 'alias sf="php bin/console"' >> /root/.bashrc \
+    && echo 'alias symfony="php bin/console"' >> /root/.bashrc
 
 ###
 # Production Image
