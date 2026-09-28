@@ -20,6 +20,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Zenstruck\Foundry\Utils\Rector\FoundrySetList;
 
 return RectorConfig::configure()
 	->withPaths([
@@ -32,17 +33,21 @@ return RectorConfig::configure()
 	// uncomment to reach your current PHP version
 	->withPhpSets(php85: true)
 	->withPreparedSets(
-		phpunitCodeQuality : true,
-		doctrineCodeQuality: true,
-		symfonyCodeQuality : true,
-		symfonyConfigs     : true
+		phpunitCodeQuality  : true,
+		phpunitNarrowAsserts: true,
+		phpunitMockToStub   : true,
+		doctrineCodeQuality : true,
+		symfonyCodeQuality  : true,
+		symfonyConfigs      : true
 	)
 	->withTypeCoverageLevel(0)
 	->withDeadCodeLevel(0)
 	->withCodeQualityLevel(0)
-	->withImportNames(importDocBlockNames: false, removeUnusedImports: true)
-	->withComposerBased(twig: true, doctrine: true, symfony: true)
+	->withComposerBased(twig: true, doctrine: true, phpunit: true, symfony: true)
 	->withSymfonyContainerXml(__DIR__.'/var/cache/web/dev/Core_KernelDevDebugContainer.xml')
+	->withSets([
+		FoundrySetList::FOUNDRY_2_9,
+	])
 	->withSkip([
 		__DIR__.'/config/secrets',
 		__DIR__.'/config/bundles.php',
