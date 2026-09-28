@@ -33,7 +33,7 @@ services:
 
   # Used to publish the application
   deployer:
-    image: idmarinas/deployer:8.4
+    image: idmarinas/deployer:8.5
     privileged: true
     healthcheck:
       test: php -v || exit 1
