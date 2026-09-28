@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--~
-  ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
-  ~
-  ~ Last modified by "IDMarinas" on 19/10/2025, 19:02
-  ~
-  ~ @project IDMarinas Template Symfony
-  ~ @see https://github.com/idmarinas/template-symfony
-  ~
-  ~ @file phpunit.dist.xml
-  ~ @date 25/08/2025
-  ~ @time 20:10
-  ~
-  ~ @author Iván Diaz Marinas (IDMarinas)
-  ~ @license BSD 3-Clause License
-  ~
-  ~ @since 1.0.0
-  -->
 
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -27,6 +10,9 @@
          cacheDirectory=".phpunit.cache"
 >
 	<php>
+		<env name="SYMFONY_DEPRECATIONS_HELPER"
+		     value='max[total]=9999999&amp;max[self]=999&amp;max[indirect]=999999&amp;verbose=1'
+		/>
 		<ini name="display_errors" value="1" />
 		<ini name="error_reporting" value="-1" />
 		<server name="APP_ENV" value="test" force="true" />
