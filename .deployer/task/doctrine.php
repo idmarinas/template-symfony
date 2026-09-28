@@ -23,7 +23,7 @@ task('doctrine:check', function () {
 	writeln('<info>Comprobando si se necesitan migraciones de Doctrine</>');
 
 	try {
-		run('{{bin/console}} doctrine:migrations:up-to-date', real_time_output: true);
+		run('{{bin/console}} doctrine:migrations:up-to-date', forceOutput: true);
 		writeln('<info>No se necesitan migraciones de Doctrine</>');
 		set('need_db_migration', false);
 	} catch (Throwable) {
@@ -45,7 +45,7 @@ task('doctrine:migrate', function () {
 		invoke('maintenance:on');
 
 		writeln('<info>Ejecutando migraciones de Doctrine</>');
-		run('{{bin/console}} doctrine:migrations:migrate {{migrations/options}}', real_time_output: true);
+		run('{{bin/console}} doctrine:migrations:migrate {{migrations/options}}', forceOutput: true);
 	}
 });
 

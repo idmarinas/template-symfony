@@ -69,7 +69,7 @@
 	},
 	"require-dev": {
 		"dama/doctrine-test-bundle": "^8.6",
-		"deployer/deployer": "^7.5",
+		"deployer/deployer": "^8.0",
 		"doctrine/doctrine-fixtures-bundle": "^4.3",
 		"idmarinas/composer-plugin": "^1.4",
 		"idmarinas/maker-bundle": "^2.1",
