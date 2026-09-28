@@ -1,8 +1,8 @@
 <?php
 /**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ * Copyright $originalComment.match("Copyright (\d+)", 1, "-",$today.year)2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/10/2025, 18:11
+ * Last modified by "IDMarinas" on 28/09/2026, 16:44
  *
  * @project IDMarinas Template Symfony
  * @see     https://github.com/idmarinas/template-symfony
@@ -25,11 +25,11 @@ use Core\Tests\CreateClientTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class DashboardControllerTest extends WebTestCase
+final class DashboardControllerTest extends WebTestCase
 {
 	use CreateClientTrait;
 
-	public function testDashboard (): void
+	public function testDashboard(): void
 	{
 		$client = static::createClient();
 		$client->request(Request::METHOD_GET, '/admin');
