@@ -6,11 +6,6 @@ services:
         limits:
           cpus: '0.8'
           memory: 350M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 10
-        window: 5s
 
   webserver:
     restart: always
@@ -26,11 +21,6 @@ services:
         limits:
           cpus: '1'
           memory: 250M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 10
-        window: 5s
 
   worker_async:
     image: ${DOCKER_IMAGE_NAME_WEBSERVER}
@@ -43,6 +33,7 @@ services:
       retries: 3
     depends_on:
       - database
+      - webserver
     deploy:
       resources:
         limits:
@@ -64,8 +55,11 @@ services:
     volumes:
       # Shared cache between deployments
       - share_dir_cache:/app/${APP_SHARE_DIR}
+      # Scheduler cache between deployments
+      - scheduler_dir_cache:/app/${APP_SHARE_DIR}/${APP_ENV}/scheduler
     depends_on:
       - database
+      - webserver
     deploy:
       resources:
         limits:
@@ -75,3 +69,4 @@ services:
 volumes:
   source_uploads:
   share_dir_cache:
+  scheduler_dir_cache:

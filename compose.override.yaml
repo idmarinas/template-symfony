@@ -30,6 +30,7 @@ services:
       - ./:/app
     networks:
       - mailpit
+    tty: true
 
   # Used to publish the application
   deployer:
