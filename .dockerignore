@@ -4,6 +4,8 @@
 **/*.dist.php
 **/*.dist
 **/*.cache
+**/*.zip
+**/*.tar
 **/._*
 **/.dockerignore
 **/.DS_Store
@@ -53,4 +55,3 @@ bun.lock
 phpunit*.xml
 phpstan.dist.neon
 rector.php
-favicon_package_v0.16.zip
