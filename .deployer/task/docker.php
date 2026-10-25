@@ -13,6 +13,13 @@ set('docker/image/name', '{{docker/registry}}/{{github/repository}}:{{app/versio
 desc('Construir la imagen Docker (PROD) y subirla a GHCR');
 task('docker:image:build', function () {
 	writeln('<info>Construyendo imagen Docker</>');
+	$dhi_pat = file_get_contents(dirname(__DIR__, 2).'/.DHI_PAT');
+	if (empty($dhi_pat)) {
+		throw error(
+			'La variable de entorno DHI_PAT no está definida. Se requiere un Personal Access Token con acceso a dhi.io'
+		);
+	}
+	runLocally('docker login dhi.io -u idmarinas -p '.$dhi_pat);
 	runLocally('docker build --target prod -f .docker/Dockerfile -t {{docker/image/name}} .', timeout: null);
 
 	writeln('<info>Autenticándose en {{docker/registry}} localmente</>');
@@ -54,15 +61,37 @@ task('docker:copy:env_docker', function () {
 	run('docker rm deployer_{{docker/project_name}}_temp');
 });
 
-desc('Iniciar de los servicios Docker');
+desc('Iniciar los servicios Docker');
 task('docker:service:start', function () {
 	writeln('<info>Creando contenedor Docker en "{{text_prod}}"</>');
 	within('{{release_or_current_path}}', function () {
 		run('docker compose {{docker/compose/files}} up -d --wait {{docker/services/start}}');
 	});
 })
-	->addAfter('docker:volume:restore')
+	// ->addAfter('docker:volume:restore')
+	->addBefore('docker:volume:clear:share_dir_cache')
 	->hidden()
+;
+
+desc('Detener los servicios Docker');
+task('docker:service:stop', function () {
+	info('Deteniendo contenedor Docker en "{{text_prod}}"');
+	within('{{release_or_current_path}}', function () {
+		run('docker compose {{docker/compose/files}} rm -sf webserver');
+	});
+})
+	->hidden()
+;
+
+desc('Vaciar el volumen share_dir_cache para que se recree vacío en cada despliegue');
+task('docker:volume:clear:share_dir_cache', function () {
+	$volume = '{{docker/project_name}}_share_dir_cache';
+
+	run("docker volume rm $volume || true");
+
+	info("Volumen <options=bold>$volume</> eliminado; se recreará vacío en docker:service:start.");
+})
+	->desc('Vaciar share_dir_cache sin tocar scheduler_dir_cache')
 ;
 
 desc('Eliminar imágenes Docker no utilizadas');
@@ -70,7 +99,7 @@ task('docker:image:prune', function () {
 	$output = run('docker image prune -f');
 	$lines = explode("\n", trim($output));
 
-	writeln('<info>'.end($lines).'</>');
+	info(end($lines));
 });
 
 before('deploy:cleanup', 'docker:image:prune');

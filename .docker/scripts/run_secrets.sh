@@ -41,13 +41,21 @@ file_env() {
 	unset file_env_var file_env_fileVar file_env_def file_env_var_value file_env_fileVar_value file_env_val
 }
 
-# Obtener todas las variables _FILE que apunten a /run/secrets y procesarlas
-secret_vars=$(printenv | grep '_FILE=' | grep '/run/secrets' | cut -d'=' -f1 | sed 's/_FILE$//')
+# Obtener todas las variables *_FILE que apunten a /run/secrets y procesarlas
+secret_vars_file="$(mktemp)"
+printenv > "$secret_vars_file"
 
-for var in $secret_vars; do
-	echo "Procesando variable: $var"
-	file_env "$var"
-done
+while IFS='=' read -r env_name env_value; do
+	case "$env_name:$env_value" in
+		*_FILE:/run/secrets/*)
+			var="${env_name%_FILE}"
+			echo "Procesando variable: $var"
+			file_env "$var"
+			;;
+	esac
+done < "$secret_vars_file"
+
+rm -f "$secret_vars_file"
 
 docker-php-entrypoint
 exec frankenphp run --config '/etc/frankenphp/Caddyfile' "$@"

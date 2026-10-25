@@ -13,12 +13,13 @@ function Get-Env
 }
 
 $appVersion = Get-Env -VarName "APP_VERSION"
+$appVersionBuild = Get-Env -VarName "APP_VERSION_BUILD"
 $appTitle = Get-Env -VarName "APP_TITLE"
 $projectName = Get-Env -VarName "APP_PROJECT_NAME"
 
-Write-Host "PROD Contruyendo la imagen Docker" -BackgroundColor Red
+Write-Host "Prod Building Docker Imagen" -BackgroundColor Red
 Write-Host "$appTitle" -BackgroundColor Green
-Write-Host "Tag: $appVersion" -BackgroundColor Blue
+Write-Host "Tag: $appVersion+build.$appVersionBuild" -BackgroundColor Blue
 
 docker build --target prod -f .docker/Dockerfile -t "idmarinas/${projectName}:$appVersion-build.$appVersionBuild" .
-docker save -o ".deployer/deployer_$projectName_${appVersion}_build.$appVersionBuild.tar" "idmarinas/${projectName}:$appVersion-build.$appVersionBuild"
+docker image prune -f

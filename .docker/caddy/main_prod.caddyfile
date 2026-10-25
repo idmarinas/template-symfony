@@ -19,7 +19,7 @@
 }
 
 (a-maintenance) {
-	@maintenance file /maintenance.flag {
+	@maintenance file /var/maintenance.flag {
     root /app
   }
 

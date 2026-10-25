@@ -27,12 +27,12 @@ task('deploy:symfony:workers:stop', function () {
 			if ('running' == $status) {
 				run("docker exec $worker php bin/console messenger:stop-workers");
 				run("docker wait $worker");
-				run("docker rm -f $worker");
 			} else {
 				// El contenedor probablemente esté reiniciando
 				run("docker stop $worker");
-				run("docker rm -f $worker");
 			}
+
+			run("docker rm -f $worker");
 		} elseif (test('[ -n "$(docker ps -aq --filter name='.$worker.')" ]')) {
 			writeln("<fg=yellow>El worker <options=bold>$name</> no está funcionando se borra el contenedor.</>");
 			run("docker rm -f $worker");
@@ -40,7 +40,9 @@ task('deploy:symfony:workers:stop', function () {
 			writeln("<fg=red>El worker <options=bold>$name</> no tiene un contenedor asociado.</>");
 		}
 	}
-});
+})
+	->addBefore('docker:service:stop')
+;
 
 desc('Iniciar contenedores workers');
 task('deploy:symfony:workers:start', function () {

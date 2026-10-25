@@ -1,4 +1,4 @@
-docker run --detach -w /app --name init_env_docker --volume ./:/app idmarinas/php:8.4-xdebug
+docker run --detach -w /app --name init_env_docker --volume ./:/app idmarinas/php:8.5-xdebug
 
 docker exec init_env_docker composer install --no-interaction
 

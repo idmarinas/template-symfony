@@ -34,7 +34,7 @@ task('maintenance:on', function () {
 		'end'      => $end->format('c'),
 	], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
-	run("{{bin/webserver}} sh -c 'cat > /app/maintenance.flag <<'\\''EOF'\\''\n$json\nEOF'");
+	run("{{bin/webserver}} sh -c 'cat > /app/var/maintenance.flag <<'\\''EOF'\\''\n$json\nEOF'");
 
 	writeln('<info>Modo mantenimiento activado hasta: <options=bold>'.$end->format('Y-m-d H:i:s T').'</></>');
 });
@@ -42,7 +42,7 @@ task('maintenance:on', function () {
 desc('Desactivar modo mantenimiento');
 task('maintenance:off', function () {
 	writeln('<info>Desactivando modo mantenimiento...</>');
-	run('{{bin/webserver}} rm -f /app/maintenance.flag');
+	run('{{bin/webserver}} rm -f /app/var/maintenance.flag');
 });
 
 function getDuration($duration): array
